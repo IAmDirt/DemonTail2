@@ -1,0 +1,1566 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &149328768041453319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5208338685354556193}
+  - component: {fileID: 149328768041453318}
+  m_Layer: 13
+  m_Name: Bone.007
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5208338685354556193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149328768041453319}
+  m_LocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+  m_LocalPosition: {x: -0, y: 0.0020000003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1382515322842084977}
+  m_Father: {fileID: 3729135462953802472}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &149328768041453318
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149328768041453319}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0008
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &571892895429871248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4604145109616441864}
+  - component: {fileID: 571892895429871251}
+  m_Layer: 13
+  m_Name: Bone.001
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4604145109616441864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571892895429871248}
+  m_LocalRotation: {x: 0.050419718, y: -1.161312e-16, z: 2.2265346e-16, w: 0.99872816}
+  m_LocalPosition: {x: -8.685396e-26, y: 0.0023513846, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8810519163355090329}
+  m_Father: {fileID: 7229966102894204455}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &571892895429871251
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571892895429871248}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0008
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &819283007806927997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 652091347160077038}
+  - component: {fileID: 819283007806927996}
+  m_Layer: 13
+  m_Name: Tail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &652091347160077038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819283007806927997}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.00225, z: 0.0002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7229966102894204455}
+  - {fileID: 6417001890186396378}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &819283007806927996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819283007806927997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61574e354ba34a141ae2cc1228f5eda3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseCollision: 0
+  CollisionSpace: 0
+  CollisionMode: 0
+  CheapCollision: 0
+  DynamicWorldCollidersInclusion: 0
+  InclusionRadius: 1
+  IgnoreMeshColliders: 1
+  IncludedColliders: []
+  IncludedColliders2D: []
+  CollidersType: 0
+  CollideWithOtherTails: 0
+  CollideWithDisabledColliders: 1
+  CollisionSlippery: 0.8
+  ReflectCollision: 0
+  CollidersScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  CollidersScaleMul: 0.015
+  CollisionsAutoCurve: 0.5
+  IgnoredColliders: []
+  IgnoredColliders2D: []
+  CollidersSameLayer: 1
+  CollidersAddRigidbody: 1
+  RigidbodyMass: 1
+  CollidersLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  UseSlitheryCurve: 0
+  SlitheryCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.75
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  UseCurlingCurve: 0
+  CurlingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.7
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  UseSpringCurve: 0
+  SpringCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  UseSlipperyCurve: 0
+  SlipperyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.7
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  UsePosSpeedCurve: 0
+  PosCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.7
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  UseRotSpeedCurve: 0
+  RotCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.9
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  UsePartialBlend: 0
+  BlendCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.95
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  UseIK: 0
+  IK:
+    IKWeight: 0
+    IKTargetPosition: {x: 0, y: 0, z: 0}
+    IKTargetRotation: {x: 0, y: 0, z: 0, w: 0}
+    LastLocalDirection: {x: 0, y: 0, z: 0}
+    LocalDirection: {x: 0, y: 0, z: 0}
+    IKBones: []
+    ContinousSolving: 0
+    SyncWithAnimator: 0
+    ReactionQuality: 0
+    Smoothing: 0
+    MaxStretching: 0
+    StretchCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Use2D: 0
+  IKTarget: {fileID: 0}
+  IKAutoWeights: 1
+  IKBaseReactionWeight: 0.65
+  IKReactionWeightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.25
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  IKAutoAngleLimits: 1
+  IKAutoAngleLimit: 40
+  IKContinousSolve: 0
+  IKBlend: 1
+  IKAnimatorBlend: 0.5
+  IKReactionQuality: 2
+  IKSmoothing: 0
+  IKMaxStretching: 0
+  IKStretchCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  IKLimitSettings: []
+  RotationOffset: {x: 0.043619715, y: 0, z: 0, w: 0.99904823}
+  Curving: {x: 0.08715569, y: 0, z: 0, w: 0.9961947}
+  UseCurvingCurve: 1
+  CurvCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.078125
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  LengthMultiplier: 1
+  UseLengthMulCurve: 0
+  LengthMulCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  UseGravityCurve: 0
+  GravityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.65
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Gravity: {x: 0, y: 0, z: 0}
+  UseWaving: 1
+  CosinusAdd: 0
+  FixedCycle: 0
+  WavingSpeed: 2
+  WavingRange: 0.8
+  WavingAxis: {x: 1, y: 1, z: 1}
+  WavingType: 1
+  AlternateWave: 1
+  UseWind: 0
+  WindEffectPower: 1
+  WindTurbulencePower: 1
+  WindWorldNoisePower: 0.5
+  WindEffect: {x: 0, y: 0, z: 0}
+  fDebug: 0
+  _gizmosEditorStartPreview: {fileID: 0}
+  _gizmospesp: {fileID: 0}
+  _gizmosEditorEndPreview: {fileID: 0}
+  _gizmospeep: {fileID: 0}
+  _editor_Title: Tail Animator 2
+  _editor_IsInspectorViewingColliders: 1
+  _editor_IsInspectorViewingIncludedColliders: 1
+  _editor_animatorViewedCounter: 1
+  TailSegments:
+  - ProceduralPosition: {x: -34.41277, y: 47.291336, z: 34.297905}
+    ProceduralPositionWeightBlended: {x: -34.41277, y: 47.291336, z: 34.297905}
+    TrueTargetRotation: {x: -0.6501161, y: 0.021716055, z: 0.060193855, w: 0.7571357}
+    PosRefRotation: {x: -0.6677114, y: 0.02795961, z: 0.06977864, w: 0.7406151}
+    PreviousPosReferenceRotation: {x: -0.6850576, y: 0.034474123, z: 0.07941667, w: 0.7233262}
+    PreviousPosition: {x: -34.41277, y: 47.291336, z: 34.297905}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -0, y: 0, z: 0}
+    BoneLengthScaled: 0
+    InitialLocalPosition: {x: -0, y: 0, z: 0}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: -0.050419718, y: 1.1613118e-16, z: -2.2265344e-16, w: 0.99872816}
+    ColliderRadius: 1
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -1
+    VelocityHelper: {x: 0, y: 0, z: 0}
+    QVelocityHelper: {x: 0, y: 0, z: 0, w: 1}
+    PreviousPush: {x: 0, y: 0, z: 0}
+    Curving: {x: 0.08715569, y: 0, z: 0, w: 0.9961947}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  - ProceduralPosition: {x: -34.44084, y: 47.326008, z: 34.067036}
+    ProceduralPositionWeightBlended: {x: -34.44084, y: 47.326008, z: 34.067036}
+    TrueTargetRotation: {x: -0.6474961, y: 0.012611911, z: 0.04805334, w: 0.7604477}
+    PosRefRotation: {x: -0.6591426, y: 0.004101275, z: 0.044827335, w: 0.75066954}
+    PreviousPosReferenceRotation: {x: -0.670494, y: -0.004451898, z: 0.04160988, w: 0.74073386}
+    PreviousPosition: {x: -34.436684, y: 47.31847, z: 34.065563}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -1.01822016e-16, y: 0.23513848, z: -0.000000043655735}
+    BoneLengthScaled: 0.23513848
+    InitialLocalPosition: {x: -1.0182201e-18, y: 0.0023513853, z: -4.3655746e-10}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: 0.050419718, y: -1.161312e-16, z: 2.2265346e-16, w: 0.99872816}
+    ColliderRadius: 0.0013226543
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -1
+    VelocityHelper: {x: -0.16940981, y: 0.30826163, z: 0.074049875}
+    QVelocityHelper: {x: 1.6508768, y: -0.5986212, z: -0.9085603, w: 1.5965708}
+    PreviousPush: {x: -0.0040512085, y: 0.007209778, z: 0.0011062622}
+    Curving: {x: 0.085580595, y: 0, z: 0, w: 0.9963313}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  - ProceduralPosition: {x: -34.458725, y: 47.357384, z: 33.870323}
+    ProceduralPositionWeightBlended: {x: -34.458725, y: 47.357384, z: 33.870323}
+    TrueTargetRotation: {x: -0.69082224, y: -0.03545949, z: -0.0044423016, w: 0.7221411}
+    PosRefRotation: {x: -0.6975466, y: -0.04380844, z: -0.0068465504, w: 0.7151663}
+    PreviousPosReferenceRotation: {x: -0.7037792, y: -0.052132826, z: -0.009152601, w: 0.7084443}
+    PreviousPosition: {x: -34.45119, y: 47.34375, z: 33.8677}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -1.0182196e-16, y: 0.19999991, z: -0.000000050931693}
+    BoneLengthScaled: 0.19999991
+    InitialLocalPosition: {x: -1.0182196e-18, y: 0.0019999994, z: -5.0931703e-10}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: 0, y: 0, z: -2.398824e-23, w: 1}
+    ColliderRadius: 0.0012567692
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -1
+    VelocityHelper: {x: -0.3059997, y: 0.5547359, z: 0.15041035}
+    QVelocityHelper: {x: 1.0910944, y: 0.8074844, z: 0.30566758, w: 0.9353954}
+    PreviousPush: {x: -0.0073013306, y: 0.012878418, z: 0.0019607544}
+    Curving: {x: 0.08122375, y: 0, z: 0, w: 0.9966959}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  - ProceduralPosition: {x: -34.447643, y: 47.36648, z: 33.670837}
+    ProceduralPositionWeightBlended: {x: -34.447643, y: 47.36648, z: 33.670837}
+    TrueTargetRotation: {x: -0.7223945, y: -0.089659974, z: -0.063326865, w: 0.6827133}
+    PosRefRotation: {x: -0.72080815, y: -0.09713661, z: -0.06364128, w: 0.6833373}
+    PreviousPosReferenceRotation: {x: -0.71859765, y: -0.10451761, z: -0.06373745, w: 0.6845663}
+    PreviousPosition: {x: -34.43692, y: 47.34877, z: 33.66827}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -1.01821976e-16, y: 0.19999984, z: 0.000000008731147}
+    BoneLengthScaled: 0.19999984
+    InitialLocalPosition: {x: -1.0182197e-18, y: 0.0019999987, z: 8.731149e-11}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: 0, y: 0, z: 1.528418e-30, w: 1}
+    ColliderRadius: 0.0012567692
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -1
+    VelocityHelper: {x: -0.44119993, y: 0.72998774, z: 0.1077011}
+    QVelocityHelper: {x: 0.6210104, y: 0.79013103, z: 0.22503096, w: 0.6562653}
+    PreviousPush: {x: -0.010246277, y: 0.016242981, z: 0.0017814636}
+    Curving: {x: 0.074636556, y: 0, z: 0, w: 0.9972108}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  - ProceduralPosition: {x: -34.40444, y: 47.356136, z: 33.475834}
+    ProceduralPositionWeightBlended: {x: -34.40444, y: 47.356136, z: 33.475834}
+    TrueTargetRotation: {x: -0.71283954, y: -0.14407273, z: -0.11465626, w: 0.6767255}
+    PosRefRotation: {x: -0.70030767, y: -0.1498655, z: -0.11089003, w: 0.6890667}
+    PreviousPosReferenceRotation: {x: -0.68688434, y: -0.15539426, z: -0.10671881, w: 0.701893}
+    PreviousPosition: {x: -34.39137, y: 47.33885, z: 33.47378}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -1.0182198e-16, y: 0.19999956, z: 0.0000000116415295}
+    BoneLengthScaled: 0.19999956
+    InitialLocalPosition: {x: -1.0182198e-18, y: 0.001999996, z: 1.1641532e-10}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+    ColliderRadius: 0.0012567692
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -1
+    VelocityHelper: {x: -0.51962036, y: 0.7095263, z: 0.0005405909}
+    QVelocityHelper: {x: -0.16837344, y: 0.7055656, z: 0.023673246, w: -0.075105086}
+    PreviousPush: {x: -0.012252808, y: 0.015003204, z: 0.0013618469}
+    Curving: {x: 0.06637103, y: 0, z: 0, w: 0.997795}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  - ProceduralPosition: {x: -34.332325, y: 47.347622, z: 33.289482}
+    ProceduralPositionWeightBlended: {x: -34.332325, y: 47.347622, z: 33.289482}
+    TrueTargetRotation: {x: -0.63401324, y: -0.19429165, z: -0.13772511, w: 0.735738}
+    PosRefRotation: {x: -0.60729086, y: -0.19692628, z: -0.12726651, w: 0.7590923}
+    PreviousPosReferenceRotation: {x: -0.5793877, y: -0.19896185, z: -0.11625261, w: 0.7817988}
+    PreviousPosition: {x: -34.318592, y: 47.33729, z: 33.2875}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -1.01821996e-16, y: 0.19999996, z: 0}
+    BoneLengthScaled: 0.19999996
+    InitialLocalPosition: {x: -1.0182199e-18, y: 0.0019999999, z: 0}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+    ColliderRadius: 0.00125677
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -1
+    VelocityHelper: {x: -0.50927556, y: 0.42222545, z: -0.06496574}
+    QVelocityHelper: {x: -1.2164927, y: 0.5405089, z: -0.36874217, w: -1.178123}
+    PreviousPush: {x: -0.012363434, y: 0.0074806213, z: 0.0012283325}
+    Curving: {x: 0.056981843, y: 0, z: 0, w: 0.9983752}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  - ProceduralPosition: {x: -34.24252, y: 47.379246, z: 33.113598}
+    ProceduralPositionWeightBlended: {x: -34.24252, y: 47.379246, z: 33.113598}
+    TrueTargetRotation: {x: -0.45295313, y: -0.2344728, z: -0.109022364, w: 0.8532119}
+    PosRefRotation: {x: -0.4131069, y: -0.23159534, z: -0.09168949, w: 0.87595624}
+    PreviousPosReferenceRotation: {x: -0.37297934, y: -0.22786725, z: -0.07418508, w: 0.8963591}
+    PreviousPosition: {x: -34.231865, y: 47.38314, z: 33.11321}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -1.0182196e-16, y: 0.19999981, z: 0.0000000116415295}
+    BoneLengthScaled: 0.19999981
+    InitialLocalPosition: {x: -1.0182196e-18, y: 0.0019999985, z: 1.1641532e-10}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+    ColliderRadius: 0.0012567692
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -1
+    VelocityHelper: {x: -0.3764761, y: -0.1331506, z: -0.10859816}
+    QVelocityHelper: {x: -2.580383, y: 0.22780359, z: -1.0095695, w: -2.1745274}
+    PreviousPush: {x: -0.0084991455, y: -0.0063171387, z: -0.001083374}
+    Curving: {x: 0.047026854, y: 0, z: 0, w: 0.9988936}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  - ProceduralPosition: {x: -34.16283, y: 47.492424, z: 32.96924}
+    ProceduralPositionWeightBlended: {x: -34.16283, y: 47.492424, z: 32.96924}
+    TrueTargetRotation: {x: -0.18283653, y: -0.25427166, z: -0.03163052, w: 0.94916624}
+    PosRefRotation: {x: -0.1450245, y: -0.24522449, z: -0.0142790545, w: 0.95845133}
+    PreviousPosReferenceRotation: {x: -0.10858552, y: -0.23567693, z: 0.0025583971, w: 0.96574277}
+    PreviousPosition: {x: -34.161583, y: 47.51198, z: 32.977333}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -1.01821976e-16, y: 0.19999972, z: 0.00000011641529}
+    BoneLengthScaled: 0.19999972
+    InitialLocalPosition: {x: -1.0182197e-18, y: 0.0019999975, z: 0.0000000011641532}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+    ColliderRadius: 0.0012567692
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -0.0019201813
+    VelocityHelper: {x: -0.0162187, y: -0.748487, z: -0.39936718}
+    QVelocityHelper: {x: -3.8027449, y: -0.30737135, z: -1.6512718, w: -2.047511}
+    PreviousPush: {x: 0.0009422302, y: -0.01953125, z: -0.009994507}
+    Curving: {x: 0.037066508, y: 0, z: 0, w: 0.99931276}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  - ProceduralPosition: {x: -34.132225, y: 47.678654, z: 32.903038}
+    ProceduralPositionWeightBlended: {x: -34.132225, y: 47.678654, z: 32.903038}
+    TrueTargetRotation: {x: 0.07520537, y: -0.25167018, z: 0.046799205, w: 0.9637512}
+    PosRefRotation: {x: 0.09735771, y: -0.2395227, z: 0.058121573, w: 0.964247}
+    PreviousPosReferenceRotation: {x: 0.11791584, y: -0.22736906, z: 0.06881761, w: 0.9641905}
+    PreviousPosition: {x: -34.142506, y: 47.703804, z: 32.924057}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -1.0182194e-16, y: 0.19999987, z: 0.00000011641529}
+    BoneLengthScaled: 0.19999987
+    InitialLocalPosition: {x: -1.0182194e-18, y: 0.001999999, z: 0.0000000011641532}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+    ColliderRadius: 0.00125677
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -0.004942079
+    VelocityHelper: {x: 0.46058732, y: -0.8010649, z: -0.9472646}
+    QVelocityHelper: {x: -3.5499253, y: -0.8806146, z: -1.6301732, w: -0.7867397}
+    PreviousPush: {x: 0.010917664, y: -0.023071289, z: -0.021438599}
+    Curving: {x: 0.027662456, y: 0, z: 0, w: 0.99961734}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  - ProceduralPosition: {x: -34.157837, y: 47.875515, z: 32.92732}
+    ProceduralPositionWeightBlended: {x: -34.157837, y: 47.875515, z: 32.92732}
+    TrueTargetRotation: {x: 0.24962832, y: -0.23902346, z: 0.09396576, w: 0.93366194}
+    PosRefRotation: {x: 0.25620958, y: -0.22675009, z: 0.09956299, w: 0.9343598}
+    PreviousPosReferenceRotation: {x: 0.26159033, y: -0.2146809, z: 0.10468747, w: 0.93515944}
+    PreviousPosition: {x: -34.174828, y: 47.898426, z: 32.95688}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -1.0182194e-16, y: 0.19999944, z: 0.00000011641529}
+    BoneLengthScaled: 0.19999944
+    InitialLocalPosition: {x: -1.0182194e-18, y: 0.0019999947, z: 0.0000000011641532}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+    ColliderRadius: 0.0012567687
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -0.004942079
+    VelocityHelper: {x: 0.6208976, y: -0.33387712, z: -1.1422547}
+    QVelocityHelper: {x: -2.0529478, y: -1.1548836, z: -1.0543736, w: -0.016042255}
+    PreviousPush: {x: 0.016132355, y: -0.020851135, z: -0.028266907}
+    Curving: {x: 0.01937595, y: 0, z: 0, w: 0.9998123}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  - ProceduralPosition: {x: -34.216797, y: 48.04706, z: 33.011562}
+    ProceduralPositionWeightBlended: {x: -34.216797, y: 48.04706, z: 33.011562}
+    TrueTargetRotation: {x: 0.3395738, y: -0.22766443, z: 0.11211378, w: 0.90569824}
+    PosRefRotation: {x: 0.33362797, y: -0.21670453, z: 0.11431456, w: 0.9103097}
+    PreviousPosReferenceRotation: {x: 0.32655975, y: -0.2060208, z: 0.116222434, w: 0.9150992}
+    PreviousPosition: {x: -34.235626, y: 48.0678, z: 33.044147}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -1.0182195e-16, y: 0.19999963, z: 0.00000011641529}
+    BoneLengthScaled: 0.19999963
+    InitialLocalPosition: {x: -1.0182195e-18, y: 0.0019999966, z: 0.0000000011641532}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+    ColliderRadius: 0.00125677
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -1
+    VelocityHelper: {x: 0.5059967, y: -0.066888444, z: -0.9567006}
+    QVelocityHelper: {x: -0.5890368, y: -1.1581801, z: -0.5167067, w: -0.064488776}
+    PreviousPush: {x: 0.0172081, y: -0.01940918, z: -0.030277252}
+    Curving: {x: 0.012766712, y: 0, z: 0, w: 0.99991846}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  - ProceduralPosition: {x: -34.288338, y: 48.195908, z: 33.124374}
+    ProceduralPositionWeightBlended: {x: -34.288338, y: 48.195908, z: 33.124374}
+    TrueTargetRotation: {x: 0.36041078, y: -0.22374888, z: 0.11342282, w: 0.8984299}
+    PosRefRotation: {x: 0.34342918, y: -0.21473031, z: 0.11444218, w: 0.907111}
+    PreviousPosReferenceRotation: {x: 0.32542515, y: -0.20593427, z: 0.11531973, w: 0.9156369}
+    PreviousPosition: {x: -34.30635, y: 48.217632, z: 33.156166}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -1.0182196e-16, y: 0.19999963, z: 0.00000013969836}
+    BoneLengthScaled: 0.19999963
+    InitialLocalPosition: {x: -1.0182196e-18, y: 0.0019999966, z: 0.0000000013969839}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+    ColliderRadius: 0.0012567695
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -1
+    VelocityHelper: {x: 0.3644531, y: -0.106227934, z: -0.71407294}
+    QVelocityHelper: {x: 0.595522, y: -1.0314174, z: -0.19999403, w: -0.43867862}
+    PreviousPush: {x: 0.01612854, y: -0.021045685, z: -0.02873993}
+    Curving: {x: 0.008392714, y: 0, z: 0, w: 0.9999648}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  GhostParent:
+    ProceduralPosition: {x: -34.41277, y: 47.291336, z: 34.297905}
+    ProceduralPositionWeightBlended: {x: -34.41277, y: 47.291336, z: 34.297905}
+    TrueTargetRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+    PosRefRotation: {x: -0.70461065, y: 0.05935837, z: 0.059360325, w: 0.7046111}
+    PreviousPosReferenceRotation: {x: -0.7046106, y: 0.059358466, z: 0.059360214, w: 0.70461106}
+    PreviousPosition: {x: -34.41277, y: 47.291336, z: 34.297905}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: 0, y: 0, z: 0}
+    BoneLengthScaled: 0
+    InitialLocalPosition: {x: 0, y: 0.00225, z: 0.0002}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: -0, y: -0, z: -0, w: 1}
+    ColliderRadius: 1
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -1
+    VelocityHelper: {x: 0, y: 0, z: 0}
+    QVelocityHelper: {x: 0, y: 0, z: 0, w: 1}
+    PreviousPush: {x: 0, y: 0, z: 0}
+    Curving: {x: 0, y: 0, z: 0, w: 1}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 1
+    RotationSpeed: 1
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 1
+  GhostChild:
+    ProceduralPosition: {x: -34.361355, y: 48.338802, z: 33.243744}
+    ProceduralPositionWeightBlended: {x: -34.361355, y: 48.338802, z: 33.243744}
+    TrueTargetRotation: {x: 0, y: 0, z: 0, w: 1}
+    PosRefRotation: {x: 0, y: 0, z: 0, w: 1}
+    PreviousPosReferenceRotation: {x: 0, y: 0, z: 0, w: 1}
+    PreviousPosition: {x: -34.37743, y: 48.36491, z: 33.271305}
+    BlendValue: 1
+    BoneDimensionsScaled: {x: -1.01821976e-16, y: 0.19999963, z: 0.000000093132236}
+    BoneLengthScaled: 0.19999963
+    InitialLocalPosition: {x: -1.0182197e-18, y: 0.0019999966, z: 9.313226e-10}
+    LocalOffset: {x: 0, y: 0, z: 0}
+    InitialLocalRotation: {x: 0, y: 0, z: 0, w: 1}
+    ColliderRadius: 1
+    CollisionContactFlag: 0
+    CollisionContactRelevancy: -1
+    VelocityHelper: {x: 0.26415163, y: -0.29339015, z: -0.48561049}
+    QVelocityHelper: {x: 1.6399873, y: -0.8500366, z: -0.09168795, w: -0.810546}
+    PreviousPush: {x: 0.014202118, y: -0.025650024, z: -0.0238266}
+    Curving: {x: 0.0068109054, y: 0, z: 0, w: 0.9999768}
+    Gravity: {x: 0, y: 0, z: 0}
+    GravityLookOffset: {x: 0, y: 0, z: 0}
+    LengthMultiplier: 1
+    PositionSpeed: 0.9
+    RotationSpeed: 0.8
+    Springiness: 0
+    Slithery: 1
+    Curling: 0.5
+    Slippery: 0.8
+  UseMaxDistance: 0
+  DistanceFrom: {fileID: 0}
+  _distanceFrom_Auto: {fileID: 0}
+  MaximumDistance: 35
+  MaxOutDistanceFactor: 0
+  DistanceWithoutY: 0
+  DistanceMeasurePoint: {x: 0, y: 0, z: 0}
+  FadeDuration: 0.75
+  Deflection: 0.739
+  DeflectionStartAngle: 10
+  DeflectionSmooth: 0
+  DeflectionFalloff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.1
+      outSlope: 0.1
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0
+      outWeight: 0.5
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 5
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.1
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DeflectOnlyCollisions: 1
+  _Editor_Category: 2
+  _Editor_FeaturesCategory: 1
+  DrawGizmos: 1
+  StartBone: {fileID: 7229966102894204455}
+  EndBone: {fileID: 0}
+  EndBoneJointOffset: {x: 0, y: 0, z: 0}
+  _TransformsGhostChain:
+  - {fileID: 7229966102894204455}
+  - {fileID: 4604145109616441864}
+  - {fileID: 8810519163355090329}
+  - {fileID: 4440036240614239230}
+  - {fileID: 7142365082255113042}
+  - {fileID: 7115358832120753958}
+  - {fileID: 3729135462953802472}
+  - {fileID: 5208338685354556193}
+  - {fileID: 1382515322842084977}
+  - {fileID: 328176959080975692}
+  - {fileID: 7821275027005341792}
+  - {fileID: 6655660014334673492}
+  _GhostChainInitCount: 12
+  UpdateRate: 0
+  AnimatePhysics: 2
+  InterpolateRate: 0
+  Prewarm: 0
+  Slithery: 1
+  Curling: 0.5
+  Springiness: 0
+  MaxStretching: 0
+  AngleLimit: 120
+  AngleLimitAxis: {x: 0, y: 0, z: 0}
+  LimitAxisRange: {x: 0, y: 0}
+  LimitSmoothing: 0.5
+  MotionInfluence: 1
+  MotionInfluenceInY: 1
+  IncludeParent: 1
+  UnifyBendiness: 0
+  ReactionSpeed: 0.9
+  Sustain: 0
+  RotationRelevancy: 0.8
+  SmoothingStyle: 1
+  DeltaType: 0
+  UpdateAsLast: 1
+  DetectZeroKeyframes: 1
+  StartAfterTPose: 1
+  OptimizeWithMesh: {fileID: 8382170128366273879}
+  TailAnimatorAmount: 1
+  DetachChildren: 0
+  Axis2D: 0
+  Tangle: 0
+  AnimateRoll: 0
+--- !u!1 &2124390438127256450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7142365082255113042}
+  - component: {fileID: 2124390438127256509}
+  m_Layer: 13
+  m_Name: Bone.004
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7142365082255113042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124390438127256450}
+  m_LocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+  m_LocalPosition: {x: -0, y: 0.0019999999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7115358832120753958}
+  m_Father: {fileID: 4440036240614239230}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &2124390438127256509
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124390438127256450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0008
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3177508572719817269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7229966102894204455}
+  - component: {fileID: 3177508572719817268}
+  m_Layer: 13
+  m_Name: Bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7229966102894204455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177508572719817269}
+  m_LocalRotation: {x: -0.050419718, y: 1.1613118e-16, z: -2.2265344e-16, w: 0.99872816}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4604145109616441864}
+  m_Father: {fileID: 652091347160077038}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3177508572719817268
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177508572719817269}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0008
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3428080264496067684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7115358832120753958}
+  - component: {fileID: 3428080264496067687}
+  m_Layer: 13
+  m_Name: Bone.005
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7115358832120753958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428080264496067684}
+  m_LocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+  m_LocalPosition: {x: -0, y: 0.0019999999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3729135462953802472}
+  m_Father: {fileID: 7142365082255113042}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3428080264496067687
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428080264496067684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0008
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5049036987729059476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1382515322842084977}
+  - component: {fileID: 5049036987729059479}
+  m_Layer: 13
+  m_Name: Bone.008
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1382515322842084977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049036987729059476}
+  m_LocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+  m_LocalPosition: {x: -0, y: 0.0020000003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 328176959080975692}
+  m_Father: {fileID: 5208338685354556193}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &5049036987729059479
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049036987729059476}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0008
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5658810496109786575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6417001890186396378}
+  - component: {fileID: 8382170128366273879}
+  m_Layer: 13
+  m_Name: tail.001
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6417001890186396378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5658810496109786575}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.00077449455, z: -0.0003644645}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 652091347160077038}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &8382170128366273879
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5658810496109786575}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: f6328f08bb9aaaa48bf6bb71f5fff3cf, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 8426362113149535102, guid: 26fcc1a86ba1c80499245bc943423d0c, type: 3}
+  m_Bones:
+  - {fileID: 7229966102894204455}
+  - {fileID: 4604145109616441864}
+  - {fileID: 8810519163355090329}
+  - {fileID: 4440036240614239230}
+  - {fileID: 7142365082255113042}
+  - {fileID: 7115358832120753958}
+  - {fileID: 3729135462953802472}
+  - {fileID: 5208338685354556193}
+  - {fileID: 1382515322842084977}
+  - {fileID: 328176959080975692}
+  - {fileID: 7821275027005341792}
+  - {fileID: 6655660014334673492}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 7229966102894204455}
+  m_AABB:
+    m_Center: {x: 0.000117857824, y: 0.012025498, z: 0.00074200635}
+    m_Extent: {x: 0.001657495, y: 0.012787435, z: 0.002701116}
+  m_DirtyAABB: 0
+--- !u!1 &6053534271293725443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3729135462953802472}
+  - component: {fileID: 6053534271293725442}
+  m_Layer: 13
+  m_Name: Bone.006
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3729135462953802472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6053534271293725443}
+  m_LocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+  m_LocalPosition: {x: -0, y: 0.0020000003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5208338685354556193}
+  m_Father: {fileID: 7115358832120753958}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &6053534271293725442
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6053534271293725443}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0008
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7629561836791825464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4440036240614239230}
+  - component: {fileID: 7629561836791825467}
+  m_Layer: 13
+  m_Name: Bone.003
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4440036240614239230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7629561836791825464}
+  m_LocalRotation: {x: 0, y: 0, z: 1.528418e-30, w: 1}
+  m_LocalPosition: {x: -1.9968042e-32, y: 0.002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7142365082255113042}
+  m_Father: {fileID: 8810519163355090329}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &7629561836791825467
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7629561836791825464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0008
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7946228851436164913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7821275027005341792}
+  - component: {fileID: 7946228851436164912}
+  m_Layer: 13
+  m_Name: Bone.010
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7821275027005341792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7946228851436164913}
+  m_LocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+  m_LocalPosition: {x: -0, y: 0.0020000003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6655660014334673492}
+  m_Father: {fileID: 328176959080975692}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &7946228851436164912
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7946228851436164913}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0008
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8546768764016415671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8810519163355090329}
+  - component: {fileID: 8546768764016415670}
+  m_Layer: 13
+  m_Name: Bone.002
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8810519163355090329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8546768764016415671}
+  m_LocalRotation: {x: 0, y: 0, z: -2.398824e-23, w: 1}
+  m_LocalPosition: {x: 9.667191e-27, y: 0.002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4440036240614239230}
+  m_Father: {fileID: 4604145109616441864}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8546768764016415670
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8546768764016415671}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0008
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8688126434356602731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 328176959080975692}
+  - component: {fileID: 8688126434356602730}
+  m_Layer: 13
+  m_Name: Bone.009
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &328176959080975692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8688126434356602731}
+  m_LocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+  m_LocalPosition: {x: -0, y: 0.0020000003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7821275027005341792}
+  m_Father: {fileID: 1382515322842084977}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8688126434356602730
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8688126434356602731}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0008
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &9186570546782009531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6655660014334673492}
+  - component: {fileID: 9186570546782009530}
+  m_Layer: 13
+  m_Name: Bone.011
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6655660014334673492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9186570546782009531}
+  m_LocalRotation: {x: 0, y: 0, z: -4.9303807e-32, w: 1}
+  m_LocalPosition: {x: -0, y: 0.0020000003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7821275027005341792}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &9186570546782009530
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9186570546782009531}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0008
+  m_Center: {x: 0, y: 0, z: 0}
