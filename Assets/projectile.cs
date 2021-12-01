@@ -39,6 +39,10 @@ public class projectile : MonoBehaviour
     {
         Collide(collision);
     }
+    public virtual void OnCollisionStay(Collision collision)
+    {
+        Collide(collision);
+    }
 
     public virtual void Collide(Collision collision)
     {

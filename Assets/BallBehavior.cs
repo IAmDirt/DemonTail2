@@ -62,7 +62,6 @@ public class BallBehavior : projectile
     {
         rb.velocity = m_velocity * ballSpeed * powerSpeed;
     }
-
     public void powerBounce()
     {
         bounceAmount = maxBounceAmount;

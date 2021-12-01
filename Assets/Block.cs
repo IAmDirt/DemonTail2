@@ -8,7 +8,9 @@ public class Block : Health
     private Vector3 startScale;
     public void Start()
     {
-        startScale = transform.localScale;
+        if (!ScaleOject) ScaleOject = gameObject;
+        startScale = ScaleOject .transform.localScale;
+
     }
 
     public bool invonrable;
@@ -19,9 +21,11 @@ public class Block : Health
     {
         base.takeDamage(amount);
     }
+    public float scaleAmount = 0.3f;
+    public GameObject ScaleOject;
     public void collide(BallBehavior ball)
     {
-        LeanTween.scale(gameObject, transform.localScale + Vector3.one *0.5f, 0.5f)
+        LeanTween.scale(ScaleOject,  startScale * scaleAmount, 0.5f)
             .setEasePunch()
             .setOnComplete(ResetScale);
 
@@ -33,7 +37,7 @@ public class Block : Health
 
     private void ResetScale()
     {
-        LeanTween.scale(gameObject, startScale, 0.3f)
+        LeanTween.scale(ScaleOject, startScale, 0.3f)
             .setEaseInOutSine();
     }
 
