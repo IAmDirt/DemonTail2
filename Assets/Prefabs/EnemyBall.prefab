@@ -5274,7 +5274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6dfb292480af44eaf8045f7b042d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpeed: 12
+  ballSpeed: 8
   rb: {fileID: 0}
   m_velocity: {x: 0, y: 0, z: 0}
   playerBall: {fileID: 8099948903382539180, guid: 748a9aa46e713ac4c9a8db2c93832cfa,
