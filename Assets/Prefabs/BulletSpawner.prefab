@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1445104464459350757}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 4.5, z: 10.2}
-  m_LocalScale: {x: 2.5, y: 2, z: 2.5}
+  m_LocalScale: {x: 2, y: 1.5, z: 2}
   m_Children:
   - {fileID: 1445104465317369530}
   - {fileID: 1445104465712389370}
@@ -69,6 +69,7 @@ MonoBehaviour:
       m_Calls: []
   useInvulnerableFrames: 0
   invulnerableTime: 1
+  DamageAudio: {fileID: 0}
   invonrable: 0
   playerBLock: 0
   DeathParticleGO: {fileID: 2558549589362386349, guid: 4f10e6a64eb081f4ab23f03b66827d3d,

@@ -24,7 +24,7 @@ public class BallBehavior : projectile
     public float timeToDecay = 5;       //time to decay after  hit
 
     private float minScale =1f;
-    private float maxScale=2.5f;
+    private float maxScale=2.3f;
 
     public Gradient PoweColor;
     public Light glowLight;
