@@ -16,7 +16,7 @@ public class ArcProjectile : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         Vector3 p = target + velPredict;
 
-        ArtificialGravity = -Vector3.up * 9.81f *4;
+        ArtificialGravity = -Vector3.up * 9.81f *3;
         float gravity = Physics.gravity.magnitude + ArtificialGravity.magnitude;
 
         // Selected angle in radians
