@@ -393,7 +393,7 @@ public class BossWallMan : StateManager
             {
                 amountOfShots--;
                 _brain.arcProjectile();
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.75f);
             }
         }
         public void FixedUpdateState(StateManager manager)

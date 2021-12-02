@@ -29,4 +29,12 @@ public class playerHealth : MonoBehaviour
             HealthUi[i].SetActive(false);
         }
     }
+
+    public void DeathEvent()
+    {
+        gameManager manager = gameManager.Instance;
+
+        manager.GameOver();
+    }
+
 }
