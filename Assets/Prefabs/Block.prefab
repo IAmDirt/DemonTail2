@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f6eb40676d1792247a261e28066bc752, type: 2}
+  - {fileID: 2100000, guid: fd9f05812e3e91a45b807f6c5b657692, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,5 +133,7 @@ MonoBehaviour:
   DamageAudio: {fileID: 0}
   invonrable: 0
   playerBLock: 0
+  scaleAmount: 0.3
+  ScaleOject: {fileID: 0}
   DeathParticleGO: {fileID: 2558549589362386349, guid: e492dbf04415a614b8364b649b7f1a82,
     type: 3}
