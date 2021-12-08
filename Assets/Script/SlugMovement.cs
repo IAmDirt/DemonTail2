@@ -137,6 +137,7 @@ public class SlugMovement : movement
     private bool canDash = true;
 
     public GameObject Mesh;
+    public Health health;
     public IEnumerator StartDash()
     {
         isDashing = true;
@@ -153,6 +154,7 @@ public class SlugMovement : movement
         .setEasePunch();
         dashParticles.Play();
         DashSound.PlayRandomClip();
+        health.startInvonrableFrames(dashDuration);
         while (dashProgress < dashDuration)
         {
             dashProgress += Time.deltaTime;

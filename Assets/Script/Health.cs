@@ -43,14 +43,17 @@ public class Health : MonoBehaviour
             deathEvent.Invoke();
             Kill();
         }
-        if(useInvulnerableFrames)
-        StartCoroutine( invulnerableFrames());
+        if (useInvulnerableFrames)
+            startInvonrableFrames(invulnerableTime);
+                }
+    public void startInvonrableFrames(float duration)
+    {
+        StartCoroutine( invulnerableFrames(duration));
     }
-
-    private IEnumerator invulnerableFrames()
+    private IEnumerator invulnerableFrames(float duration)
     {
         isInvulnerable = true;
-        yield return new WaitForSeconds(invulnerableTime);
+        yield return new WaitForSeconds(duration);
         isInvulnerable = false;
     }
     private void updateVisuals()

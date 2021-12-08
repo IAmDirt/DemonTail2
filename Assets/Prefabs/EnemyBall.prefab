@@ -5225,7 +5225,7 @@ Transform:
   m_GameObject: {fileID: 9187445295896162903}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.95, y: 3.98, z: -10.58}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2, y: 1.8, z: 2}
   m_Children:
   - {fileID: 9187445295072480147}
   - {fileID: 6188673474621373254}
@@ -5260,7 +5260,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9187445295896162904
 MonoBehaviour:
@@ -5274,7 +5274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6dfb292480af44eaf8045f7b042d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpeed: 8
+  ballSpeed: 7
   rb: {fileID: 0}
   m_velocity: {x: 0, y: 0, z: 0}
   playerBall: {fileID: 8099948903382539180, guid: 748a9aa46e713ac4c9a8db2c93832cfa,
