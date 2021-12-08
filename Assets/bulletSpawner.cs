@@ -101,6 +101,8 @@ public class bulletSpawner : MonoBehaviour
 
     public Transform obj1;
     public Transform obj2;
+    public GameObject animationObj;
+    public GameObject shadow;
     public void idleAnimation()
     {
         obj1.Rotate(rotationAxis1 * rotationSpeed * Time.deltaTime);
@@ -127,14 +129,22 @@ public class bulletSpawner : MonoBehaviour
 
         StartCoroutine(spawnAnimation(spawnPos, target));
     }
+    private Vector3 Shadow_startScale = new Vector3(1, 0.001f, 1);
+    private Vector3 Shadow_endScale = new Vector3(2f, 0.001f, 2f);
     private IEnumerator spawnAnimation(Vector3 spawnPos, Vector3 target)
     {
+        shadow.transform.position = target - Vector3.up*0.9f;
+
+
         isenabled = false;
-        LeanTween.move(gameObject, spawnPos + Vector3.up * 6, 0.5f)
+        LeanTween.move(animationObj, spawnPos + Vector3.up * 6, 0.5f)
         .setEaseOutElastic();
+
+        LeanTween.scale(shadow, Shadow_startScale , 0.3f).setEaseOutBounce();
         yield return new WaitForSeconds(0.5f);
 
-        LeanTween.move(gameObject, target, 0.4f)
+        LeanTween.scale(shadow, Shadow_endScale , 0.3f).setEaseOutBounce();
+        LeanTween.move(animationObj, target, 0.4f)
         .setEaseOutBounce();
         isenabled = true;
 
@@ -142,5 +152,4 @@ public class bulletSpawner : MonoBehaviour
         StartCoroutine(StartBulletHell(Random.Range(8, 8)));
 
     }
-
 }

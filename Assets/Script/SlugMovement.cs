@@ -9,10 +9,9 @@ public class SlugMovement : movement
     public static Vector3 DefaultInput { get { return new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")); } }
     public static Vector3 CameraRelativeInput;
 
+    public float dashForce = 1;
     private Rigidbody baseRb;
     private Camera cam;
-
-    public float dashForce = 1;
 
     [Header("jumping")]
     public float jumpForce = 10;
@@ -50,14 +49,12 @@ public class SlugMovement : movement
         else
             grounded = true;
 
-
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space))
         {
             if (!isDashing && canDash)
                 StartCoroutine(StartDash());
         }
     }
-
 
     private bool LockRotation = true;
     private bool LockRotationHorizontal = true;
@@ -123,12 +120,12 @@ public class SlugMovement : movement
     }
     public void faceInput()
     {
-
             var lookDirection = new Vector3(DefaultInput.x, 0, 1);
             lookDirection = lookDirection.normalized;
 
             rotateBody(lookDirection, baseRb);
     }
+
     [Header("Dash")]
     public ParticleSystem dashParticles;
     public float dashDuration = 1;

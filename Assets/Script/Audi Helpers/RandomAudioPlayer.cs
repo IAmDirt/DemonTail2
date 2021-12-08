@@ -43,6 +43,11 @@ public class RandomAudioPlayer : MonoBehaviour
 
     void Awake()
     {
+        Init();
+    }
+
+    public void Init()
+    {
         m_Audiosource = GetComponent<AudioSource>();
         for (int i = 0; i < overrides.Length; i++)
         {
@@ -50,7 +55,6 @@ public class RandomAudioPlayer : MonoBehaviour
                 m_Lookup[material] = overrides[i].banks;
         }
     }
-
     /// <summary>
     /// Will pick a random clip to play in the assigned list. If you pass a material, it will try to find an
     /// override for that materials or play the default clip if none can ben found.

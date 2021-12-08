@@ -373,7 +373,7 @@ public class BossWallMan : StateManager
             var spawnPos = position + Vector3.up * spawnHeight;
             var spawned = PoolManager.Spawn(spawner, spawnPos, spawner.transform.rotation);
 
-            var ConeAnimation = spawned.GetComponent<bulletSpawner>();
+            var ConeAnimation = spawned.transform.GetChild(0) .GetComponent<bulletSpawner>();
             ConeAnimation.Animate(spawnPos, position);
         }
 

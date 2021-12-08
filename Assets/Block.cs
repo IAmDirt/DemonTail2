@@ -21,7 +21,7 @@ public class Block : Health
     {
         base.takeDamage(amount);
     }
-    public float scaleAmount = 0.3f;
+    public float scaleAmount = 1.3f;
     public GameObject ScaleOject;
     public void collide(BallBehavior ball)
     {

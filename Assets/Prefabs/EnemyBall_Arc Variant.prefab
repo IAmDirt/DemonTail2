@@ -82,6 +82,7 @@ MonoBehaviour:
   explotion: {fileID: 5828764713310830271, guid: bb16b1f3d8377f24898ec5d4ac4b74b0,
     type: 3}
   spawner: {fileID: -2038144169615663913}
+  impactSound: {fileID: 0}
 --- !u!114 &-2038144169615663913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +106,8 @@ MonoBehaviour:
   rotationSpeed: 222
   obj1: {fileID: 3162327139651175316}
   obj2: {fileID: 6596114685336013789}
+  animationObj: {fileID: 0}
+  shadow: {fileID: 0}
 --- !u!1 &3162327139651175317
 GameObject:
   m_ObjectHideFlags: 0
