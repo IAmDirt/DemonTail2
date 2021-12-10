@@ -243,7 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 9187445295896162903, guid: 48bd102de42b7f64e9b9eab3f02f82f1, type: 3}
   isenabled: 0
-  BulletAmount: 5
+  BulletAmount: 15
   minAngle: 0
   maxAngle: 360
   BulletSpawner: {fileID: 1445104464459350758}

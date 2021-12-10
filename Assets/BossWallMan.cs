@@ -14,12 +14,18 @@ public class BossWallMan : StateManager
     public Animator anim;
 
 
-    readonly int m_ShootProjectile = Animator.StringToHash("Shoot");
-    readonly int m_Jump = Animator.StringToHash("Jump");
     readonly int m_ChaseAttack = Animator.StringToHash("ChaseAttack");
+    readonly int m_ShootProjectile = Animator.StringToHash("Shoot");
+    readonly int m_Scream = Animator.StringToHash("Scream");
+    readonly int m_Jump = Animator.StringToHash("Jump");
+    readonly int m_Dead = Animator.StringToHash("Dead");
+    readonly int m_Hit = Animator.StringToHash("Hit");
 
+
+    public ParticleSystem screamParticle;
     [Header("audio")]
     public RandomAudioPlayer JumpImpact;
+    public RandomAudioPlayer screamSound;
 
     #region basic Unity Functions
     public void OnEnable()
@@ -66,7 +72,9 @@ public class BossWallMan : StateManager
     public void DamageTakenEvent()
     {
         hideState.hideDamage();
+        anim.SetTrigger(m_Hit);
     }
+
 
     #region general boss functions
 
@@ -255,6 +263,9 @@ public class BossWallMan : StateManager
         public GameObject wallPrefab;
         private bool SpawnersSummoned;
         private float damageTakenThisState;
+
+        private int DifficultyScaling = 0;
+        private bool KneelingDown = false;
         private Corner GetNextCorner()
         {
             Corner nextCorner = null;
@@ -311,35 +322,33 @@ public class BossWallMan : StateManager
         {
             moveToRandomCorner();
             damageTakenThisState = 0;
-            fireProgress = 0.5f;
+            DifficultyScaling++;
+            fireProgress = 2.5f;
             SpawnersSummoned = false;
         }
         public void exitState(StateManager manager)
         {
+            KneelingDown = false;
         }
+
         public void updateState(StateManager manager)
         {
             if (AllWallsDestroyed(_brain.currentCorner) || damageTakenThisState > 3)
             {
-                //if no more corners transtion enraged
-                if (GetNextCorner() == null)
-                {
-                    _brain.setNewState(_brain.EnragedState);
-                }
-                else
-                {
-                    _brain.setNewState(_brain.EnragedState);
-                }
+                //exit state after kneeling down
+                if(!KneelingDown)
+                CoroutineHelper.RunCoroutine(kneelDownvulnerable()); 
             }
             else
             {
                 if (fireProgress <= 0)
                 {
-                    if (!SpawnersSummoned)
+                    if (!SpawnersSummoned && DifficultyScaling >1)
                         CoroutineHelper.RunCoroutine(SummonSpawners(manager));
-                    else
+                    else 
                         CoroutineHelper.RunCoroutine(fireCluster());
-                    fireProgress = fireRate;
+                   
+                     fireProgress = fireRate;
                 }
                 else
                     fireProgress -= Time.deltaTime;
@@ -354,11 +363,12 @@ public class BossWallMan : StateManager
         {
             SpawnersSummoned = true;
             var attacksDone = 0;
-            while (attacksDone < 2)
+            while (attacksDone < DifficultyScaling -1)
             {
                 yield return new WaitForSeconds(1.5f);
 
-                SpawnDebris(manager.player.position);
+                var randomOffset = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+                SpawnDebris(_brain.Center.position + randomOffset);
                 attacksDone++;
 
                 yield return null;
@@ -399,6 +409,21 @@ public class BossWallMan : StateManager
         public void FixedUpdateState(StateManager manager)
         {
         }
+        private IEnumerator kneelDownvulnerable()
+        {
+            KneelingDown = true;
+            _brain.anim.SetTrigger(_brain.m_Scream);
+            yield return new WaitForSeconds(1);
+            _brain.screamParticle.Play();
+            _brain.impulse.GenerateImpulse(5);
+            _brain.screamSound.PlayRandomClip();
+            yield return new WaitForSeconds(1);
+
+            _brain.anim.SetTrigger(_brain.m_Scream);
+            yield return new WaitForSeconds(0.2f);
+            _brain.setNewState(_brain.EnragedState);
+        }
+
     }
 
     [System.Serializable]
@@ -427,6 +452,7 @@ public class BossWallMan : StateManager
             chooseNextAttack();
             TimeUntilExit = StayTime;
             AttackMovesDone = 0;
+
         }
         public void exitState(StateManager manager)
         {
@@ -706,7 +732,7 @@ public class BossWallMan : StateManager
                     yield return new WaitForSeconds(0.15f);
                     DamageCollider_Jump.CloseDamageCollider();
 
-                    yield return new WaitForSeconds(0.35f);
+                    yield return new WaitForSeconds(0.45f);
 
                 }
                 else

@@ -9,17 +9,17 @@ public class bulletSpawner : MonoBehaviour
     public void Start()
     {
         if(isenabled)
-            StartCoroutine(StartBulletHell(4));
+            StartCoroutine(firePatternSpiral());
     }
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            explotion();
+         //   explotion();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            FirePatternCircle();
+        //    FirePatternCircle();
         }
         if (obj2 != null)
             idleAnimation();
@@ -59,6 +59,25 @@ public class bulletSpawner : MonoBehaviour
 
     public Transform BulletSpawner;
 
+    private IEnumerator firePatternSpiral()
+    {
+
+        float angleStep = (minAngle - maxAngle) / BulletAmount;
+        var angle = minAngle;
+
+        for (int i = 0; i <= BulletAmount; i++)
+        {
+            var direction = GetDirectionCircle(angle);
+
+            spawnBullet(direction, false);
+
+            angle += angleStep;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+            yield return new WaitForSeconds(Random.Range(4, 8));
+        StartCoroutine(firePatternSpiral());
+    }
 
     public void FirePatternCircle()
     {
@@ -109,7 +128,6 @@ public class bulletSpawner : MonoBehaviour
         obj2.Rotate(rotationAxis2 * rotationSpeed * Time.deltaTime);
     }
 
-
     public void SpikeAnim()
     {
         if(obj2 != null)
@@ -124,13 +142,14 @@ public class bulletSpawner : MonoBehaviour
         }
     }
 
+    private Vector3 Shadow_startScale = new Vector3(1, 0.001f, 1);
+    private Vector3 Shadow_endScale = new Vector3(2f, 0.001f, 2f);
+
     public void Animate(Vector3 spawnPos, Vector3 target)
     {
 
         StartCoroutine(spawnAnimation(spawnPos, target));
     }
-    private Vector3 Shadow_startScale = new Vector3(1, 0.001f, 1);
-    private Vector3 Shadow_endScale = new Vector3(2f, 0.001f, 2f);
     private IEnumerator spawnAnimation(Vector3 spawnPos, Vector3 target)
     {
         shadow.transform.position = target - Vector3.up*0.9f;
@@ -149,7 +168,7 @@ public class bulletSpawner : MonoBehaviour
         isenabled = true;
 
         yield return new WaitForSeconds(0.8f);
-        StartCoroutine(StartBulletHell(Random.Range(8, 8)));
+        StartCoroutine(firePatternSpiral());
 
     }
 }
