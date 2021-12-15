@@ -212,6 +212,7 @@ public class deflector : MonoBehaviour
                     if (!colliders.Contains(collider))
                     {
                         var projectille = collider.GetComponent<projectile>();
+                        if(projectille)
                         if (projectille.CanBeDeflected)
                         {
                             projectille.deflect(deflectDir);

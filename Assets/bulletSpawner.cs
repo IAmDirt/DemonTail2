@@ -55,8 +55,6 @@ public class bulletSpawner : MonoBehaviour
     public int BulletAmount;
     [SerializeField]
     private float minAngle= 45f, maxAngle = -45f;
-
-
     public Transform BulletSpawner;
 
     private IEnumerator firePatternSpiral()
@@ -65,11 +63,16 @@ public class bulletSpawner : MonoBehaviour
         float angleStep = (minAngle - maxAngle) / BulletAmount;
         var angle = minAngle;
 
+
+        var deflectableStart = Random.Range(0, BulletAmount-1);
+
         for (int i = 0; i <= BulletAmount; i++)
         {
             var direction = GetDirectionCircle(angle);
 
-            spawnBullet(direction, false);
+
+            var canBeDeflected = deflectableStart == i ? true : false; 
+            spawnBullet(direction, canBeDeflected);
 
             angle += angleStep;
             yield return new WaitForSeconds(0.1f);

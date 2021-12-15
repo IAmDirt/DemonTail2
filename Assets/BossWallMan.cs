@@ -264,7 +264,7 @@ public class BossWallMan : StateManager
         private bool SpawnersSummoned;
         private float damageTakenThisState;
 
-        private int DifficultyScaling = 0;
+        private int DifficultyScaling = 3;
         private bool KneelingDown = false;
         private Corner GetNextCorner()
         {

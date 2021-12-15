@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class EnemyBullet : projectile
 {
-    public Material deflectableColor;
-    public Material NotDeflectableColor;
-    public MeshRenderer renderer;
+  //  public Material deflectableColor;
+   // public Material NotDeflectableColor;
+  //  public MeshRenderer renderer;
     public bool startBlack = false;
 
 
     public override void OnEnable()
     {
+   
         CanBeDeflected = false;
         base.OnEnable();
         if (startBlack) { updateDeflectColor(true); }
@@ -19,13 +20,10 @@ public class EnemyBullet : projectile
     public void updateDeflectColor(bool canBeDeflected)
     {
         CanBeDeflected = canBeDeflected;
-        renderer.material = CanBeDeflected ? deflectableColor : NotDeflectableColor;
+        //renderer.material = CanBeDeflected ? deflectableColor : NotDeflectableColor;
 
-        if(canBeDeflected)
-        {
-            transform.GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(1).gameObject.SetActive(true);
-        }    
+            transform.GetChild(0).gameObject.SetActive(!canBeDeflected);
+            transform.GetChild(1).gameObject.SetActive(canBeDeflected);
     }
     public override void Start()
     {
@@ -40,7 +38,8 @@ public class EnemyBullet : projectile
         {
             collision.gameObject.GetComponent<Health>().takeDamage(1);
         }
-        Destroy(gameObject);
+        updateDeflectColor(false);
+        PoolManager.Despawn(gameObject);// Destroy(gameObject);
     }
     public void Wobble()
     {
