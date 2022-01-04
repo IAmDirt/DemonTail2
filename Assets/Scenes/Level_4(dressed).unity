@@ -3344,6 +3344,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destroyed Stands
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1e618d7a82664f34d8479b1785105b2c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e618d7a82664f34d8479b1785105b2c, type: 3}
 --- !u!1 &644399101
