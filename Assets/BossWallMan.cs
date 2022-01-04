@@ -75,7 +75,10 @@ public class BossWallMan : StateManager
         anim.SetTrigger(m_Hit);
     }
 
-
+    public void playParticle ()
+    {
+        currentCorner.destroyParticle.Play();
+    }
     #region general boss functions
 
     [Header("Important locations")]
@@ -251,6 +254,8 @@ public class BossWallMan : StateManager
         public Transform BossStandPosition;
         public Transform[] WallPositions;
         public Transform wallBlock;
+        public Transform DestroyedBlock;
+        public ParticleSystem destroyParticle;
         public bool HasBeenUsed = false;
     }
     private Corner currentCorner;
@@ -263,8 +268,9 @@ public class BossWallMan : StateManager
         public GameObject wallPrefab;
         private bool SpawnersSummoned;
         private float damageTakenThisState;
+        private bool waiting;
 
-        private int DifficultyScaling = 3;
+        private int DifficultyScaling = 0;
         private bool KneelingDown = false;
         private Corner GetNextCorner()
         {
@@ -288,12 +294,23 @@ public class BossWallMan : StateManager
             nextCorner.HasBeenUsed = true;
             _brain.currentCorner = nextCorner;
 
-            nextCorner.wallBlock.gameObject.SetActive(false);
-            CoroutineHelper.RunCoroutine(_brain.moverArc(nextCorner.BossStandPosition.position));
 
-            spawnWalls(nextCorner);
+            CoroutineHelper.RunCoroutine(_brain.moverArc(nextCorner.BossStandPosition.position));
+            CoroutineHelper.RunCoroutine(destroyCorner());
         }
 
+
+       private IEnumerator destroyCorner()
+        {
+            yield return new WaitForSeconds(0.8f);
+            var nextCorner = _brain.currentCorner;
+            nextCorner.wallBlock.gameObject.SetActive(false);
+            nextCorner.DestroyedBlock.gameObject.SetActive(true);
+
+            spawnWalls(nextCorner);
+            _brain.playParticle();
+            waiting = false;
+        }
         public void spawnWalls(Corner currentCorner)
         {
             foreach (var wallTrans in currentCorner.WallPositions)
@@ -320,6 +337,7 @@ public class BossWallMan : StateManager
         }
         public void enterState(StateManager manager)
         {
+            waiting = true;
             moveToRandomCorner();
             damageTakenThisState = 0;
             DifficultyScaling++;
@@ -333,6 +351,11 @@ public class BossWallMan : StateManager
 
         public void updateState(StateManager manager)
         {
+            
+            if(waiting)
+            {
+                return;
+            }
             if (AllWallsDestroyed(_brain.currentCorner) || damageTakenThisState > 3)
             {
                 //exit state after kneeling down

@@ -5403,7 +5403,7 @@ Transform:
   m_GameObject: {fileID: 673390157343879395}
   m_LocalRotation: {x: -0.7084251, y: -0, z: -0, w: 0.7057861}
   m_LocalPosition: {x: 0, y: 0.4714285, z: -0.2659995}
-  m_LocalScale: {x: 100, y: 100.00004, z: 100.00004}
+  m_LocalScale: {x: 130, y: 110, z: 130}
   m_Children:
   - {fileID: 7373253046379107001}
   - {fileID: 6560394944865076804}
@@ -6348,7 +6348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15.099976, y: -15.099976}
+  m_AnchoredPosition: {x: -15.100098, y: -15.099976}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1140836197779779398
@@ -6533,7 +6533,7 @@ Transform:
   m_GameObject: {fileID: 1502513092848236120}
   m_LocalRotation: {x: -0.083622865, y: -0.20956223, z: -0.018779643, w: 0.9740319}
   m_LocalPosition: {x: 0.00009, y: 0.00129, z: -0.0002}
-  m_LocalScale: {x: 0.0029191053, y: 0.0053039864, z: 0.0029191035}
+  m_LocalScale: {x: 0.0033520088, y: 0.005084918, z: 0.0033520067}
   m_Children: []
   m_Father: {fileID: 6799123500332287690}
   m_RootOrder: 0
@@ -7527,7 +7527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -8606,7 +8606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -5, y: 5}
+  m_AnchoredPosition: {x: -5, y: 5.0001526}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1502513094292270968
@@ -8921,7 +8921,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502513094504732170}
   m_LocalRotation: {x: -0.7490485, y: -0.16121008, z: 0.1352047, w: 0.6282177}
-  m_LocalPosition: {x: -0.014999934, y: 0.38571414, z: -2.6000001}
+  m_LocalPosition: {x: 0.4928568, y: 0.38571405, z: -2.7571425}
   m_LocalScale: {x: 0.1459553, y: 0.26519957, z: 0.14595523}
   m_Children: []
   m_Father: {fileID: 1502513093231977823}
@@ -9803,6 +9803,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c5ad3cf3f5c78cd40b7fd92dd58b40d6, type: 2}
+  - {fileID: 2100000, guid: b50a1cfb7e7fdd8429c7ccb7c3580caa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

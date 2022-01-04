@@ -25,6 +25,7 @@ public class Block : Health
     public GameObject ScaleOject;
     public void collide(BallBehavior ball)
     {
+        Debug.Log(startScale * scaleAmount);
         LeanTween.scale(ScaleOject,  startScale * scaleAmount, 0.5f)
             .setEasePunch()
             .setOnComplete(ResetScale);
