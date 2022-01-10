@@ -23,7 +23,6 @@ public class InputPlayer : MonoBehaviour
     }
     public void Update()
     {
-        Debug.Log(RotationInput);
     }
     public void OnEnable()
     {
@@ -35,7 +34,8 @@ public class InputPlayer : MonoBehaviour
     }
     public void SetInput()
     {
-        controls.Gameplay.ButtonWest.performed += ctx => deflector.deflectRelease();
+        controls.Gameplay.RightTrigger.performed += ctx => deflector.deflectRelease();
+        controls.Gameplay.LeftTrigger.performed += ctx => movement.Dash();
 
         controls.Gameplay.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => _moveInput = Vector2.zero;

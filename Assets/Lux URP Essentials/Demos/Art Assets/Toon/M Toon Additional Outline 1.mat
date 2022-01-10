@@ -65,7 +65,7 @@ Material:
     - SMOOTHGRADIENT_ON: 0
     - _AlphaClip: 0
     - _Blend: 1
-    - _Border: 2
+    - _Border: 1.4
     - _BumpScale: 1
     - _CompensateScale: 1
     - _Cull: 1

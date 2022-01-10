@@ -118,7 +118,13 @@ public class SlugMovement : movement
     private bool canDash = true;
     public GameObject Mesh;
     public Health health;
-    public IEnumerator StartDash()
+
+    public void Dash()
+    {
+        if (!isDashing && canDash)
+            StartCoroutine(StartDash());
+    }
+    private IEnumerator StartDash()
     {
         isDashing = true;
         canDash = false;

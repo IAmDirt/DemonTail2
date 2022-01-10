@@ -184,10 +184,9 @@ public class deflector : MonoBehaviour
     {
         nextReflect = reflectFireRate;
         StartCoroutine(openHitBox());
-        StartCoroutine(wickedFlip(0.12f));
+        StartCoroutine(wickedFlip(0.13f));
 
         DeflectVisual.gameObject.SetActive(false);
-        movement.setSlowness(1);
     }
     //open hitbox more frames when hit
     public IEnumerator openHitBox()
@@ -231,8 +230,11 @@ public class deflector : MonoBehaviour
     public Transform turningParent;
     IEnumerator wickedFlip(float duration)
     {
+        movement.setSlowness(0.3f);
+
+
         trail.emitting = true;
-        Vector3 startRotation = turningParent.localEulerAngles;
+        Vector3 startRotation = Vector3.zero;
         float endRotation = startRotation.y - 360.0f;
         float t = 0.0f;
         while (t < duration)
@@ -243,6 +245,7 @@ public class deflector : MonoBehaviour
             yield return null;
         }
         trail.emitting = false;
+        movement.setSlowness(1);
     }
     /*
     private float waitBeforeSlow = 0.4f;
