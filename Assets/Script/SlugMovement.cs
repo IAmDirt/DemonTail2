@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
 using Raycasting;
 //refference for movemetn https://catlikecoding.com/unity/tutorials/movement/sliding-a-sphere/
 
 public class SlugMovement : movement
 {
-    public static Vector3 DefaultInput { get { return new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")); } }
     public static Vector3 CameraRelativeInput;
 
     public float dashForce = 1;
@@ -24,18 +24,18 @@ public class SlugMovement : movement
 
     [Header("Audio")]
     public RandomAudioPlayer DashSound;
+    private InputPlayer input;
     public override void Awake()
     {
         base.Awake();
+        input = GetComponent<InputPlayer>();
         baseRb = GetComponent<Rigidbody>();
-
     }
+
     public override void Start()
     {
         base.Start();
         cam = Camera.main;
-
-
         setSlowness(1);
     }
 
@@ -49,38 +49,19 @@ public class SlugMovement : movement
         else
             grounded = true;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space))
+      /*  if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space))
         {
             if (!isDashing && canDash)
                 StartCoroutine(StartDash());
-        }
+        }*/
     }
 
-    private bool LockRotation = true;
-    private bool LockRotationHorizontal = true;
-    public void lockrotation(bool isLocked, bool horizontal = false)
-    {
-        LockRotation = isLocked;
-        LockRotationHorizontal = horizontal;
-
-        if (LockRotation)
-        {
-            baseRb.constraints = RigidbodyConstraints.FreezeRotation;
-            baseRb.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1));
-        }
-       // else
-           // baseRb.constraints = RigidbodyConstraints.None;
-    }
     public void FixedUpdate()
     {
         if (showDebug) { drawDebug(); }
 
-        CameraRelativeInput = DefaultInput;// InputRelativetoCamera();// turn(InputVecRelativeToCamera);
-        if (LockRotationHorizontal)
-        {
-            faceInput();
-        }
-        else if (!LockRotation)
+        CameraRelativeInput = input.MoveInput;// InputRelativetoCamera();// turn(InputVecRelativeToCamera);
+   
         faceCursor();
       
         //  tiltVelocityDirection();
@@ -98,15 +79,18 @@ public class SlugMovement : movement
             return;
         ForceBodyStand();
     }
-
     public void faceCursor()
     {
         RaycastHit hit;
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ScreenPointToRay(input.MousePosition());
 
         if (Physics.Raycast(ray, out hit))
         {
-            var lookDirection = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            bool ControllerAim = true;
+            var Mouse_lookDirection = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            var Controller_lookDirection = transform.position+ new Vector3(input.RotationInput.x, 0, input.RotationInput.y);
+
+            var lookDirection = ControllerAim ? Controller_lookDirection : Mouse_lookDirection;
 
             lookDirection = lookDirection - transform.position;
             lookDirection = lookDirection.normalized;
@@ -120,10 +104,10 @@ public class SlugMovement : movement
     }
     public void faceInput()
     {
-            var lookDirection = new Vector3(DefaultInput.x, 0, 1);
-            lookDirection = lookDirection.normalized;
+        var lookDirection = new Vector3(input.MoveInput.x, 0, 1);
+        lookDirection = lookDirection.normalized;
 
-            rotateBody(lookDirection, baseRb);
+        rotateBody(lookDirection, baseRb);
     }
 
     [Header("Dash")]
@@ -132,7 +116,6 @@ public class SlugMovement : movement
     public float dashSpeed = 1;
     private bool isDashing;
     private bool canDash = true;
-
     public GameObject Mesh;
     public Health health;
     public IEnumerator StartDash()
@@ -145,9 +128,9 @@ public class SlugMovement : movement
 
         //visual flare
         var currentScale = Mesh.transform.localScale;
-        var dashScale = new Vector3(1.8f ,  0.15f, 3f) * 1.4f; 
+        var dashScale = new Vector3(1.8f ,  0.05f, 2.5f) * 2f; 
 
-        LeanTween.scale(Mesh, dashScale, 0.5f)
+        LeanTween.scale(Mesh, dashScale, 0.6f)
         .setEasePunch();
         dashParticles.Play();
         DashSound.PlayRandomClip();
@@ -254,7 +237,7 @@ public class SlugMovement : movement
 
     public Vector3 InputRelativetoCamera()
     {
-        var inpoutRelativeCamera = cam.transform.TransformDirection(DefaultInput);
+        var inpoutRelativeCamera = cam.transform.TransformDirection(input.MoveInput);
         inpoutRelativeCamera.y = 0;
 
         return inpoutRelativeCamera;

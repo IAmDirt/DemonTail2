@@ -72,7 +72,7 @@ public class BallBehavior : projectile
 
         if (PowerProsentage <= 0)
         {
-            StartCoroutine(ChangeBall());
+           // StartCoroutine(ChangeBall());
         }
     }
     public void UpdateVisuals()

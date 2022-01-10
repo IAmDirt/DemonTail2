@@ -19,7 +19,7 @@ public class deflector : MonoBehaviour
 
         deflectType = 2;
         shield.gameObject.SetActive(false);
-        movement.lockrotation(false);
+        //movement.lockrotation(false);
 
 
         Cursor.lockState = CursorLockMode.Confined;
@@ -27,12 +27,12 @@ public class deflector : MonoBehaviour
     public int deflectType = 1;
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+       /* if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             deflectType = 2;
             shield.gameObject.SetActive(false);
             movement.lockrotation(false);
-        }
+        }*/
         /* 
              if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -54,21 +54,21 @@ public class deflector : MonoBehaviour
             if (nextReflect <= 0)
             {
 
-                if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Comma))
+              /*  if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Comma))
                 {
                     deflectRelease();
                     nextReflect = reflectFireRate;
-                }
+                }*/
             }
             else
             {
                 nextReflect = Mathf.Clamp(nextReflect - Time.deltaTime, 0, 10);
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Comma))
+          /*  if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Comma))
             {
                 // SpawnBall();
-            }
+            }*/
 
             //charge
             /* if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Period))
@@ -104,7 +104,6 @@ public class deflector : MonoBehaviour
     public Transform AmmoImage;
     public Image AmmofillImage;
 
-
     public void updateAmmoUI()
     {
         if (CurrentBallRecharge < ballRechargeTime)
@@ -128,7 +127,7 @@ public class deflector : MonoBehaviour
             var spawned = Instantiate(Ball, transform.position, transform.rotation);
         }
     }
-
+    /*
     [Header("slowDown")]
 
     public float slowdownFactor = 0.05f;
@@ -142,7 +141,7 @@ public class deflector : MonoBehaviour
         Time.fixedDeltaTime = Time.timeScale * 0.01333f;
         StartCoroutine(resetTime(prosentage, slowDownLength));
     }
-
+    
     IEnumerator resetTime(float prosentage, float slowDownLength)
     {
         yield return new WaitForSecondsRealtime(Mathf.Lerp(0, slowDownStayTime, prosentage));
@@ -156,7 +155,7 @@ public class deflector : MonoBehaviour
         }
     }
     #endregion
-
+    */
     public float minDeflectRadius = 2;
     public float maxDeflectRadius = 4;
     private float deflectRadius;
@@ -181,8 +180,9 @@ public class deflector : MonoBehaviour
           DeflectVisual.gameObject.SetActive(true);
       }*/
 
-    private void deflectRelease()
+    public void deflectRelease()
     {
+        nextReflect = reflectFireRate;
         StartCoroutine(openHitBox());
         StartCoroutine(wickedFlip(0.12f));
 

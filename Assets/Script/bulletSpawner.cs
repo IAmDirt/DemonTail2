@@ -13,14 +13,14 @@ public class bulletSpawner : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+      /*  if(Input.GetKeyDown(KeyCode.Alpha1))
         {
          //   explotion();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
         //    FirePatternCircle();
-        }
+        }*/
         if (obj2 != null)
             idleAnimation();
     }
