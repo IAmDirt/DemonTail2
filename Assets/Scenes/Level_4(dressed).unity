@@ -6469,7 +6469,7 @@ Light:
   m_Intensity: 5500
   m_Range: 237.49
   m_SpotAngle: 130.50552
-  m_InnerSpotAngle: 20.942654
+  m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -6505,7 +6505,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -11653,6 +11653,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stones
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cb06ee26f52891c4598ed63b7e517195,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb06ee26f52891c4598ed63b7e517195, type: 3}
