@@ -14,7 +14,7 @@ public class gameManager : MonoBehaviour
     }
 
     public static gameManager Instance;
- 
+
 
     public void Awake()
     {
@@ -26,22 +26,23 @@ public class gameManager : MonoBehaviour
             return;
         }
     }
-    void Update()
+    private bool paused;
+    public void pause()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            restartLVL();
-        }
+        if (paused)
+            unpauseGame();
+        else
+            PauseGame();
     }
-
-    public void PauseGame()
+    void PauseGame()
     {
-
+        paused = true;
         StopTime();
     }
 
-    public void unpauseGame()
+    void unpauseGame()
     {
+        paused = false;
         SetNormalTime();
     }
 

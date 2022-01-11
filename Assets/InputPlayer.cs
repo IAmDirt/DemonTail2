@@ -42,18 +42,26 @@ public class InputPlayer : MonoBehaviour
 
         controls.Gameplay.Aim.performed += ctx => _rotationInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Aim.canceled += ctx => _rotationInput= Vector2.zero;
+    
+        controls.Gameplay.Escape.performed += ctx => pauseGame();
+        controls.Gameplay.Restart.performed += ctx => restartLevel();
     }
-    void test()
-    {
-        Debug.Log("test");
-    }
+ 
     // create events fore each button
     public void ButtonEast()
     {
 
     }
 
+    public void pauseGame()
+    {
+        gameManager.Instance.pause();
+    }
 
+    public void restartLevel()
+    {
+        gameManager.Instance.restartLVL();
+    }
     //returns
     public Vector3 MousePosition()
     {

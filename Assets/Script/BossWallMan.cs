@@ -54,10 +54,6 @@ public class BossWallMan : StateManager
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            arcProjectile();
-        }
 
         HeadLook();
     }

@@ -93,7 +93,7 @@ public class deflector : MonoBehaviour
     }
 
     public float nextReflect;
-    private float reflectFireRate = 0.2f;
+    private float reflectFireRate = 0.3f;
     [Header("ballRecovery")]
     public GameObject Ball;
 
@@ -127,35 +127,7 @@ public class deflector : MonoBehaviour
             var spawned = Instantiate(Ball, transform.position, transform.rotation);
         }
     }
-    /*
-    [Header("slowDown")]
-
-    public float slowdownFactor = 0.05f;
-    public float slowDownStayTime = 0.05f;   //time stay at slow factor
-    public float slowDownRecoverTime = 1;    //time to smoothe back to normal time
-
-    #region
-    public void DoSlowmotion(float prosentage, float slowDownLength, float slowDownFactor)
-    {
-        Time.timeScale = slowDownFactor;
-        Time.fixedDeltaTime = Time.timeScale * 0.01333f;
-        StartCoroutine(resetTime(prosentage, slowDownLength));
-    }
-    
-    IEnumerator resetTime(float prosentage, float slowDownLength)
-    {
-        yield return new WaitForSecondsRealtime(Mathf.Lerp(0, slowDownStayTime, prosentage));
-        while (Time.timeScale < 1)
-        {
-            Time.timeScale += (1f / slowDownLength) * Time.deltaTime;
-            Time.timeScale = Mathf.Clamp(Time.timeScale, 0, 1f);
-
-            Time.fixedDeltaTime = Time.timeScale * 0.01333f;
-            yield return null;
-        }
-    }
-    #endregion
-    */
+  
     public float minDeflectRadius = 2;
     public float maxDeflectRadius = 4;
     private float deflectRadius;
@@ -182,11 +154,14 @@ public class deflector : MonoBehaviour
 
     public void deflectRelease()
     {
-        nextReflect = reflectFireRate;
-        StartCoroutine(openHitBox());
-        StartCoroutine(wickedFlip(0.13f));
+        if (nextReflect <= 0)
+        {
+            nextReflect = reflectFireRate;
+            StartCoroutine(openHitBox());
+            StartCoroutine(wickedFlip(0.13f));
 
-        DeflectVisual.gameObject.SetActive(false);
+            DeflectVisual.gameObject.SetActive(false);
+        }
     }
     //open hitbox more frames when hit
     public IEnumerator openHitBox()
@@ -247,26 +222,6 @@ public class deflector : MonoBehaviour
         trail.emitting = false;
         movement.setSlowness(1);
     }
-    /*
-    private float waitBeforeSlow = 0.4f;
-    private float maxSlow = 0.4f;
-
-
- public IEnumerator SlowDownPlayer()
-    {
-        var TimePassed = 0.0f;
-
-        while (true)
-        {
-            TimePassed += Time.deltaTime;
-
-            if(waitBeforeSlow < TimePassed)
-            {
-                //apply Slow
-            }
-            yield return null;
-        }
-    }*/
 
     private void OnDrawGizmos()
     {
@@ -309,4 +264,54 @@ public class deflector : MonoBehaviour
             playerMaterial.SetColor("_EmissionColor", Color.black);
         }
     }
+
+    /*
+  [Header("slowDown")]
+
+  public float slowdownFactor = 0.05f;
+  public float slowDownStayTime = 0.05f;   //time stay at slow factor
+  public float slowDownRecoverTime = 1;    //time to smoothe back to normal time
+
+  #region
+  public void DoSlowmotion(float prosentage, float slowDownLength, float slowDownFactor)
+  {
+      Time.timeScale = slowDownFactor;
+      Time.fixedDeltaTime = Time.timeScale * 0.01333f;
+      StartCoroutine(resetTime(prosentage, slowDownLength));
+  }
+
+  IEnumerator resetTime(float prosentage, float slowDownLength)
+  {
+      yield return new WaitForSecondsRealtime(Mathf.Lerp(0, slowDownStayTime, prosentage));
+      while (Time.timeScale < 1)
+      {
+          Time.timeScale += (1f / slowDownLength) * Time.deltaTime;
+          Time.timeScale = Mathf.Clamp(Time.timeScale, 0, 1f);
+
+          Time.fixedDeltaTime = Time.timeScale * 0.01333f;
+          yield return null;
+      }
+  }
+  #endregion
+  */
+    /*
+    private float waitBeforeSlow = 0.4f;
+    private float maxSlow = 0.4f;
+
+
+ public IEnumerator SlowDownPlayer()
+    {
+        var TimePassed = 0.0f;
+
+        while (true)
+        {
+            TimePassed += Time.deltaTime;
+
+            if(waitBeforeSlow < TimePassed)
+            {
+                //apply Slow
+            }
+            yield return null;
+        }
+    }*/
 }
