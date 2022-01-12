@@ -34,7 +34,7 @@ public class EnemyBullet : projectile
     {
         base.Collide(collision);
 
-        if (collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == 10)                               
         {
             collision.gameObject.GetComponent<Health>().takeDamage(1);
         }

@@ -362,8 +362,12 @@ public class BossWallMan : StateManager
             {
                 if (fireProgress <= 0)
                 {
-                    if (!SpawnersSummoned && DifficultyScaling >1)
-                        CoroutineHelper.RunCoroutine(SummonSpawners(manager));
+                    if (!SpawnersSummoned )
+                    {
+                        var Bulletspawner = _brain.GetComponent<bulletSpawner>();
+                        Bulletspawner.spiralStart();
+                    }
+                            //CoroutineHelper.RunCoroutine(SummonSpawners(manager));
                     else 
                         CoroutineHelper.RunCoroutine(fireCluster());
                    
@@ -707,7 +711,6 @@ public class BossWallMan : StateManager
         public void FixedUpdateState(StateManager manager)
         {
         }
-
 
         private IEnumerator EnragedJumpAttack()
         {

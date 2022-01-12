@@ -238,30 +238,28 @@ public class deflector : MonoBehaviour
     private float lastRadius = 4;
 
     public Material playerMaterial;
+    public Material flashMaterial;
+    public GameObject[] body;
     public void DamageFlash()
     {
         StartCoroutine(Flash());
     }
     public IEnumerator Flash()
     {
-
-        playerMaterial.SetColor("_EmissionColor", Color.white);
-        playerMaterial.EnableKeyword("_EMISSION");
+        playerMaterial.SetFloat("_ToonRimPower", 0.0f);
         yield return new WaitForSeconds(0.08f);
 
 
-        var blinkAmount = 4;
+        var blinkAmount = 2;
         for (int i = 0; i < blinkAmount; i++)
         {
-            playerMaterial.SetColor("_EmissionColor", Color.black);
-            playerMaterial.EnableKeyword("_EMISSION");
 
+        playerMaterial.SetFloat("_ToonRimPower", 1.1f);
             yield return new WaitForSeconds(0.03f);
-            playerMaterial.SetColor("_EmissionColor", Color.white);
-            playerMaterial.EnableKeyword("_EMISSION");
+        playerMaterial.SetFloat("_ToonRimPower", 0.0f);
 
             yield return new WaitForSeconds(0.1f);
-            playerMaterial.SetColor("_EmissionColor", Color.black);
+        playerMaterial.SetFloat("_ToonRimPower", 1.1f);
         }
     }
 

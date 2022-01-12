@@ -57,6 +57,10 @@ public class bulletSpawner : MonoBehaviour
     private float minAngle= 45f, maxAngle = -45f;
     public Transform BulletSpawner;
 
+    public void spiralStart()
+    {
+        StartCoroutine(firePatternSpiral());
+    }
     private IEnumerator firePatternSpiral()
     {
 
@@ -75,11 +79,11 @@ public class bulletSpawner : MonoBehaviour
             spawnBullet(direction, canBeDeflected);
 
             angle += angleStep;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.045f);
         }
 
             yield return new WaitForSeconds(Random.Range(4, 8));
-        StartCoroutine(firePatternSpiral());
+      //  StartCoroutine(firePatternSpiral());
     }
 
     public void FirePatternCircle()
@@ -104,7 +108,6 @@ public class bulletSpawner : MonoBehaviour
         var spawned = PoolManager.Spawn(Bullet, spawnPosition, Quaternion.LookRotation(direction));
         spawned.GetComponent<EnemyBullet>().updateDeflectColor(canBeDeflected);
     }
-
 
     public Vector3 GetDirectionCircle(float angle)
     {
