@@ -51,22 +51,28 @@ public class projectile : MonoBehaviour
 
     public virtual void deflect(Vector3 direction)
     {
-        if(!Friendly )
+        if(!Friendly && CanBeDeflected)
         {
-            ReplaceBall(playerBall, direction, true);
+            ReplaceBall(playerBall, direction);
 
             return;
         }
+        else
+            m_velocity = direction;
     }
 
-    public GameObject ReplaceBall(GameObject newBall, Vector3 direction, bool isDeflectalbe = false)
+    public GameObject ReplaceBall(GameObject newBall, Vector3 direction)
     {
-        var spawnedBall = PoolManager.Spawn(newBall, this.transform.position, this.transform.rotation);
+        var position = new Vector3(transform.position.x, 1.5f, transform.position.z);
+        var spawnedBall = PoolManager.Spawn(newBall, position, this.transform.rotation);
         var projectile = spawnedBall.GetComponent<projectile>();
-        if(isDeflectalbe)
         projectile.deflect(direction);
 
-        PoolManager.Despawn(this.gameObject);
+        DespawnSelf();
         return spawnedBall;
+    }
+    public virtual void DespawnSelf()
+    {
+        PoolManager.Despawn(this.gameObject);
     }
 }

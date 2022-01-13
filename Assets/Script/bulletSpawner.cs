@@ -104,6 +104,7 @@ public class bulletSpawner : MonoBehaviour
 
     public void spawnBullet( Vector3 direction, bool canBeDeflected)
     {
+        Debug.Log("aa");
         var spawnPosition = new Vector3(BulletSpawner.position.x, 1.5f, BulletSpawner.position.z);
         var spawned = PoolManager.Spawn(Bullet, spawnPosition, Quaternion.LookRotation(direction));
         spawned.GetComponent<EnemyBullet>().updateDeflectColor(canBeDeflected);

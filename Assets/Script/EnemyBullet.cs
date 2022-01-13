@@ -15,7 +15,7 @@ public class EnemyBullet : projectile
    
         CanBeDeflected = false;
         base.OnEnable();
-        if (startBlack) { updateDeflectColor(true); }
+      //  if (startBlack) { updateDeflectColor(true); }
     }
     public void updateDeflectColor(bool canBeDeflected)
     {
@@ -38,7 +38,7 @@ public class EnemyBullet : projectile
         {
             collision.gameObject.GetComponent<Health>().takeDamage(1);
         }
-        updateDeflectColor(false);
+       // updateDeflectColor(false);
         PoolManager.Despawn(gameObject);// Destroy(gameObject);
     }
     public void Wobble()

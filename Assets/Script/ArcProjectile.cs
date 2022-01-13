@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 
-public class ArcProjectile : MonoBehaviour
+public class ArcProjectile : projectile
 {
-    public void OnEnable()
+    public override void OnEnable()
     {
         active = false;
     }
@@ -15,6 +15,7 @@ public class ArcProjectile : MonoBehaviour
         collided = false;
         rigid = GetComponent<Rigidbody>();
         Vector3 p = target + velPredict;
+        setPredictShadow(p);
 
         ArtificialGravity = -Vector3.up * 9.81f *3;
         float gravity = Physics.gravity.magnitude + ArtificialGravity.magnitude;
@@ -47,6 +48,15 @@ public class ArcProjectile : MonoBehaviour
     
         Invoke("activateCollider", 0.5f);
     }
+    public Transform predictShadow;
+    private GameObject Spawned; 
+    public void setPredictShadow(Vector3 Position)
+    {
+        Position = Position - Vector3.up;
+        Spawned = Instantiate(predictShadow.gameObject, Position, predictShadow.rotation);
+        Spawned.LeanScale(Spawned.transform.lossyScale*8 , 2);
+    }
+
 
     public GameObject explotion;
     private void  activateCollider()
@@ -55,13 +65,13 @@ public class ArcProjectile : MonoBehaviour
     }
     Rigidbody rigid;
     private bool active = false;
-    public void FixedUpdate()
+    public override void FixedUpdate()
     {
         if (rigid != null )
             rigid.AddForce(ArtificialGravity, ForceMode.Acceleration);
 
     }
-    public void OnCollisionEnter(Collision collision)
+    public override void OnCollisionEnter(Collision collision)
     {
         if (!collided && active)
             explode();
@@ -71,8 +81,14 @@ public class ArcProjectile : MonoBehaviour
     public void explode()
     {
         spawner.FirePatternCircle();
+        Destroy(Spawned);
 
         PoolManager.Spawn(explotion, transform.position, explotion.transform.rotation);
         PoolManager.Despawn(gameObject);
+    }
+    public override void DespawnSelf()
+    {
+        Spawned.gameObject.SetActive(false);
+        base.DespawnSelf();
     }
 }
