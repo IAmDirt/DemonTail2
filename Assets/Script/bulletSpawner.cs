@@ -137,7 +137,7 @@ public class bulletSpawner : MonoBehaviour
 
     public void SpikeAnim()
     {
-        if(obj2 != null)
+        if(obj2 != null && obj1 != null)
         {
 
         LeanTween.scale(obj2.gameObject, Vector3.one *2.8f, Random.Range(0.5f, 0.8f))

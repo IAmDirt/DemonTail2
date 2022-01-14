@@ -40,6 +40,6 @@ public class ArcSpawner : MonoBehaviour
 
         var spawned = PoolManager.Spawn(bigProjectile.gameObject, spawnTrans.position, spawnTrans.rotation);
         var ball = spawned.GetComponent<ArcProjectile>();
-        ball.shoot(player.position, Random.Range(shootAngle - 5, shootAngle + 5), velocityPredicition);
+        ball.PhysicsShoot(player.position, Random.Range(shootAngle - 5, shootAngle + 5), velocityPredicition);
     }
 }

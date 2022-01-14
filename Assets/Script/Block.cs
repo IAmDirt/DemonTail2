@@ -15,8 +15,6 @@ public class Block : Health
 
     public bool invonrable;
 
-    public bool playerBLock;
-
     public override void takeDamage(int amount)
     {
         base.takeDamage(amount);
@@ -31,8 +29,6 @@ public class Block : Health
 
         if (!invonrable)
             takeDamage(1);
-        if (playerBLock)
-            ball.powerBounce();
     }
 
     private void ResetScale()

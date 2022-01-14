@@ -175,7 +175,7 @@ public class BossWallMan : StateManager
 
         var spawned = PoolManager.Spawn(bigProjectile.gameObject, spawnTrans.position, spawnTrans.rotation);
         var ball = spawned.GetComponent<ArcProjectile>();
-        ball.shoot(player.position, Random.Range(shootAngle - 5, shootAngle + 5), velocityPredicition);
+        ball.PhysicsShoot(player.position, Random.Range(shootAngle - 5, shootAngle + 5), velocityPredicition);
     }
 
     #endregion
@@ -262,12 +262,20 @@ public class BossWallMan : StateManager
     {
         public Corner[] corners;
         public GameObject wallPrefab;
+
+        [Header("diceProjectiles")]
+        public float fireRate = 9;
+        public float fireProgress = 0;
+
         private bool SpawnersSummoned;
         private float damageTakenThisState;
         private bool waiting;
 
         private int DifficultyScaling = 0;
         private bool rage = false;
+        BossWallMan _brain;
+
+        #region corners
         private Corner GetNextCorner()
         {
             Corner nextCorner = null;
@@ -322,7 +330,22 @@ public class BossWallMan : StateManager
             }
             return wallsLeft <= 0;
         }
-        BossWallMan _brain;
+        private IEnumerator MoveOutOfCorner()
+        {
+            rage = true;
+            _brain.anim.SetTrigger(_brain.m_Scream);
+            yield return new WaitForSeconds(1);
+            _brain.screamParticle.Play();
+            _brain.impulse.GenerateImpulse(5);
+            _brain.screamSound.PlayRandomClip();
+            yield return new WaitForSeconds(1);
+
+            _brain.anim.SetTrigger(_brain.m_Scream);
+            yield return new WaitForSeconds(0.2f);
+            _brain.setNewState(_brain.EnragedState);
+        }
+        #endregion
+
         public void SetBrain(BossWallMan brain)
         {
             _brain = brain;
@@ -334,7 +357,7 @@ public class BossWallMan : StateManager
             damageTakenThisState = 0;
             DifficultyScaling++;
             fireProgress = 2.5f;
-            SpawnersSummoned = false;
+            SpawnersSummoned = true;
         }
         public void exitState(StateManager manager)
         {
@@ -357,7 +380,7 @@ public class BossWallMan : StateManager
             {
                 if (fireProgress <= 0)
                 {
-                    
+                
                     if (!SpawnersSummoned )
                     {
                         SpawnersSummoned = true;
@@ -375,8 +398,7 @@ public class BossWallMan : StateManager
             _brain.rotateBodySmooth(_brain.directionPlayerFLAT(), _brain.rotationSpeed);
 
         }
-        public float fireRate = 9;
-        public float fireProgress = 0;
+  
         public void hideDamage()
         {
             damageTakenThisState++;
@@ -397,20 +419,7 @@ public class BossWallMan : StateManager
         public void FixedUpdateState(StateManager manager)
         {
         }
-        private IEnumerator MoveOutOfCorner()
-        {
-            rage = true;
-            _brain.anim.SetTrigger(_brain.m_Scream);
-            yield return new WaitForSeconds(1);
-            _brain.screamParticle.Play();
-            _brain.impulse.GenerateImpulse(5);
-            _brain.screamSound.PlayRandomClip();
-            yield return new WaitForSeconds(1);
 
-            _brain.anim.SetTrigger(_brain.m_Scream);
-            yield return new WaitForSeconds(0.2f);
-            _brain.setNewState(_brain.EnragedState);
-        }
         /*
         [Header("spanwers")]
         public float spawnHeight = 10;
@@ -692,7 +701,6 @@ public class BossWallMan : StateManager
         {
             _brain = brain;
         }
-
         public void enterState(StateManager manager)
         {
             CoroutineHelper.RunCoroutine(_brain.moverArc(_brain.Center.position));

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1093438802087574067}
   - component: {fileID: 1093438802087574064}
   - component: {fileID: 1093438802087574065}
-  - component: {fileID: 1093438802087574074}
+  - component: {fileID: -1560839833500187227}
   - component: {fileID: -3405840555036141166}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: DiceDeflected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1093438802087574069}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -19.801502, y: 2.83, z: -21.56467}
-  m_LocalScale: {x: 2, y: 1.8, z: 2}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1093438802910151665}
   - {fileID: 2688197772511277860}
@@ -68,7 +68,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1093438802087574074
+--- !u!114 &-1560839833500187227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,20 +77,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1093438802087574069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa6dfb292480af44eaf8045f7b042d18, type: 3}
+  m_Script: {fileID: 11500000, guid: 214dc4d5a8862194f9663e6c2ce34042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpeed: 34
+  ballSpeed: 37
   rb: {fileID: 0}
   m_velocity: {x: 0, y: 0, z: 0}
-  playerBall: {fileID: 8099948903382539180, guid: 748a9aa46e713ac4c9a8db2c93832cfa,
-    type: 3}
+  playerBall: {fileID: 0}
   Friendly: 1
   CanBeDeflected: 0
   CollisionLayer:
     serializedVersion: 2
-    m_Bits: 1536
-  startBlack: 0
+    m_Bits: 4608
 --- !u!114 &-3405840555036141166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +115,7 @@ GameObject:
   - component: {fileID: 1093438802910151665}
   - component: {fileID: 1093438802910151679}
   - component: {fileID: 1093438802910151678}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +197,7 @@ GameObject:
   - component: {fileID: 1338814174823573852}
   - component: {fileID: 7237124273646963970}
   - component: {fileID: 5905180801842492509}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: a (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +278,7 @@ GameObject:
   - component: {fileID: 6888067054475029839}
   - component: {fileID: 2938943092519149252}
   - component: {fileID: 3981424853705322925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +359,7 @@ GameObject:
   - component: {fileID: 2688197772511277860}
   - component: {fileID: 1573025718722147659}
   - component: {fileID: 8280430335082018494}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: a (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +441,7 @@ GameObject:
   - component: {fileID: 9170560640170217143}
   - component: {fileID: 9170560640170217140}
   - component: {fileID: 9170560640170217141}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5314,7 +5312,7 @@ GameObject:
   - component: {fileID: 9170560641509493688}
   - component: {fileID: 9170560641509493690}
   - component: {fileID: 9170560641509493691}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: a (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5399,22 +5397,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 24d7a09989e953544bc9fe6893c78313,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 79.77502
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 24d7a09989e953544bc9fe6893c78313,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 88.63889
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 24d7a09989e953544bc9fe6893c78313,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 79.77502
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 24d7a09989e953544bc9fe6893c78313,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6292486
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 24d7a09989e953544bc9fe6893c78313,
         type: 3}
@@ -5424,7 +5422,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 24d7a09989e953544bc9fe6893c78313,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.48766422
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 24d7a09989e953544bc9fe6893c78313,
         type: 3}
@@ -5445,6 +5443,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 24d7a09989e953544bc9fe6893c78313,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24d7a09989e953544bc9fe6893c78313, type: 3}

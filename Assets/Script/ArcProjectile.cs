@@ -10,8 +10,19 @@ public class ArcProjectile : projectile
         active = false;
     }
     Vector3 ArtificialGravity;
-    public void shoot(Vector3 target, float initialAngle, Vector3 velPredict)
+    public Transform predictShadow;
+    public bulletSpawner spawner;
+    public GameObject explotion;
+    Rigidbody rigid;
+
+    private GameObject Spawned; 
+    private bool active = false;
+    private bool collided;
+    public void PhysicsShoot(Vector3 target, float initialAngle, Vector3 velPredict)
     {
+
+        StartCoroutine(SpawnAnimation(target));
+        return;
         collided = false;
         rigid = GetComponent<Rigidbody>();
         Vector3 p = target + velPredict;
@@ -48,8 +59,24 @@ public class ArcProjectile : projectile
     
         Invoke("activateCollider", 0.5f);
     }
-    public Transform predictShadow;
-    private GameObject Spawned; 
+
+
+    public IEnumerator  SpawnAnimation(Vector3 target)
+    {
+        rigid.isKinematic = true;
+        LeanTween.move(gameObject, transform.position + Vector3.up * 12, 0.5f)
+ .setEaseOutElastic();
+
+        yield return new WaitForSeconds(0.5f);
+
+        gameObject.transform.position = target + Vector3.up * 12;
+        rigid.isKinematic = false;
+        yield return new WaitForSeconds(0.1f);
+
+        //LeanTween.move(gameObject, target, 0.4f)
+        //.setEaseOutBounce();
+        //go up from 
+    }
     public void setPredictShadow(Vector3 Position)
     {
         Position = Position - Vector3.up;
@@ -57,27 +84,20 @@ public class ArcProjectile : projectile
         Spawned.LeanScale(Spawned.transform.lossyScale*8 , 2);
     }
 
-
-    public GameObject explotion;
     private void  activateCollider()
     {
         active = true;
     }
-    Rigidbody rigid;
-    private bool active = false;
     public override void FixedUpdate()
     {
         if (rigid != null )
             rigid.AddForce(ArtificialGravity, ForceMode.Acceleration);
-
     }
     public override void OnCollisionEnter(Collision collision)
     {
         if (!collided && active)
             explode();
     }
-    private bool collided;
-    public bulletSpawner spawner;
     public void explode()
     {
         spawner.FirePatternCircle();
@@ -86,6 +106,7 @@ public class ArcProjectile : projectile
         PoolManager.Spawn(explotion, transform.position, explotion.transform.rotation);
         PoolManager.Despawn(gameObject);
     }
+
     public override void DespawnSelf()
     {
         Spawned.gameObject.SetActive(false);
