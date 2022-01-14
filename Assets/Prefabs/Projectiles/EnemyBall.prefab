@@ -5356,7 +5356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6dfb292480af44eaf8045f7b042d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpeed: 7
+  ballSpeed: 14
   rb: {fileID: 0}
   m_velocity: {x: 0, y: 0, z: 0}
   playerBall: {fileID: 8099948903382539180, guid: 748a9aa46e713ac4c9a8db2c93832cfa,
@@ -5366,7 +5366,4 @@ MonoBehaviour:
   CollisionLayer:
     serializedVersion: 2
     m_Bits: 1536
-  deflectableColor: {fileID: 2100000, guid: bfb58e1f99fb1224485a9f39483057bb, type: 2}
-  NotDeflectableColor: {fileID: 2100000, guid: bb626a1c2178a9f4f929dad46dab3259, type: 2}
-  renderer: {fileID: 1146324765643736025}
   startBlack: 0

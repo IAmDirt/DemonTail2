@@ -8,6 +8,12 @@ public class ArcProjectile : projectile
     public override void OnEnable()
     {
         active = false;
+        rigid.isKinematic = false;
+    }
+    public void Awake()
+    {
+        rigid = GetComponent<Rigidbody>();
+
     }
     Vector3 ArtificialGravity;
     public Transform predictShadow;
@@ -15,20 +21,21 @@ public class ArcProjectile : projectile
     public GameObject explotion;
     Rigidbody rigid;
 
-    private GameObject Spawned; 
+    private GameObject Spawned;
     private bool active = false;
     private bool collided;
+
+    private float fallPredict = 1.6f;
     public void PhysicsShoot(Vector3 target, float initialAngle, Vector3 velPredict)
     {
 
         StartCoroutine(SpawnAnimation(target));
         return;
         collided = false;
-        rigid = GetComponent<Rigidbody>();
         Vector3 p = target + velPredict;
         setPredictShadow(p);
 
-        ArtificialGravity = -Vector3.up * 9.81f *3;
+        ArtificialGravity = -Vector3.up * 9.81f * 3;
         float gravity = Physics.gravity.magnitude + ArtificialGravity.magnitude;
 
         // Selected angle in radians
@@ -56,41 +63,42 @@ public class ArcProjectile : projectile
 
         // Alternative way:
         // rigid.AddForce(finalVelocity * rigid.mass, ForceMode.Impulse);
-    
+
         Invoke("activateCollider", 0.5f);
     }
 
 
-    public IEnumerator  SpawnAnimation(Vector3 target)
+    public IEnumerator SpawnAnimation(Vector3 target)
     {
         rigid.isKinematic = true;
-        LeanTween.move(gameObject, transform.position + Vector3.up * 12, 0.5f)
- .setEaseOutElastic();
+        LeanTween.move(gameObject, transform.position + Vector3.up * 55, 0.8f)
+            .setEaseOutElastic();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
 
-        gameObject.transform.position = target + Vector3.up * 12;
-        rigid.isKinematic = false;
-        yield return new WaitForSeconds(0.1f);
+        gameObject.transform.position = target + Vector3.up * 55;
+        //  rigid.isKinematic = false;
+        setPredictShadow(target);
+        yield return new WaitForSeconds(fallPredict);
 
-        //LeanTween.move(gameObject, target, 0.4f)
-        //.setEaseOutBounce();
+        LeanTween.move(gameObject, target - Vector3.up * 1, 0.6f).setOnComplete(explode);
         //go up from 
     }
     public void setPredictShadow(Vector3 Position)
     {
-        Position = Position - Vector3.up;
+        Position = Position - Vector3.up*1.5f;
         Spawned = Instantiate(predictShadow.gameObject, Position, predictShadow.rotation);
-        Spawned.LeanScale(Spawned.transform.lossyScale*8 , 2);
+        Spawned.LeanScale(Spawned.transform.lossyScale * 6, fallPredict)
+            .setEaseOutBack();
     }
 
-    private void  activateCollider()
+    private void activateCollider()
     {
         active = true;
     }
     public override void FixedUpdate()
     {
-        if (rigid != null )
+        if (rigid != null)
             rigid.AddForce(ArtificialGravity, ForceMode.Acceleration);
     }
     public override void OnCollisionEnter(Collision collision)

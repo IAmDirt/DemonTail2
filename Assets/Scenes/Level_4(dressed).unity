@@ -6229,6 +6229,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5836769519970091359, guid: 7a322113e84eb634c950f371ac6f253d,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836769519970091359, guid: 7a322113e84eb634c950f371ac6f253d,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6678947204855228333, guid: 7a322113e84eb634c950f371ac6f253d,
         type: 3}
       propertyPath: m_Mesh
