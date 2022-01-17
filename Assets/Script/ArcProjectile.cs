@@ -13,9 +13,11 @@ public class ArcProjectile : projectile
     public void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        _startScale =transform.localScale  ;
 
     }
     Vector3 ArtificialGravity;
+    public ParticleSystem landParticle;
     public Transform predictShadow;
     public bulletSpawner spawner;
     public GameObject explotion;
@@ -25,7 +27,8 @@ public class ArcProjectile : projectile
     private bool active = false;
     private bool collided;
 
-    private float fallPredict = 1.6f;
+    public bool isDud;
+    private float fallPredict = 1.2f;
     public void PhysicsShoot(Vector3 target, float initialAngle, Vector3 velPredict)
     {
 
@@ -67,7 +70,6 @@ public class ArcProjectile : projectile
         Invoke("activateCollider", 0.5f);
     }
 
-
     public IEnumerator SpawnAnimation(Vector3 target)
     {
         rigid.isKinematic = true;
@@ -81,12 +83,17 @@ public class ArcProjectile : projectile
         setPredictShadow(target);
         yield return new WaitForSeconds(fallPredict);
 
-        LeanTween.move(gameObject, target - Vector3.up * 1, 0.6f).setOnComplete(explode);
+        if (isDud)
+            LeanTween.move(gameObject, target - Vector3.up * 1, 0.6f).setOnComplete(dud);
+        else
+            LeanTween.move(gameObject, target - Vector3.up * 1, 0.6f).setOnComplete(explode);
+
+
         //go up from 
     }
     public void setPredictShadow(Vector3 Position)
     {
-        Position = Position - Vector3.up*1.5f;
+        Position = Position - Vector3.up * 1.5f;
         Spawned = Instantiate(predictShadow.gameObject, Position, predictShadow.rotation);
         Spawned.LeanScale(Spawned.transform.lossyScale * 6, fallPredict)
             .setEaseOutBack();
@@ -115,8 +122,35 @@ public class ArcProjectile : projectile
         PoolManager.Despawn(gameObject);
     }
 
+    public void dud()
+    {
+        landParticle.Play();
+        rigid.isKinematic = true;
+        spawner.idleAnim = false;
+        StartCoroutine(dudLateExplode());
+    }
+
+    private IEnumerator dudLateExplode()
+    {
+        var startScale = transform.localScale;
+        yield return new WaitForSeconds(4f);
+        pulsate();
+        yield return new WaitForSeconds(3f);
+        LeanTween.scale(gameObject, startScale * 1.5f, 0.5f).setEaseInOutBack();
+        yield return new WaitForSeconds(0.5f);
+        explode();
+    }
+
+   private void pulsate()
+    {
+        var startScale = transform.localScale;
+        LeanTween.scale(gameObject, startScale * 1.15f, 0.5f).setEasePunch().setOnComplete(pulsate);
+       // LeanTween.scale(gameObject, startScale * 1.2f, 1).setEasePunch().onCompleteOnRepeat();
+    }
+    private Vector3 _startScale;
     public override void DespawnSelf()
     {
+        transform.localScale = _startScale;
         Spawned.gameObject.SetActive(false);
         base.DespawnSelf();
     }

@@ -9188,9 +9188,9 @@ MonoBehaviour:
   invulnerableTime: 1
   DamageAudio: {fileID: 0}
   invonrable: 1
-  playerBLock: 1
   scaleAmount: 0.3
   ScaleOject: {fileID: 0}
+  destroyOnDeath: 1
   DeathParticleGO: {fileID: 0}
 --- !u!54 &1502513094573868101
 Rigidbody:

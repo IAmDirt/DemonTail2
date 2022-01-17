@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5976879045959872217}
   - component: {fileID: 5976879045959872218}
   - component: {fileID: 5976879045959872220}
-  - component: {fileID: 5976879045959872221}
   m_Layer: 12
   m_Name: DeflectiveShield
   m_TagString: Untagged
@@ -699,18 +698,7 @@ MonoBehaviour:
   invulnerableTime: 1
   DamageAudio: {fileID: 0}
   invonrable: 0
-  scaleAmount: 1.3
+  scaleAmount: 1.05
   ScaleOject: {fileID: 5976879045959872219}
+  destroyOnDeath: 1
   DeathParticleGO: {fileID: 0}
---- !u!114 &5976879045959872221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5976879045959872219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6e4882a439934b448ef9716fd3f6c65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

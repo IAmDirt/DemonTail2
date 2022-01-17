@@ -6,6 +6,12 @@ public class bulletSpawner : MonoBehaviour
 {
     public GameObject Bullet;
     public bool isenabled;
+    public bool idleAnim = true;
+
+    public void OnEnable()
+    {
+        idleAnim = true;
+    }
     public void Start()
     {
         if(isenabled)
@@ -21,7 +27,7 @@ public class bulletSpawner : MonoBehaviour
         {
         //    FirePatternCircle();
         }*/
-        if (obj2 != null)
+        if (obj2 != null && idleAnim)
             idleAnimation();
     }
     public IEnumerator StartBulletHell( float waitTime = 0.4f)
@@ -65,7 +71,7 @@ public class bulletSpawner : MonoBehaviour
     {
 
         float angleStep = (minAngle - maxAngle) / BulletAmount;
-        var angle = minAngle;
+        var angle = minAngle+ transform.eulerAngles.y;
 
 
         var deflectableStart = Random.Range(0, BulletAmount-1);
@@ -79,7 +85,7 @@ public class bulletSpawner : MonoBehaviour
             spawnBullet(direction, canBeDeflected);
 
             angle += angleStep;
-            yield return new WaitForSeconds(0.045f);
+            yield return new WaitForSeconds(0.03f);
         }
 
             yield return new WaitForSeconds(Random.Range(4, 8));
@@ -104,7 +110,6 @@ public class bulletSpawner : MonoBehaviour
 
     public void spawnBullet( Vector3 direction, bool canBeDeflected)
     {
-        Debug.Log("aa");
         var spawnPosition = new Vector3(BulletSpawner.position.x, 1.5f, BulletSpawner.position.z);
         var spawned = PoolManager.Spawn(Bullet, spawnPosition, Quaternion.LookRotation(direction));
         spawned.GetComponent<EnemyBullet>().updateDeflectColor(canBeDeflected);

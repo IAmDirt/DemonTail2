@@ -17,9 +17,12 @@ public class DiceDeflectProjectile : projectile
     {
         base.Collide(collision);
 
-        if (collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == 12)
         {
+            if (collision.transform.name.Contains("DeflectiveShield"))
             collision.gameObject.GetComponent<Block>().takeDamage(1111);
+            else
+            collision.gameObject.GetComponent<Block>().takeDamage(2);
         }
         // updateDeflectColor(false);
         PoolManager.Despawn(gameObject);// Destroy(gameObject);

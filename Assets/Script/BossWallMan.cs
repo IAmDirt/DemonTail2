@@ -10,9 +10,7 @@ public class BossWallMan : StateManager
     public ChasePlayer chaseState = new ChasePlayer();
     public EnragedChase EnragedState = new EnragedChase();
 
-
     public Animator anim;
-
 
     readonly int m_ChaseAttack = Animator.StringToHash("ChaseAttack");
     readonly int m_ShootProjectile = Animator.StringToHash("Shoot");
@@ -20,6 +18,7 @@ public class BossWallMan : StateManager
     readonly int m_Jump = Animator.StringToHash("Jump");
     readonly int m_Dead = Animator.StringToHash("Dead");
     readonly int m_Hit = Animator.StringToHash("Hit");
+    readonly int m_Tired = Animator.StringToHash("Tired");
 
 
     public ParticleSystem screamParticle;
@@ -74,6 +73,10 @@ public class BossWallMan : StateManager
     public void playParticle ()
     {
         currentCorner.destroyParticle.Play();
+    }
+    public void deathAnimation()
+    {
+        anim.SetTrigger(m_Dead);
     }
     #region general boss functions
 
@@ -163,7 +166,7 @@ public class BossWallMan : StateManager
         return direction = direction.normalized;
     }
 
-    public void arcProjectile()
+    public void arcProjectile(bool isDud)
     {
 
         var target = Vector3.zero;
@@ -175,6 +178,7 @@ public class BossWallMan : StateManager
 
         var spawned = PoolManager.Spawn(bigProjectile.gameObject, spawnTrans.position, spawnTrans.rotation);
         var ball = spawned.GetComponent<ArcProjectile>();
+        ball.isDud = isDud;
         ball.PhysicsShoot(player.position, Random.Range(shootAngle - 5, shootAngle + 5), velocityPredicition);
     }
 
@@ -264,8 +268,9 @@ public class BossWallMan : StateManager
         public GameObject wallPrefab;
 
         [Header("diceProjectiles")]
-        public float fireRate = 9;
-        public float fireProgress = 0;
+        public float ProjectileDuration = 6.5f;
+        public float CardThrowDuration = 4f;
+        public float AtackDuration = 0;
 
         private bool SpawnersSummoned;
         private float damageTakenThisState;
@@ -356,8 +361,8 @@ public class BossWallMan : StateManager
             moveToRandomCorner();
             damageTakenThisState = 0;
             DifficultyScaling++;
-            fireProgress = 2.5f;
-            SpawnersSummoned = true;
+            AtackDuration = 2f;
+            SpawnersSummoned = false;
         }
         public void exitState(StateManager manager)
         {
@@ -378,7 +383,7 @@ public class BossWallMan : StateManager
             }
             else
             {
-                if (fireProgress <= 0)
+                if (AtackDuration <= 0)
                 {
                 
                     if (!SpawnersSummoned )
@@ -386,14 +391,18 @@ public class BossWallMan : StateManager
                         SpawnersSummoned = true;
                         var Bulletspawner = _brain.GetComponent<bulletSpawner>();
                         Bulletspawner.spiralStart();
+                    AtackDuration = CardThrowDuration;
                     }
                     else
+                    {
                         CoroutineHelper.RunCoroutine(fireCluster());
+                        SpawnersSummoned = false;
+                    AtackDuration = ProjectileDuration;
+                    }
 
-                    fireProgress = fireRate;
                 }
                 else
-                    fireProgress -= Time.deltaTime;
+                    AtackDuration -= Time.deltaTime;
             }
             _brain.rotateBodySmooth(_brain.directionPlayerFLAT(), _brain.rotationSpeed);
 
@@ -406,14 +415,17 @@ public class BossWallMan : StateManager
         public IEnumerator fireCluster()
         {
             var amountOfShots = 7;
+            var dudShot = Random.Range(0, amountOfShots);
+
             _brain.anim.SetTrigger(_brain.m_ShootProjectile);
 
             yield return new WaitForSeconds(1f);
             while (amountOfShots > 0)
             {
                 amountOfShots--;
-                _brain.arcProjectile();
-                yield return new WaitForSeconds(0.5f);
+                var isdud = amountOfShots == dudShot ? true : false;
+                _brain.arcProjectile(isdud);
+                yield return new WaitForSeconds(0.4f);
             }
         }
         public void FixedUpdateState(StateManager manager)
@@ -769,7 +781,8 @@ public class BossWallMan : StateManager
             }
 
             //coldown and reset
-            yield return new WaitForSeconds(2f);
+            _brain.anim.SetTrigger(_brain.m_Tired);
+            yield return new WaitForSeconds(4f);
 
             _brain.setNewState(_brain.hideState);
             //CoroutineHelper.RunCoroutine(EnragedJumpAttack());

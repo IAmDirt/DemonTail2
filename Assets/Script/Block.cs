@@ -36,10 +36,11 @@ public class Block : Health
         LeanTween.scale(ScaleOject, startScale, 0.3f)
             .setEaseInOutSine();
     }
-
+    public bool destroyOnDeath = true;
     public override void Kill()
     {
-        Destroy(gameObject);
+        if(destroyOnDeath)
+            Destroy(gameObject);
     }
     public GameObject DeathParticleGO;
     public void DeathParticle()
