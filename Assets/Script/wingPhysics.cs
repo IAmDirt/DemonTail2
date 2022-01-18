@@ -30,5 +30,9 @@ public class wingPhysics : MonoBehaviour
                 step, 0.45f, 1);
         }
     }
-
+    public void resetBossBody()
+    {
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
 }

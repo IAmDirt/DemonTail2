@@ -16,6 +16,7 @@ public class ArcProjectile : projectile
         _startScale =transform.localScale  ;
 
     }
+    public TrailRenderer line;
     Vector3 ArtificialGravity;
     public ParticleSystem landParticle;
     public Transform predictShadow;
@@ -32,7 +33,7 @@ public class ArcProjectile : projectile
     public void PhysicsShoot(Vector3 target, float initialAngle, Vector3 velPredict)
     {
 
-        StartCoroutine(SpawnAnimation(target));
+        StartCoroutine(SpawnAnimation(target + velPredict));
         return;
         collided = false;
         Vector3 p = target + velPredict;
@@ -76,9 +77,9 @@ public class ArcProjectile : projectile
         LeanTween.move(gameObject, transform.position + Vector3.up * 55, 0.8f)
             .setEaseOutElastic();
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
+        line.enabled = true;
 
-        gameObject.transform.position = target + Vector3.up * 55;
         //  rigid.isKinematic = false;
         setPredictShadow(target);
         yield return new WaitForSeconds(fallPredict);
@@ -115,43 +116,45 @@ public class ArcProjectile : projectile
     }
     public void explode()
     {
-        spawner.FirePatternCircle();
-        Destroy(Spawned);
-
+        //spawner.FirePatternCircle();
         PoolManager.Spawn(explotion, transform.position, explotion.transform.rotation);
-        PoolManager.Despawn(gameObject);
+        DespawnSelf();
     }
 
     public void dud()
     {
-        landParticle.Play();
-        rigid.isKinematic = true;
         spawner.idleAnim = false;
+        rigid.isKinematic = true;
+        CanBeDeflected = true;
+        CurrentPulsateSpeed = pulsateSpeed;
+        landParticle.Play();
         StartCoroutine(dudLateExplode());
     }
 
     private IEnumerator dudLateExplode()
     {
-        var startScale = transform.localScale;
-        yield return new WaitForSeconds(4f);
+        var startScale = _startScale;
         pulsate();
-        yield return new WaitForSeconds(3f);
-        LeanTween.scale(gameObject, startScale * 1.5f, 0.5f).setEaseInOutBack();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
+        LeanTween.scale(gameObject, startScale * 1.35f, 0.2f).setEaseInOutBack();
+        yield return new WaitForSeconds(0.2f);
         explode();
     }
-
+    private float pulsateSpeed = 0.5f;
+    private float CurrentPulsateSpeed;
    private void pulsate()
     {
+        CurrentPulsateSpeed = CurrentPulsateSpeed * 0.85f;
         var startScale = transform.localScale;
-        LeanTween.scale(gameObject, startScale * 1.15f, 0.5f).setEasePunch().setOnComplete(pulsate);
+        LeanTween.scale(gameObject, startScale * 1.15f, CurrentPulsateSpeed).setEasePunch().setOnComplete(pulsate);
        // LeanTween.scale(gameObject, startScale * 1.2f, 1).setEasePunch().onCompleteOnRepeat();
     }
     private Vector3 _startScale;
     public override void DespawnSelf()
     {
+        line.enabled = false;
         transform.localScale = _startScale;
-        Spawned.gameObject.SetActive(false);
+        Destroy(Spawned);
         base.DespawnSelf();
     }
 }

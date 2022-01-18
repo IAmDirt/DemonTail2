@@ -156,7 +156,7 @@ public class deflector : MonoBehaviour
     {
         if (nextReflect <= 0)
         {
-            SpawnBall();
+          //  SpawnBall();
             nextReflect = reflectFireRate;
             StartCoroutine(openHitBox());
             StartCoroutine(wickedFlip(0.13f));

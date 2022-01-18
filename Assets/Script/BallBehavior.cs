@@ -12,7 +12,6 @@ public class BallBehavior : projectile
     public MeshRenderer renderer;
     public Material normalMat;
     public Material hitMat;
-
     [Header("PowerLevel")]
     [Range (0, 1)]
     public float PowerProsentage = 0.5f; 
@@ -43,7 +42,12 @@ public class BallBehavior : projectile
 
     private float squishTime = 0.3f;
     public AnimationCurve SquishCurveZ;
-
+    private Collider col;
+    public void OnEnable()
+    {
+        col = GetComponent<Collider>();
+        col.enabled = true;
+    }
     public override void Start()
     {
         base.Start();
@@ -180,7 +184,6 @@ public class BallBehavior : projectile
         }
         while (timeElapsed <= squishTime);
     }
-
     public GameObject BlackBall;
     private IEnumerator ChangeBall()
     {
@@ -216,6 +219,11 @@ public class BallBehavior : projectile
         var spawnedBall = ReplaceBall(BlackBall, m_velocity.normalized);
         spawnedBall.GetComponent<EnemyBullet>().updateDeflectColor(true);
         spawnedBall.GetComponent<EnemyBullet>().m_velocity = m_velocity;
+    }
+
+    public void selfDestroy()
+    {
+        PoolManager.Despawn(gameObject);
     }
 
     /*   public void StretchBall()

@@ -21,6 +21,7 @@ public class BossWallMan : StateManager
     readonly int m_Tired = Animator.StringToHash("Tired");
 
 
+        public ParticleSystem ballSuck;
     public ParticleSystem screamParticle;
     [Header("audio")]
     public RandomAudioPlayer JumpImpact;
@@ -101,7 +102,7 @@ public class BossWallMan : StateManager
     [Header("UI")]
     public updateUI HealthUI;
     public Block block;
-
+ 
     public void setFill()
     {
         HealthUI.setFill(block.currentHealth);
@@ -166,20 +167,19 @@ public class BossWallMan : StateManager
         return direction = direction.normalized;
     }
 
-    public void arcProjectile(bool isDud)
+    public void arcProjectile(bool isDud, Vector3 playerPosition)
     {
-
-        var target = Vector3.zero;
+        var randomCircle = Random.insideUnitCircle * 20;
+        var target = playerPosition + new Vector3(randomCircle.x, 0, randomCircle.y);
 
         var velocityPredicition = player.GetComponent<Rigidbody>().velocity;
-
-        velocityPredicition *= Random.Range(predictMultiplyer - 0.3f, predictMultiplyer + 0.2f);
+        velocityPredicition *= Random.Range(predictMultiplyer , predictMultiplyer + 0.2f);
 
 
         var spawned = PoolManager.Spawn(bigProjectile.gameObject, spawnTrans.position, spawnTrans.rotation);
         var ball = spawned.GetComponent<ArcProjectile>();
         ball.isDud = isDud;
-        ball.PhysicsShoot(player.position, Random.Range(shootAngle - 5, shootAngle + 5), velocityPredicition);
+        ball.PhysicsShoot(target, Random.Range(shootAngle - 5, shootAngle + 5), velocityPredicition);
     }
 
     #endregion
@@ -268,13 +268,15 @@ public class BossWallMan : StateManager
         public GameObject wallPrefab;
 
         [Header("diceProjectiles")]
-        public float ProjectileDuration = 6.5f;
-        public float CardThrowDuration = 4f;
-        public float AtackDuration = 0;
+        public float ProjectileDuration = 5.5f;
+        public float CardThrowDuration = 2.5f;
+        public float BallSuckDuration = 2.5f;
+        public float AttackDuration = 0;
 
         private bool SpawnersSummoned;
         private float damageTakenThisState;
         private bool waiting;
+        private bool RemoveBalls;
 
         private int DifficultyScaling = 0;
         private bool rage = false;
@@ -357,55 +359,64 @@ public class BossWallMan : StateManager
         }
         public void enterState(StateManager manager)
         {
+            RemoveBalls = true;
             waiting = true;
             moveToRandomCorner();
             damageTakenThisState = 0;
             DifficultyScaling++;
-            AtackDuration = 2f;
-            SpawnersSummoned = false;
+            AttackDuration = 2f;
+            SpawnersSummoned = true;
         }
         public void exitState(StateManager manager)
         {
             rage = false;
         }
-
+        public void FixedUpdateState(StateManager manager)
+        {
+        }
         public void updateState(StateManager manager)
         {
             if (waiting)
             {
                 return;
             }
-            if (AllWallsDestroyed(_brain.currentCorner) || damageTakenThisState > 3)
+            //AllWallsDestroyed(_brain.currentCorner) ||
+            if (damageTakenThisState > _brain.block.maxHealth / 4)
             {
                 //exit state after kneeling down
                 if (!rage)
+                {
                     CoroutineHelper.RunCoroutine(MoveOutOfCorner());
+                    suckInBalls();
+                }
             }
             else
             {
-                if (AtackDuration <= 0)
+                if (AttackDuration <= 0)
                 {
-                
-                    if (!SpawnersSummoned )
+                    /*if (RemoveBalls)
+                    {
+                        suckInBalls();
+
+                    }
+                    else*/ if (!SpawnersSummoned)
                     {
                         SpawnersSummoned = true;
                         var Bulletspawner = _brain.GetComponent<bulletSpawner>();
                         Bulletspawner.spiralStart();
-                    AtackDuration = CardThrowDuration;
+                        AttackDuration = CardThrowDuration;
                     }
                     else
                     {
                         CoroutineHelper.RunCoroutine(fireCluster());
                         SpawnersSummoned = false;
-                    AtackDuration = ProjectileDuration;
+                        AttackDuration = ProjectileDuration;
                     }
-
                 }
                 else
-                    AtackDuration -= Time.deltaTime;
+                    AttackDuration -= Time.deltaTime;
             }
             _brain.rotateBodySmooth(_brain.directionPlayerFLAT(), _brain.rotationSpeed);
-
         }
   
         public void hideDamage()
@@ -418,18 +429,36 @@ public class BossWallMan : StateManager
             var dudShot = Random.Range(0, amountOfShots);
 
             _brain.anim.SetTrigger(_brain.m_ShootProjectile);
+            var playerPosition = _brain.player.position;
 
             yield return new WaitForSeconds(1f);
             while (amountOfShots > 0)
             {
                 amountOfShots--;
                 var isdud = amountOfShots == dudShot ? true : true;
-                _brain.arcProjectile(isdud);
+                _brain.arcProjectile(isdud, playerPosition);
                 yield return new WaitForSeconds(0.4f);
             }
         }
-        public void FixedUpdateState(StateManager manager)
+        public void suckInBalls()
         {
+            RemoveBalls = false;
+            AttackDuration = BallSuckDuration;
+            _brain.ballSuck.Play();
+
+            var balls = Physics.OverlapSphere(Vector3.zero, 100, 1 << 8);
+
+            foreach (var ballCollider in balls)
+            {
+                var behavior = ballCollider.GetComponent<BallBehavior>();
+                if (behavior)
+                {
+                    ballCollider.enabled = false;
+                    var moveTime = 1.5f;
+                    LeanTween.move(behavior.gameObject, _brain.transform.position, moveTime);
+                    behavior.Invoke("selfDestroy", moveTime);
+                }
+            }
         }
 
         /*

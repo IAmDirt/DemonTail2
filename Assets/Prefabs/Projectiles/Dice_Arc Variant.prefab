@@ -4980,13 +4980,14 @@ MonoBehaviour:
   ballSpeed: 1
   rb: {fileID: 0}
   m_velocity: {x: 0, y: 0, z: 0}
-  playerBall: {fileID: 1093438802087574069, guid: 341850ae121ef7d4790cc9a20ed45916,
+  playerBall: {fileID: 8099948903382539180, guid: 748a9aa46e713ac4c9a8db2c93832cfa,
     type: 3}
   Friendly: 0
-  CanBeDeflected: 1
+  CanBeDeflected: 0
   CollisionLayer:
     serializedVersion: 2
     m_Bits: 512
+  line: {fileID: 8246997597628763283}
   landParticle: {fileID: 6596114684543012561}
   predictShadow: {fileID: 5110409199422494326, guid: fde9cb637cffdee40b87151020011f41,
     type: 3}
