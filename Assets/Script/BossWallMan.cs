@@ -423,7 +423,7 @@ public class BossWallMan : StateManager
             while (amountOfShots > 0)
             {
                 amountOfShots--;
-                var isdud = amountOfShots == dudShot ? true : false;
+                var isdud = amountOfShots == dudShot ? true : true;
                 _brain.arcProjectile(isdud);
                 yield return new WaitForSeconds(0.4f);
             }
