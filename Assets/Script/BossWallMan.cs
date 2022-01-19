@@ -43,7 +43,7 @@ public class BossWallMan : StateManager
     public void Start()
     {
         HealthUI.setMaxFill(block.maxHealth);
-        setNewState(EnragedState);
+        setNewState(hideState);
 
         rightHand_IK.StartOffset = rightHand_IK.target.localPosition;
         leftHand_IK.StartOffset = leftHand_IK.target.localPosition;
@@ -167,7 +167,7 @@ public class BossWallMan : StateManager
         var target = playerPosition + new Vector3(randomCircle.x, 0, randomCircle.y);
 
         var velocityPredicition = player.GetComponent<Rigidbody>().velocity;
-        velocityPredicition *= Random.Range(predictMultiplyer , predictMultiplyer + 0.2f);
+        velocityPredicition *= Random.Range(predictMultiplyer -0.1f, predictMultiplyer + 0.2f);
 
 
         var spawned = PoolManager.Spawn(bigProjectile.gameObject, spawnTrans.position, spawnTrans.rotation);
@@ -732,17 +732,16 @@ public class BossWallMan : StateManager
 
         private float SpiralAttackDuration =5.5f;
         private float jumpAttackDuration = 12f;
-        private float BallSuckDuration = 2.5f;
+        private float ProjectileDuration = 7.5f;
 
         public float AttackDuration = 0;
-        private int nextAttack;
+        private int nextAttack =0;
         public void SetBrain(BossWallMan brain)
         {
             _brain = brain;
         }
         public void enterState(StateManager manager)
         {
-          
             // CoroutineHelper.RunCoroutine(EnragedJumpAttack());
         }
         public void exitState(StateManager manager)
@@ -766,7 +765,16 @@ public class BossWallMan : StateManager
                         AttackDuration = jumpAttackDuration;
                         nextAttack++;
                         break;
-
+                    case 2:     //errectEyes
+                        CoroutineHelper.RunCoroutine(FireProjectiles());
+                        AttackDuration = ProjectileDuration;
+                        nextAttack++;
+                        break;
+                    case 3:     //errectEyes
+                        CoroutineHelper.RunCoroutine(EnragedJumpAttack());
+                        AttackDuration = jumpAttackDuration;
+                        nextAttack++;
+                        break;
                     default:
                         //out of attacks exit
                         nextAttack = 0;
@@ -775,6 +783,14 @@ public class BossWallMan : StateManager
             }
             else
                 AttackDuration -= Time.deltaTime;
+        }
+
+        public IEnumerator FireProjectiles()
+        {
+            CoroutineHelper.RunCoroutine(_brain.moverArc(_brain.Center.position));
+            yield return new WaitForSeconds(_brain.moveDuration + 0.8f);
+            CoroutineHelper.RunCoroutine(_brain.hideState.fireCluster());
+
         }
         public void FixedUpdateState(StateManager manager)
         {
@@ -798,7 +814,7 @@ public class BossWallMan : StateManager
                 yield return new WaitForFixedUpdate();
             }
 
-            var jumpsLeft = 4;
+            var jumpsLeft = 3;
             Task m_JumpTask = null;
 
             //jump after player
