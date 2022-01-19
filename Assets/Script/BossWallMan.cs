@@ -294,7 +294,10 @@ public class BossWallMan : StateManager
         {
             var nextCorner = GetNextCorner();
             if (nextCorner == null)
+            {
+                _brain.setNewState(_brain.EnragedState);
                 return;
+            }
 
             nextCorner.HasBeenUsed = true;
             _brain.currentCorner = nextCorner;
@@ -342,8 +345,12 @@ public class BossWallMan : StateManager
             yield return new WaitForSeconds(1);
 
             _brain.anim.SetTrigger(_brain.m_Scream);
+
             yield return new WaitForSeconds(0.2f);
-            _brain.setNewState(_brain.EnragedState);
+
+                    CoroutineHelper.RunCoroutine(_brain.EnragedState.EnragedJumpAttack());
+            yield return new WaitForSeconds(_brain.EnragedState.jumpAttackDuration);
+            _brain.setNewState(_brain.hideState);
         }
         #endregion
 
@@ -375,7 +382,7 @@ public class BossWallMan : StateManager
                 return;
             }
             //AllWallsDestroyed(_brain.currentCorner) ||
-            if (damageTakenThisState > _brain.block.maxHealth / 4)
+            if (damageTakenThisState > _brain.block.maxHealth / 5)
             {
                 //exit state after kneeling down
                 if (!rage)
@@ -509,8 +516,8 @@ public class BossWallMan : StateManager
         public void enterState(StateManager manager)
         {
             CoroutineHelper.RunCoroutine(_brain.moverArc(_brain.Center.position));
-            generateAttackQueue();
-            chooseNextAttack();
+          //  generateAttackQueue();
+           // chooseNextAttack();
             TimeUntilExit = StayTime;
             AttackMovesDone = 0;
 
@@ -730,9 +737,9 @@ public class BossWallMan : StateManager
         public damageSphere DamageCollider_Jump;
         public bulletSpawner[] spiralSpawners;
 
-        private float SpiralAttackDuration =5.5f;
-        private float jumpAttackDuration = 12f;
-        private float ProjectileDuration = 7.5f;
+        public float SpiralAttackDuration =5.5f;
+        public float jumpAttackDuration = 12f;
+        public float ProjectileDuration = 7.5f;
 
         public float AttackDuration = 0;
         private int nextAttack =0;
@@ -795,7 +802,7 @@ public class BossWallMan : StateManager
         public void FixedUpdateState(StateManager manager)
         {
         }
-        private IEnumerator EnragedJumpAttack()
+        public IEnumerator EnragedJumpAttack()
         {
             //wait while jumping to middle of map
             yield return new WaitForSeconds(_brain.moveDuration + 0.1f);

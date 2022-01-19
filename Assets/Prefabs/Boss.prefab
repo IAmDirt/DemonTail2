@@ -46976,6 +46976,9 @@ MonoBehaviour:
     - {fileID: 9150164408767959149}
     - {fileID: 295761027523112600}
     - {fileID: 1917593750576395282}
+    SpiralAttackDuration: 6.5
+    jumpAttackDuration: 8
+    ProjectileDuration: 4.5
     AttackDuration: 0
   anim: {fileID: 5836769519970091359}
   ballSuck: {fileID: 7349672655872780532}

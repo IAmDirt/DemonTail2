@@ -34,8 +34,10 @@ public class StateManager : MonoBehaviour
 
     public void setNewState(IState newState)
     {
-        if (newState == currentState)
+        /*if (newState == currentState)
+        {
             return;
+        }*/
         currentState?.exitState(this);
 
         currentState = newState;

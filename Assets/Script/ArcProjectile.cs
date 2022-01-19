@@ -74,7 +74,7 @@ public class ArcProjectile : projectile
     public IEnumerator SpawnAnimation(Vector3 target)
     {
         rigid.isKinematic = true;
-        LeanTween.move(gameObject, transform.position + Vector3.up * 55, 1.5f)
+        LeanTween.move(gameObject, transform.position + Vector3.up * 55,2.5f)
             .setEaseOutElastic();
 
         yield return new WaitForSeconds(1f);

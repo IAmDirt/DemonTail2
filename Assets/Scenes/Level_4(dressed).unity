@@ -6088,6 +6088,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4083924864916527317, guid: 7a322113e84eb634c950f371ac6f253d,
         type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083924864916527317, guid: 7a322113e84eb634c950f371ac6f253d,
+        type: 3}
       propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 500094204}
@@ -6106,6 +6111,21 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 54077988}
+    - target: {fileID: 4083924864916527319, guid: 7a322113e84eb634c950f371ac6f253d,
+        type: 3}
+      propertyPath: EnragedState.ProjectileDuration
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083924864916527319, guid: 7a322113e84eb634c950f371ac6f253d,
+        type: 3}
+      propertyPath: EnragedState.jumpAttackDuration
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083924864916527319, guid: 7a322113e84eb634c950f371ac6f253d,
+        type: 3}
+      propertyPath: EnragedState.SpiralAttackDuration
+      value: 6.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4083924864916527319, guid: 7a322113e84eb634c950f371ac6f253d,
         type: 3}
       propertyPath: hideState.corners.Array.data[0].wallBlock
@@ -6324,11 +6344,6 @@ PrefabInstance:
     - target: {fileID: 4083924864916527323, guid: 7a322113e84eb634c950f371ac6f253d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5836769519970091359, guid: 7a322113e84eb634c950f371ac6f253d,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6678947204855228333, guid: 7a322113e84eb634c950f371ac6f253d,
