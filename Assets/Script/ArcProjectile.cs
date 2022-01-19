@@ -114,13 +114,27 @@ public class ArcProjectile : projectile
         if (!collided && active)
             explode();
     }
+    public float explotionRadius  =5;
     public void explode()
     {
         //spawner.FirePatternCircle();
         PoolManager.Spawn(explotion, transform.position, explotion.transform.rotation);
         DespawnSelf();
-    }
 
+        var ballsCollider = Physics.OverlapSphere(transform.position, explotionRadius, 1 << 10);
+        foreach (var collider in ballsCollider)
+        {
+            var health = collider.GetComponent<Health>();
+            if (health)
+            {
+                health.takeDamage(1);
+            }
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, explotionRadius);
+    }
     public void dud()
     {
         spawner.idleAnim = false;

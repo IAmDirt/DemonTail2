@@ -4995,6 +4995,7 @@ MonoBehaviour:
   explotion: {fileID: 5828764713310830271, guid: bb16b1f3d8377f24898ec5d4ac4b74b0,
     type: 3}
   isDud: 0
+  explotionRadius: 5
 --- !u!114 &-2038144169615663913
 MonoBehaviour:
   m_ObjectHideFlags: 0
