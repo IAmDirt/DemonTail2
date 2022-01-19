@@ -11,6 +11,12 @@ public class Block : Health
         if (!ScaleOject) ScaleOject = gameObject;
         startScale = ScaleOject .transform.localScale;
 
+        if(bushMesh)
+        {
+            var currentMat = bushMesh.material;
+            _Material = new Material(currentMat);
+            bushMesh.material = _Material;
+        }
     }
 
     public bool invonrable;
@@ -46,6 +52,19 @@ public class Block : Health
     public void DeathParticle()
     {
         PoolManager.Spawn(DeathParticleGO, transform.position, transform.rotation);
+    }
+
+
+    [Header("bushEmission")]
+    public MeshRenderer bushMesh;
+    public Texture2D[] CrackTexture;
+    private Material _Material;
+
+
+    public void updateBushCrack()
+    {
+        var newTexture = CrackTexture[maxHealth -currentHealth];
+        _Material.SetTexture("_EmissionMap", newTexture);
     }
 }
 

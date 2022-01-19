@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ccda1967e09a945825904b8d485778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 4
   currentHealth: 0
   deathEvent:
     m_PersistentCalls:
@@ -160,7 +160,19 @@ MonoBehaviour:
         m_CallState: 2
   hitEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2087269873}
+        m_TargetAssemblyTypeName: Block, Assembly-CSharp
+        m_MethodName: updateBushCrack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useInvulnerableFrames: 0
   invulnerableTime: 1
   DamageAudio: {fileID: 0}
@@ -170,6 +182,14 @@ MonoBehaviour:
   destroyOnDeath: 1
   DeathParticleGO: {fileID: 2558549589362386349, guid: e492dbf04415a614b8364b649b7f1a82,
     type: 3}
+  bushMesh: {fileID: 2115103800457461099}
+  CrackTexture:
+  - {fileID: 2800000, guid: fa71a8dc7e6581c4fa9254e4ffb8e1b8, type: 3}
+  - {fileID: 2800000, guid: 0c9378950c89f9a4b83969f469711760, type: 3}
+  - {fileID: 2800000, guid: b68d7b04bdd9bd340ac3db1fb64346ad, type: 3}
+  - {fileID: 2800000, guid: f0b217d3b0dcbb24bb83c0253999c942, type: 3}
+  - {fileID: 2800000, guid: 4ed2442b23c2a2a47b27b7cab71dc5d3, type: 3}
+  - {fileID: 2800000, guid: df6ded6214f9e614f9dc81de6356488f, type: 3}
 --- !u!1001 &764431140956856815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -253,6 +273,12 @@ GameObject:
 --- !u!4 &941665119703107076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4a202b8593c492e41a9a1af991207412,
+    type: 3}
+  m_PrefabInstance: {fileID: 764431140956856815}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2115103800457461099 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 4a202b8593c492e41a9a1af991207412,
     type: 3}
   m_PrefabInstance: {fileID: 764431140956856815}
   m_PrefabAsset: {fileID: 0}

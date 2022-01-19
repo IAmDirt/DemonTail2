@@ -43,7 +43,7 @@ public class BossWallMan : StateManager
     public void Start()
     {
         HealthUI.setMaxFill(block.maxHealth);
-        setNewState(hideState);
+        setNewState(EnragedState);
 
         rightHand_IK.StartOffset = rightHand_IK.target.localPosition;
         leftHand_IK.StartOffset = leftHand_IK.target.localPosition;
@@ -70,7 +70,6 @@ public class BossWallMan : StateManager
         hideState.hideDamage();
         anim.SetTrigger(m_Hit);
     }
-
     public void playParticle ()
     {
         currentCorner.destroyParticle.Play();
@@ -107,12 +106,10 @@ public class BossWallMan : StateManager
     {
         HealthUI.setFill(block.currentHealth);
     }
-
     public void rotateBodySmooth(Vector3 direction, float smooth = 20)
     {
         rb.MoveRotation(Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * smooth));
     }
-
     IEnumerator MoveToPosition(Vector3 endPoint)
     {
         var startPoint = rb.transform.position;
@@ -130,7 +127,6 @@ public class BossWallMan : StateManager
         while (timeElapsed <= moveDuration);
         //reached end location
     }
-
     IEnumerator moverArc(Vector3 endPoint)
     {
         anim.SetTrigger(m_Jump);
@@ -159,14 +155,12 @@ public class BossWallMan : StateManager
         BodyRig.weight = 1;
     }
     public CinemachineImpulseSource impulse;
-
     public Vector3 directionPlayerFLAT()
     {
         var direction = player.position - transform.position;
         direction.y = 0;
         return direction = direction.normalized;
     }
-
     public void arcProjectile(bool isDud, Vector3 playerPosition)
     {
         var randomCircle = Random.insideUnitCircle * 20;
@@ -498,8 +492,6 @@ public class BossWallMan : StateManager
     [System.Serializable]
     public class ChasePlayer : IState
     {
-
-
         BossWallMan _brain;
 
         private float StayTime = 7;
@@ -557,7 +549,6 @@ public class BossWallMan : StateManager
                 attackQueue.Enqueue(i);
             }
         }
-
         private int[] Shuffle(int[] a)
         {
             // Loops through array
@@ -735,28 +726,59 @@ public class BossWallMan : StateManager
     [System.Serializable]
     public class EnragedChase : IState
     {
-
         BossWallMan _brain;
         public damageSphere DamageCollider_Jump;
+        public bulletSpawner[] spiralSpawners;
+
+        private float SpiralAttackDuration =5.5f;
+        private float jumpAttackDuration = 12f;
+        private float BallSuckDuration = 2.5f;
+
+        public float AttackDuration = 0;
+        private int nextAttack;
         public void SetBrain(BossWallMan brain)
         {
             _brain = brain;
         }
         public void enterState(StateManager manager)
         {
-            CoroutineHelper.RunCoroutine(_brain.moverArc(_brain.Center.position));
-            CoroutineHelper.RunCoroutine(EnragedJumpAttack());
+          
+            // CoroutineHelper.RunCoroutine(EnragedJumpAttack());
         }
         public void exitState(StateManager manager)
         {
         }
         public void updateState(StateManager manager)
         {
+            if (AttackDuration <= 0)
+            {
+                switch (nextAttack)
+                {
+
+                    case 0:     //chase
+                        CoroutineHelper.RunCoroutine(SpiralShoot());
+                        AttackDuration = SpiralAttackDuration;
+                        nextAttack++;
+                        break;
+
+                    case 1:     //errectEyes
+                        CoroutineHelper.RunCoroutine(EnragedJumpAttack());
+                        AttackDuration = jumpAttackDuration;
+                        nextAttack++;
+                        break;
+
+                    default:
+                        //out of attacks exit
+                        nextAttack = 0;
+                        return;
+                }
+            }
+            else
+                AttackDuration -= Time.deltaTime;
         }
         public void FixedUpdateState(StateManager manager)
         {
         }
-
         private IEnumerator EnragedJumpAttack()
         {
             //wait while jumping to middle of map
@@ -800,7 +822,6 @@ public class BossWallMan : StateManager
                     DamageCollider_Jump.CloseDamageCollider();
 
                     yield return new WaitForSeconds(0.45f);
-
                 }
                 else
                 {
@@ -811,10 +832,16 @@ public class BossWallMan : StateManager
 
             //coldown and reset
             _brain.anim.SetTrigger(_brain.m_Tired);
-            yield return new WaitForSeconds(4f);
 
-            _brain.setNewState(_brain.hideState);
-            //CoroutineHelper.RunCoroutine(EnragedJumpAttack());
+        }
+        private IEnumerator SpiralShoot()
+        {
+            CoroutineHelper.RunCoroutine(_brain.moverArc(_brain.Center.position));
+            yield return new WaitForSeconds(_brain.moveDuration + 0.8f);
+            foreach (var BulletSpawner in spiralSpawners)
+            {
+                BulletSpawner.spiralStart();
+            }
         }
     }
     #endregion
