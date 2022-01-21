@@ -20,6 +20,7 @@ public class Health : MonoBehaviour
     public bool useInvulnerableFrames = false;
     public float invulnerableTime = 1f;
     private bool isInvulnerable;
+    private bool isDead;
     public void Awake()
     {
         Init();
@@ -38,7 +39,7 @@ public class Health : MonoBehaviour
         updateVisuals();
         hitEvent.Invoke();
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
             deathEvent.Invoke();
             Kill();
@@ -70,6 +71,7 @@ public class Health : MonoBehaviour
 
     public virtual void Kill()
     {
+        isDead = true;
         Debug.Log("I died");
     }
 }

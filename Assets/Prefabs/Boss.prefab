@@ -27306,6 +27306,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 4083924864916527319}
+        m_TargetAssemblyTypeName: BossWallMan, Assembly-CSharp
+        m_MethodName: DeathEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   hitEvent:
     m_PersistentCalls:
       m_Calls:
@@ -27363,7 +27375,7 @@ MonoBehaviour:
   invonrable: 0
   scaleAmount: 1
   ScaleOject: {fileID: 0}
-  destroyOnDeath: 1
+  destroyOnDeath: 0
   DeathParticleGO: {fileID: 0}
   bushMesh: {fileID: 0}
   CrackTexture: []
@@ -27395,6 +27407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStateName: 
   player: {fileID: 0}
+  dead: 0
   hideState:
     corners:
     - BossStandPosition: {fileID: 0}
@@ -27449,7 +27462,7 @@ MonoBehaviour:
     - {fileID: 295761027523112600}
     - {fileID: 1917593750576395282}
     SpiralAttackDuration: 6.5
-    jumpAttackDuration: 8
+    jumpAttackDuration: 6.5
     ProjectileDuration: 4.5
     AttackDuration: 0
   anim: {fileID: 5836769519970091359}
