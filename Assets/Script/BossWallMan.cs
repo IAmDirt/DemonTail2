@@ -325,7 +325,10 @@ public class BossWallMan : StateManager
         {
             foreach (var wallTrans in currentCorner.WallPositions)
             {
-                var spawned = Instantiate(wallPrefab, wallTrans.position, wallTrans.rotation, wallTrans);
+                var spawned = Instantiate(wallPrefab, _brain.transform.position, wallTrans.rotation, wallTrans);
+
+                var spawnAnim = spawned.GetComponent<BlockSpawnAnimation>();
+                if (spawnAnim) spawnAnim.spawnAnimation(wallTrans.position, wallTrans.rotation);
             }
         }
         public bool AllWallsDestroyed(Corner currentCorner)
