@@ -5,7 +5,7 @@ using Cinemachine;
 using UnityEngine;
 public class BossWallMan : StateManager
 {
-
+    public bool dead;
     public Hide hideState = new Hide();
     public ChasePlayer chaseState = new ChasePlayer();
     public EnragedChase EnragedState = new EnragedChase();
@@ -65,6 +65,13 @@ public class BossWallMan : StateManager
         WiggleAnim(leftHand_IK);
     }
     #endregion
+    public void DeathEvent()
+    {
+        dead = true;
+        anim.SetTrigger(m_Dead);
+        anim.applyRootMotion = true;
+        StopCoroutine(EnragedState.CurrentAction);
+    }
     public void DamageTakenEvent()
     {
         hideState.hideDamage();
@@ -74,10 +81,7 @@ public class BossWallMan : StateManager
     {
         currentCorner.destroyParticle.Play();
     }
-    public void deathAnimation()
-    {
-        anim.SetTrigger(m_Dead);
-    }
+   
     #region general boss functions
 
     [Header("Important locations")]
@@ -736,6 +740,7 @@ public class BossWallMan : StateManager
         BossWallMan _brain;
         public damageSphere DamageCollider_Jump;
         public bulletSpawner[] spiralSpawners;
+        public IEnumerator CurrentAction;
 
         public float SpiralAttackDuration =5.5f;
         public float jumpAttackDuration = 12f;
@@ -756,29 +761,37 @@ public class BossWallMan : StateManager
         }
         public void updateState(StateManager manager)
         {
+            if(_brain.dead)
+            {
+                return;
+            }
             if (AttackDuration <= 0)
             {
                 switch (nextAttack)
                 {
 
                     case 0:     //chase
-                        CoroutineHelper.RunCoroutine(SpiralShoot());
+                        CurrentAction = SpiralShoot();
+                        CoroutineHelper.RunCoroutine(CurrentAction);
                         AttackDuration = SpiralAttackDuration;
                         nextAttack++;
                         break;
 
                     case 1:     //errectEyes
+                        CurrentAction = EnragedJumpAttack();
                         CoroutineHelper.RunCoroutine(EnragedJumpAttack());
                         AttackDuration = jumpAttackDuration;
                         nextAttack++;
                         break;
                     case 2:     //errectEyes
-                        CoroutineHelper.RunCoroutine(FireProjectiles());
+                        CurrentAction = FireProjectiles();
+                        CoroutineHelper.RunCoroutine(CurrentAction);
                         AttackDuration = ProjectileDuration;
                         nextAttack++;
                         break;
                     case 3:     //errectEyes
-                        CoroutineHelper.RunCoroutine(EnragedJumpAttack());
+                        CurrentAction = EnragedJumpAttack();
+                        CoroutineHelper.RunCoroutine(CurrentAction);
                         AttackDuration = jumpAttackDuration;
                         nextAttack++;
                         break;
@@ -795,7 +808,7 @@ public class BossWallMan : StateManager
         public IEnumerator FireProjectiles()
         {
             CoroutineHelper.RunCoroutine(_brain.moverArc(_brain.Center.position));
-            yield return new WaitForSeconds(_brain.moveDuration + 0.8f);
+            yield return new WaitForSeconds(_brain.moveDuration + 0.2f);
             CoroutineHelper.RunCoroutine(_brain.hideState.fireCluster());
 
         }
