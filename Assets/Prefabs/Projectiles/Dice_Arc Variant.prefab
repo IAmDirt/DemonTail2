@@ -4994,7 +4994,8 @@ MonoBehaviour:
   predictShadow: {fileID: 5110409199422494326, guid: fde9cb637cffdee40b87151020011f41,
     type: 3}
   spawner: {fileID: -2038144169615663913}
-  explotion: {fileID: 0}
+  explotion: {fileID: 5828764713310830271, guid: bb16b1f3d8377f24898ec5d4ac4b74b0,
+    type: 3}
   isDud: 0
   explotionRadius: 5
 --- !u!114 &-2038144169615663913
@@ -15190,7 +15191,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -19996,7 +19997,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -24859,7 +24860,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1

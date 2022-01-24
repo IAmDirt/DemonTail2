@@ -32,14 +32,14 @@ public class Health : MonoBehaviour
 
     public virtual void takeDamage(int amount)
     {
-        if (isInvulnerable)
+        if (isInvulnerable||isDead)
             return;
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
 
         updateVisuals();
         hitEvent.Invoke();
 
-        if (currentHealth <= 0 && !isDead)
+        if (currentHealth <= 0 )
         {
             deathEvent.Invoke();
             Kill();
