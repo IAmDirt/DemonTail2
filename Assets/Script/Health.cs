@@ -68,7 +68,6 @@ public class Health : MonoBehaviour
         DamageAudio.PlayRandomClip();
     }
 
-
     public virtual void Kill()
     {
         isDead = true;
