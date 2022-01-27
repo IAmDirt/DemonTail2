@@ -9,6 +9,7 @@ public class ArcProjectile : projectile
     {
         active = false;
         rigid.isKinematic = false;
+        transform.localScale = _startScale;
     }
     public void Awake()
     {
