@@ -60,6 +60,7 @@ public class InputPlayer : MonoBehaviour
 
     public void restartLevel()
     {
+        gameManager.Instance.SetNormalTime();
         gameManager.Instance.restartLVL();
     }
     //returns

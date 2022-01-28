@@ -7986,6 +7986,10 @@ MonoBehaviour:
   low: 0.6
   high: 1
   rumbler: {fileID: 628531027}
+  slowDownProsentage: 0.05
+  slowdownFactor: 0.05
+  slowDownStayTime: 0.05
+  slowDownRecoverTime: 0.3
 --- !u!114 &1502513093697067904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8012,7 +8016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0ecc5972eef7144af0d02c577af5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 6
   currentHealth: 0
   deathEvent:
     m_PersistentCalls:

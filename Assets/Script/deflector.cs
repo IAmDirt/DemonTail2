@@ -252,6 +252,7 @@ public class deflector : MonoBehaviour
     {
         StartCoroutine(Flash());
         rumbler.RumbleConstant(low, high, rumbleTime);
+        DoSlowmotion(slowDownProsentage, slowDownRecoverTime, slowdownFactor);
     }
     public IEnumerator Flash()
     {
@@ -272,14 +273,15 @@ public class deflector : MonoBehaviour
         }
     }
 
-    /*
+    
   [Header("slowDown")]
 
+  public float slowDownProsentage = 0.05f;
   public float slowdownFactor = 0.05f;
   public float slowDownStayTime = 0.05f;   //time stay at slow factor
   public float slowDownRecoverTime = 1;    //time to smoothe back to normal time
 
-  #region
+  #region slowDown
   public void DoSlowmotion(float prosentage, float slowDownLength, float slowDownFactor)
   {
       Time.timeScale = slowDownFactor;
@@ -300,7 +302,7 @@ public class deflector : MonoBehaviour
       }
   }
   #endregion
-  */
+  
     /*
     private float waitBeforeSlow = 0.4f;
     private float maxSlow = 0.4f;
