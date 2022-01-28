@@ -4,7 +4,7 @@ using UnityEngine;
 public class SoftFlicker : MonoBehaviour
 {
     private float minIntensity =0.7f;
-    private float maxIntensity = 1.3f;
+    private float maxIntensity = 1.4f;
     private float startIntensity;
     private float random;
     private Light light;

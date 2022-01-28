@@ -150,9 +150,9 @@ public class ArcProjectile : projectile
     {
         var startScale = _startScale;
         pulsate();
-        yield return new WaitForSeconds(1f);
-        LeanTween.scale(gameObject, startScale * 1.35f, 0.2f).setEaseInOutBack();
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1.5f);
+        LeanTween.scale(gameObject, startScale * 1.4f, 0.45f).setEaseInOutBack().setEaseOutCirc();
+        yield return new WaitForSeconds(0.45f);
         explode();
     }
     private float pulsateSpeed = 0.5f;
@@ -161,7 +161,7 @@ public class ArcProjectile : projectile
     {
         CurrentPulsateSpeed = CurrentPulsateSpeed * 0.85f;
         var startScale = transform.localScale;
-        LeanTween.scale(gameObject, startScale * 1.15f, CurrentPulsateSpeed).setEasePunch().setOnComplete(pulsate);
+        LeanTween.scale(gameObject, startScale * 1.05f, CurrentPulsateSpeed).setEasePunch().setOnComplete(pulsate);
        // LeanTween.scale(gameObject, startScale * 1.2f, 1).setEasePunch().onCompleteOnRepeat();
     }
     private Vector3 _startScale;
