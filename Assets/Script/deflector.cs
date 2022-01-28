@@ -163,6 +163,8 @@ public class deflector : MonoBehaviour
             StartCoroutine(wickedFlip(0.13f));
 
             DeflectVisual.gameObject.SetActive(false);
+
+            rumbler.RumbleConstant(1, 1, 0.06f);
         }
     }
     //open hitbox more frames when hit
@@ -193,9 +195,8 @@ public class deflector : MonoBehaviour
                         {
                             projectille.deflect(deflectDir);
                             colliders.Add(collider);
-
-                            // DoSlowmotion(ball.PowerProsentage, slowDownRecoverTime, slowdownFactor);
-                        }
+                                // DoSlowmotion(ball.PowerProsentage, slowDownRecoverTime, slowdownFactor);
+                            }
                     }
                 }
             }
