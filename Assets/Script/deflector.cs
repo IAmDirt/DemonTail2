@@ -21,8 +21,9 @@ public class deflector : MonoBehaviour
         shield.gameObject.SetActive(false);
         //movement.lockrotation(false);
 
-
-        Cursor.lockState = CursorLockMode.Confined;
+      playerMaterial = new Material(playerMaterial);
+   flashMaterial= new Material(flashMaterial);
+    Cursor.lockState = CursorLockMode.Confined;
     }
     public int deflectType = 1;
     public void Update()
@@ -241,9 +242,16 @@ public class deflector : MonoBehaviour
     public Material playerMaterial;
     public Material flashMaterial;
     public GameObject[] body;
+
+    [Header("Damage Rumble")]
+    public float rumbleTime =0.5f;
+    public float low = 0.5f;
+    public float high = 1f;
+    [SerializeField] Rumbler rumbler;
     public void DamageFlash()
     {
         StartCoroutine(Flash());
+        rumbler.RumbleConstant(low, high, rumbleTime);
     }
     public IEnumerator Flash()
     {
