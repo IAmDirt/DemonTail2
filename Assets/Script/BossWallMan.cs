@@ -21,7 +21,7 @@ public class BossWallMan : StateManager
     readonly int m_Tired = Animator.StringToHash("Tired");
 
 
-        public ParticleSystem ballSuck;
+    public ParticleSystem ballSuck;
     public ParticleSystem screamParticle;
     [Header("audio")]
     public RandomAudioPlayer JumpImpact;
@@ -77,11 +77,11 @@ public class BossWallMan : StateManager
         hideState.hideDamage();
         anim.SetTrigger(m_Hit);
     }
-    public void playParticle ()
+    public void playParticle()
     {
         currentCorner.destroyParticle.Play();
     }
-   
+
     #region general boss functions
 
     [Header("Important locations")]
@@ -105,7 +105,7 @@ public class BossWallMan : StateManager
     [Header("UI")]
     public updateUI HealthUI;
     public Block block;
- 
+
     public void setFill()
     {
         HealthUI.setFill(block.currentHealth);
@@ -151,7 +151,7 @@ public class BossWallMan : StateManager
         }
         while (timeElapsed <= moveDuration);
         anim.transform.localPosition = Vector3.zero;
-        anim.transform.localRotation= Quaternion.identity;
+        anim.transform.localRotation = Quaternion.identity;
         //reached end location
         particleJump.Play();
         JumpImpact.PlayRandomClip();
@@ -171,7 +171,7 @@ public class BossWallMan : StateManager
         var target = playerPosition + new Vector3(randomCircle.x, 0, randomCircle.y);
 
         var velocityPredicition = player.GetComponent<Rigidbody>().velocity;
-        velocityPredicition *= Random.Range(predictMultiplyer -0.1f, predictMultiplyer + 0.2f);
+        velocityPredicition *= Random.Range(predictMultiplyer - 0.1f, predictMultiplyer + 0.2f);
 
 
         var spawned = PoolManager.Spawn(bigProjectile.gameObject, spawnTrans.position, spawnTrans.rotation);
@@ -234,9 +234,9 @@ public class BossWallMan : StateManager
     public void changeDirectionWiggle(IkTarget IKData)
     {
         var offsetMagnitude = IKData.WiggleMagnitude;
-        var xPos = Random.Range(-offsetMagnitude.x, offsetMagnitude.x)+ IKData.magnitudeOffset.x;
-        var yPos = Random.Range(-offsetMagnitude.y, offsetMagnitude.y )+ IKData.magnitudeOffset.y;
-        var zPos = Random.Range(-offsetMagnitude.z, offsetMagnitude.z)+ IKData.magnitudeOffset.z;
+        var xPos = Random.Range(-offsetMagnitude.x, offsetMagnitude.x) + IKData.magnitudeOffset.x;
+        var yPos = Random.Range(-offsetMagnitude.y, offsetMagnitude.y) + IKData.magnitudeOffset.y;
+        var zPos = Random.Range(-offsetMagnitude.z, offsetMagnitude.z) + IKData.magnitudeOffset.z;
 
         IKData.wiggleOffset = new Vector3(xPos, yPos, zPos);
         IKData.wiggleOffset *= IKData.scaleModifyer;
@@ -355,7 +355,7 @@ public class BossWallMan : StateManager
 
             yield return new WaitForSeconds(0.2f);
 
-                    CoroutineHelper.RunCoroutine(_brain.EnragedState.EnragedJumpAttack());
+            CoroutineHelper.RunCoroutine(_brain.EnragedState.EnragedJumpAttack());
             yield return new WaitForSeconds(_brain.EnragedState.jumpAttackDuration);
             _brain.setNewState(_brain.hideState);
         }
@@ -407,7 +407,8 @@ public class BossWallMan : StateManager
                         suckInBalls();
 
                     }
-                    else*/ if (!SpawnersSummoned)
+                    else*/
+                    if (!SpawnersSummoned)
                     {
                         SpawnersSummoned = true;
                         var Bulletspawner = _brain.GetComponent<bulletSpawner>();
@@ -426,7 +427,7 @@ public class BossWallMan : StateManager
             }
             _brain.rotateBodySmooth(_brain.directionPlayerFLAT(), _brain.rotationSpeed);
         }
-  
+
         public void hideDamage()
         {
             damageTakenThisState++;
@@ -523,8 +524,8 @@ public class BossWallMan : StateManager
         public void enterState(StateManager manager)
         {
             CoroutineHelper.RunCoroutine(_brain.moverArc(_brain.Center.position));
-          //  generateAttackQueue();
-           // chooseNextAttack();
+            //  generateAttackQueue();
+            // chooseNextAttack();
             TimeUntilExit = StayTime;
             AttackMovesDone = 0;
 
@@ -692,7 +693,7 @@ public class BossWallMan : StateManager
                     if (UseRightHand) hand = _brain.rightHand_IK;
                     UseRightHand = !UseRightHand;
 
-                   // HandSlamTask = new Task(handAttack(hand));
+                    // HandSlamTask = new Task(handAttack(hand));
                 }
                 yield return new WaitForFixedUpdate();
             }
@@ -745,12 +746,12 @@ public class BossWallMan : StateManager
         public bulletSpawner[] spiralSpawners;
         public IEnumerator CurrentAction;
 
-        public float SpiralAttackDuration =5.5f;
+        public float SpiralAttackDuration = 5.5f;
         public float jumpAttackDuration = 12f;
         public float ProjectileDuration = 7.5f;
 
         public float AttackDuration = 0;
-        private int nextAttack =0;
+        private int nextAttack = 0;
         public void SetBrain(BossWallMan brain)
         {
             _brain = brain;
@@ -764,7 +765,7 @@ public class BossWallMan : StateManager
         }
         public void updateState(StateManager manager)
         {
-            if(_brain.dead)
+            if (_brain.dead)
             {
                 return;
             }
