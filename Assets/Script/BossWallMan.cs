@@ -39,7 +39,6 @@ public class BossWallMan : StateManager
         chaseState.SetBrain(this);
         EnragedState.SetBrain(this);
     }
-
     public void Start()
     {
         HealthUI.setMaxFill(block.maxHealth);
@@ -49,7 +48,6 @@ public class BossWallMan : StateManager
         leftHand_IK.StartOffset = leftHand_IK.target.localPosition;
         Root_IK.StartOffset = Root_IK.target.localPosition;
     }
-
     public override void Update()
     {
         base.Update();

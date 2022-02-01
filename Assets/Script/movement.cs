@@ -31,7 +31,7 @@ public class movement : MonoBehaviour
     private Vector3 m_goalVel;
 
     [Header("Rotation")]
-    public float rotateSmoothSpeed = 0.5f;    //time it takes to rotate
+    public float RotateSpeed = 0.5f;    //time it takes to rotate
     public float rotationTorque = 2;
 
     [Header("Grounding")]
@@ -172,17 +172,23 @@ public class movement : MonoBehaviour
     }
     public void rotateBody(Vector3 direction, Rigidbody rb, bool debug = false)
     {
+        //physics
+        /*
         var forward = rb.transform.forward;
         var normalizedDirection = direction.normalized;
 
         var dirToRotate = Vector3.RotateTowards(forward, normalizedDirection, Time.deltaTime * rotateSmoothSpeed, 0.0f);  //slow down turning
 
         rotateRBInDirection(rb, dirToRotate * rotationTorque);
-        /*   if (debug)
-           {
-               Debug.DrawLine(rb.position, rb.position + dirToRotate * rotationTorque, Color.green);
-               Debug.DrawLine(rb.position, rb.position - dirToRotate * rotationTorque, Color.red);
-           }*/
+        */
+
+        //non physics
+        float singleStep = RotateSpeed * Time.deltaTime;
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, singleStep, 0.0f);
+        Debug.DrawRay(transform.position, newDirection, Color.red);
+
+        transform.rotation = Quaternion.LookRotation(newDirection);
+   
     }
     private void rotateRBInDirection(Rigidbody rigidbody, Vector3 force, float upcorrection = 1)
     {

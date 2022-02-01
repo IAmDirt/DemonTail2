@@ -84,23 +84,26 @@ public class SlugMovement : movement
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(input.MousePosition());
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            bool ControllerAim = true;
-            var Mouse_lookDirection = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-            var Controller_lookDirection = transform.position+ new Vector3(input.RotationInput.x, 0, input.RotationInput.y);
+        //  if (Physics.Raycast(ray, out hit))
+        //  {
 
-            var lookDirection = ControllerAim ? Controller_lookDirection : Mouse_lookDirection;
+        //   }
 
-            lookDirection = lookDirection - transform.position;
-            lookDirection = lookDirection.normalized;
+        bool ControllerAim = true;
+        // var Mouse_lookDirection = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+        var Controller_lookDirection = transform.position + new Vector3(input.RotationInput.x, 0, input.RotationInput.y);
+        // var lookDirection = ControllerAim ? Controller_lookDirection : Mouse_lookDirection;
 
-            rotateBody(lookDirection, baseRb);
-        }
-        else
-        {
-            rotateBody(CameraRelativeInput, baseRb);
-        }
+        var lookDirection = Controller_lookDirection;
+
+        lookDirection = lookDirection - transform.position;
+        lookDirection = lookDirection.normalized;
+
+        rotateBody(lookDirection, baseRb);
+        //  else
+        //  {
+        //     rotateBody(CameraRelativeInput, baseRb);
+        //   }
     }
     public void faceInput()
     {
@@ -134,9 +137,9 @@ public class SlugMovement : movement
 
         //visual flare
         var currentScale = Mesh.transform.localScale;
-        var dashScale = new Vector3(1.8f ,  0.05f, 2.5f) * 2f; 
+        var dashScale = new Vector3(1.8f ,  0.05f, 2.5f) * 2.1f; 
 
-        LeanTween.scale(Mesh, dashScale, 0.6f)
+        LeanTween.scale(Mesh, dashScale, 0.75f)
         .setEasePunch();
         dashParticles.Play();
         DashSound.PlayRandomClip();
