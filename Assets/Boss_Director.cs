@@ -41,11 +41,27 @@ public class Boss_Director : StateManager
         HealthUI.setFill(block.currentHealth);
     }
 
+
+    public override void Update()
+    {
+        Rotate();
+        base.Update();
+
+    }
+    public float RotateSpeed = 2;
+        public void Rotate()
+    {
+        var direction = player.position - transform.position;
+        direction.y = 0;
+        float singleStep = RotateSpeed * Time.deltaTime;
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction.normalized, singleStep, 0.0f);
+
+        transform.rotation = Quaternion.LookRotation(newDirection);
+    }
     [System.Serializable]
     public class Stage1 : IState
     {
         Boss_Director _brain;
-
 
         //misc testing
         public Task CurrentTask;
@@ -80,9 +96,7 @@ public class Boss_Director : StateManager
             generateAttackQueue();
             chooseNextAttack();
 
-
-
-
+            CoroutineHelper.RunCoroutine(ClusterShot());
         }
         public void exitState(StateManager manager)
         {
@@ -188,14 +202,37 @@ public class Boss_Director : StateManager
             Debug.Log("KnockAway");
             yield return new WaitForSeconds(1);
         }
+        [Header("clusterSHot")]
+        public bulletSpawner clusterSpawner;
         private IEnumerator ClusterShot()
         {
+            var amountOfShots = 2;
             Debug.Log("ClusterShot");
+            while (amountOfShots > 0)
+            {
+                amountOfShots--;
+            clusterSpawner. FirePatternCircle();
+                // spawn homing
+                yield return new WaitForSeconds(1f);
+            }
             yield return new WaitForSeconds(1);
         }
+
+        [Header("HomingMIssiles")]
+        public bulletSpawner HomingSpawner;
         private IEnumerator HomingMissiles()
         {
+            var amountOfShots = 3;
             Debug.Log("HomingMissiles");
+
+            while (amountOfShots > 0)
+            {
+                amountOfShots--;
+                HomingSpawner.SpawnHoming(false);
+                // spawn homing
+                yield return new WaitForSeconds(0.4f);
+            }
+            //
             yield return new WaitForSeconds(1);
         }
     }

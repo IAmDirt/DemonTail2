@@ -248,10 +248,12 @@ public class deflector : MonoBehaviour
     public float rumbleTime =0.5f;
     public float low = 0.5f;
     public float high = 1f;
+    public bool Rumble = true;
     [SerializeField] Rumbler rumbler;
     public void DamageFlash()
     {
         StartCoroutine(Flash());
+        if(Rumble)
         rumbler.RumbleConstant(low, high, rumbleTime);
         DoSlowmotion(slowDownProsentage, slowDownRecoverTime, slowdownFactor);
     }

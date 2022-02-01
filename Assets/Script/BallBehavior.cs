@@ -154,6 +154,7 @@ public class BallBehavior : projectile
 
     public override void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.layer);
         if (collision.gameObject.layer == 9|| collision.gameObject.layer == 12)  //enviroment || spawners
         {
             var block = collision.transform.GetComponent<Block>();

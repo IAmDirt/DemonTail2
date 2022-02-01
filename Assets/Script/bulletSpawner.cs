@@ -12,24 +12,13 @@ public class bulletSpawner : MonoBehaviour
     {
         idleAnim = true;
     }
+
     public void Start()
     {
         if(isenabled)
             StartCoroutine(firePatternSpiral());
     }
-    void Update()
-    {
-      /*  if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-         //   explotion();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-        //    FirePatternCircle();
-        }*/
-        if (obj2 != null && idleAnim)
-            idleAnimation();
-    }
+
     public IEnumerator StartBulletHell( float waitTime = 0.4f)
     {
         var waveAmount = 2;
@@ -46,7 +35,7 @@ public class bulletSpawner : MonoBehaviour
 
     public void explotion()
     {
-        SpikeAnim();
+     //   SpikeAnim();
         var deflectabelAmount = Random.Range(-1, 2);
         for (int i = 0; i < BulletAmount; i++)
         {
@@ -54,9 +43,10 @@ public class bulletSpawner : MonoBehaviour
 
             var direction = GetDirectionCircle(Random.Range(minAngle, maxAngle));
             //put offset for start rotation here
-            spawnBullet(direction, canBeDeflected);
+            SpawnCard(direction, canBeDeflected);
         }
     }
+
     [Header ("BulletCircle")]
     public int BulletAmount;
     [SerializeField]
@@ -67,6 +57,7 @@ public class bulletSpawner : MonoBehaviour
     {
         StartCoroutine(firePatternSpiral());
     }
+
     private IEnumerator firePatternSpiral()
     {
 
@@ -81,8 +72,8 @@ public class bulletSpawner : MonoBehaviour
             var direction = GetDirectionCircle(angle);
 
 
-            var canBeDeflected = deflectableStart == i ? true : false; 
-            spawnBullet(direction, canBeDeflected);
+            var canBeDeflected = deflectableStart == i ? true : false;
+            SpawnCard(direction, canBeDeflected);
 
             angle += angleStep;
             yield return new WaitForSeconds(0.03f);
@@ -94,27 +85,33 @@ public class bulletSpawner : MonoBehaviour
 
     public void FirePatternCircle()
     {
-        SpikeAnim();
+      //  SpikeAnim();
         float angleStep = (minAngle - maxAngle) / BulletAmount;
-        var angle = minAngle;
+        var angle = minAngle + transform.eulerAngles.y;
 
         for (int i = 0; i <= BulletAmount; i++)
         {
            var direction= GetDirectionCircle(angle);
 
-            spawnBullet(direction, false);
+            SpawnCard(direction, false);
 
             angle += angleStep;
         }
     }
 
-    public void spawnBullet( Vector3 direction, bool canBeDeflected)
+    public GameObject spawnBullet( Vector3 direction, bool canBeDeflected)
     {
         var spawnPosition = new Vector3(BulletSpawner.position.x, 1.5f, BulletSpawner.position.z);
         var spawned = PoolManager.Spawn(Bullet, spawnPosition, Quaternion.LookRotation(direction));
-        spawned.GetComponent<EnemyBullet>().updateDeflectColor(canBeDeflected);
+        return spawned;
     }
 
+    public void SpawnCard(Vector3 direction, bool canBeDeflected)
+    {
+        var spawned = spawnBullet(direction, canBeDeflected);
+        spawned.GetComponent<EnemyBullet>().updateDeflectColor(canBeDeflected);
+
+    }
     public Vector3 GetDirectionCircle(float angle)
     {
         var bulletDirX = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180f);
@@ -124,9 +121,21 @@ public class bulletSpawner : MonoBehaviour
         return bulletDir = (bulletDir - transform.position).normalized;
     }
 
+
+    [Header("homing Missile")]
+    public Transform player;
+    public void SpawnHoming(bool canBeDeflected)
+    {
+        var randomCircle = Random.insideUnitCircle.normalized;
+        var direction = new Vector3(randomCircle.x, 0, randomCircle.y);
+        var spawned = spawnBullet(direction, canBeDeflected);
+        Debug.Log(spawned.transform.name + "  " + spawned.GetComponent<homingProjectile>());
+        spawned.GetComponent<homingProjectile>().target = player;
+    }
+
     //test animations
     //--------------------------------------------------------------
-    public Vector3 rotationAxis1;
+  /*  public Vector3 rotationAxis1;
     public Vector3 rotationAxis2;
     public float rotationSpeed;
 
@@ -182,5 +191,5 @@ public class bulletSpawner : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         StartCoroutine(firePatternSpiral());
 
-    }
+    }*/
 }
