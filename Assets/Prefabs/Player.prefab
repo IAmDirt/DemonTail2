@@ -7986,7 +7986,7 @@ MonoBehaviour:
   rumbleTime: 0.65
   low: 0.6
   high: 1
-  Rumble: 1
+  Rumble: 0
   rumbler: {fileID: 628531027}
   slowDownProsentage: 0.05
   slowdownFactor: 0.05
