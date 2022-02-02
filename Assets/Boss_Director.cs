@@ -133,7 +133,8 @@ public class Boss_Director : StateManager
         public void enterState(StateManager manager)
         {
             generateAttackQueue();
-            chooseNextAttack();
+            //chooseNextAttack();
+            CoroutineHelper.RunCoroutine(AcrobaticSwing());
 
         }
         public void exitState(StateManager manager)
@@ -225,20 +226,58 @@ public class Boss_Director : StateManager
             Debug.Log("SomeCoroutine");
             yield return new WaitForSeconds(1);
         }
+        private float arenaRadius = 28;
         private IEnumerator AcrobaticSwing()
         {
             Debug.Log("AcrobaticSwing");
             //jump out of arena
+            _brain.jumpArc(_brain.ArenaCenter.position + Vector3.up * 100);
+
             yield return new WaitForSeconds(1);
-         //prediction where to swing
+            //prediction where to swing
             yield return new WaitForSeconds(1);
+            var swingAmount = 51;
+            var circleRandom = Random.insideUnitCircle.normalized;
+            var swingDirection = new Vector3(circleRandom.x, 0, circleRandom.y).normalized;
+
+            for (int i = 0; i < swingAmount; i++)
+            {
+
+                Debug.DrawLine(_brain.player.position, swingDirection, Color.red, 5);
+                var position1 = ClampVector(arenaRadius, _brain.ArenaCenter.position, (-swingDirection )* arenaRadius + _brain.player.position);
+                var position2 = ClampVector(arenaRadius, _brain.ArenaCenter.position, (swingDirection ) * arenaRadius + _brain.player.position);
+
+                Debug.DrawLine(position1, position2, Color.white, 5);
+                var direction = position1 - position2;
+                //https://answers.unity.com/questions/1333667/perpendicular-to-a-3d-direction-vector.html
+                var perPendicularLeft = Vector3.Cross(swingDirection, Vector3.up).normalized;
+                swingDirection = perPendicularLeft;
+                yield return new WaitForSeconds(1);
+            }
+
+
             //swimg all predicted paths
             //leav fire trail that damages
             yield return new WaitForSeconds(1);
             //land at position 
             yield return new WaitForSeconds(1);
+            _brain.jumpArc(_brain.ArenaCenter.position );
         //end
         }
+        private Vector3 ClampVector(float radius, Vector3 center, Vector3 newLocation)
+        {
+            newLocation.y = 0;
+            float distance = Vector3.Distance(newLocation, center); //distance from ~green object~ to *black circle*
+
+            if (distance > radius) //If the distance is less than the radius, it is already within the circle.
+            {
+                Vector3 fromOriginToObject = newLocation - center; //~GreenPosition~ - *BlackCenter*
+                fromOriginToObject *= radius / distance; //Multiply by radius //Divide by Distance
+                newLocation = center + fromOriginToObject; //*BlackCenter* + all that Math
+            }
+            return newLocation;
+        }
+
         [Header("StickSpin")]
         public Transform Stick;
         public Transform StickEnd;

@@ -121,7 +121,6 @@ public class bulletSpawner : MonoBehaviour
         return bulletDir = (bulletDir - transform.position).normalized;
     }
 
-
     [Header("homing Missile")]
     public Transform player;
     public void SpawnHoming(bool canBeDeflected)
