@@ -20,10 +20,17 @@ public class Boss_Director : StateManager
     public Stage1 stage1;
     public Stage2 stage2;
     public Stage3 stage3;
+    [Header("Refrences")]
+    public CinemachineImpulseSource impulse;
+    public Transform ArenaCenter;
+    public Rigidbody rb;
+
     void Start()
     {
         Init();
         setNewState(stage1);
+        rb = GetComponent<Rigidbody>();
+        RotateTarget = player;
     }
     public void Init()
     {
@@ -44,20 +51,51 @@ public class Boss_Director : StateManager
 
     public override void Update()
     {
+        if(RotateToPLayer)
         Rotate();
         base.Update();
 
     }
+    public bool RotateToPLayer = true;
     public float RotateSpeed = 2;
-        public void Rotate()
+    public Transform RotateTarget;
+    public void Rotate()
     {
-        var direction = player.position - transform.position;
+        var direction = RotateTarget.position - transform.position;
         direction.y = 0;
         float singleStep = RotateSpeed * Time.deltaTime;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction.normalized, singleStep, 0.0f);
 
         transform.rotation = Quaternion.LookRotation(newDirection);
     }
+    [Header("Jump")]
+    public AnimationCurve jumpCurve;
+    public float jumpDuration = 1;
+    public float jumpHeight;
+    IEnumerator jumpArc(Vector3 endPoint)
+    {
+        var startPoint = rb.transform.position;
+        var timeElapsed = 0f;
+        do
+        {
+            timeElapsed += Time.deltaTime;
+
+            var prosentage = timeElapsed / jumpDuration;
+            var jumpArc = Vector3.up * jumpHeight * jumpCurve.Evaluate(prosentage);   //calculate height of jumpArc
+
+            //move foot here
+            var animationPoint = Vector3.Lerp(startPoint, endPoint, prosentage) + jumpArc;
+            rb.MovePosition(animationPoint);
+            yield return null;
+        }
+        while (timeElapsed <= jumpDuration);
+        //reached end location
+       // particleJump.Play();
+       // JumpImpact.PlayRandomClip();
+        impulse.GenerateImpulse(5);
+    }
+
+
     [System.Serializable]
     public class Stage1 : IState
     {
@@ -96,7 +134,6 @@ public class Boss_Director : StateManager
             generateAttackQueue();
             chooseNextAttack();
 
-            CoroutineHelper.RunCoroutine(ClusterShot());
         }
         public void exitState(StateManager manager)
         {
@@ -192,9 +229,55 @@ public class Boss_Director : StateManager
             Debug.Log("AcrobaticSwing");
             yield return new WaitForSeconds(1);
         }
+        [Header("StickSpin")]
+        public Transform Stick;
+        public Transform StickEnd;
+        public damageSphere Collider;
+
+        public float rotateDuration;
+        private Vector3 startSize = new Vector3(1.5f, 0.1f, 1.5f);
+        private Vector3 endSize = new Vector3(1, 1, 1);
         private IEnumerator StickSpin()
         {
+         CoroutineHelper.RunCoroutine(    _brain.jumpArc(_brain.ArenaCenter.position));
             Debug.Log("StickSpin");
+            yield return new WaitForSeconds(_brain.jumpDuration +0.2f);
+
+            Stick.localEulerAngles = new Vector3(0, 0, 0);
+            //Stick summon anim
+            Stick.localScale = startSize;
+            Stick.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            LeanTween.scale(Stick.gameObject, endSize, 0.6f).setEaseInOutBack();
+
+            yield return new WaitForSeconds(1);
+           // _brain.RotateToPLayer = false;
+            _brain.RotateTarget = StickEnd;
+            //stick fall
+            LeanTween.rotateLocal(Stick.gameObject, new Vector3(90, 0,0), 1).setEaseOutBounce();
+
+            yield return new WaitForSeconds(_brain.jumpDuration +0.2f);
+            //stick rotate
+            Collider.active = true;
+            float startRotation = Stick.eulerAngles.y;
+            float endRotation = startRotation + 360.0f *2;
+            float t = 0.0f;
+            while (t < rotateDuration)
+            {
+                t += Time.deltaTime;
+                float yRotation = Mathf.Lerp(startRotation, endRotation, t / rotateDuration) % 360.0f;
+                Stick.eulerAngles = new Vector3(Stick.eulerAngles.x, yRotation, Stick.eulerAngles.z);
+                yield return null;
+            }
+            LeanTween.rotateLocal(Stick.gameObject, new Vector3(0,0,0), 1);
+            yield return new WaitForSeconds(0.5f);
+            LeanTween.scale(Stick.gameObject, startSize, 0.6f).setEaseInOutBack();
+            Collider.active = false;
+            yield return new WaitForSeconds(0.5f);
+            //stick Disapear
+            Stick.gameObject.SetActive(false);
+            //_brain.RotateToPLayer = true;
+            _brain.RotateTarget = _brain.player;
             yield return new WaitForSeconds(1);
         }
         private IEnumerator KnockAway()
