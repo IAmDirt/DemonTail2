@@ -102,8 +102,8 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _ColorMask: 15
-    - _ColorizedShadowsAdd: 0
-    - _ColorizedShadowsMain: 0
+    - _ColorizedShadowsAdd: 1
+    - _ColorizedShadowsMain: 1
     - _CompensateScale: 0
     - _Coverage: 0
     - _Cull: 2
