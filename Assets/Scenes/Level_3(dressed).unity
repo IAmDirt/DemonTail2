@@ -637,6 +637,18 @@ Transform:
   m_Father: {fileID: 1206811212}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &505637196 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1288405447730516042, guid: 1cb0d6e018a3c8d498ea510eed673a49,
+    type: 3}
+  m_PrefabInstance: {fileID: 8390875964174073199}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2bd61e1cdc83fc4799654746040d310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &685007681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1460,7 +1472,7 @@ MonoBehaviour:
   minAngle: 45
   maxAngle: -45
   BulletSpawner: {fileID: 8390875964174073203}
-  player: {fileID: 1031620125}
+  player: {fileID: 26539251}
 --- !u!1001 &1052232058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7723,7 +7735,7 @@ PrefabInstance:
     - target: {fileID: 1288405447730516038, guid: 1cb0d6e018a3c8d498ea510eed673a49,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 15.299999
       objectReference: {fileID: 0}
     - target: {fileID: 1288405447730516038, guid: 1cb0d6e018a3c8d498ea510eed673a49,
         type: 3}
@@ -7773,7 +7785,7 @@ PrefabInstance:
     - target: {fileID: 1288405447730516040, guid: 1cb0d6e018a3c8d498ea510eed673a49,
         type: 3}
       propertyPath: hitEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1288405447730516040, guid: 1cb0d6e018a3c8d498ea510eed673a49,
         type: 3}
@@ -7804,7 +7816,7 @@ PrefabInstance:
         type: 3}
       propertyPath: hitEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1601693027}
+      objectReference: {fileID: 505637196}
     - target: {fileID: 1288405447730516040, guid: 1cb0d6e018a3c8d498ea510eed673a49,
         type: 3}
       propertyPath: hitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -7818,7 +7830,7 @@ PrefabInstance:
     - target: {fileID: 1288405447730516040, guid: 1cb0d6e018a3c8d498ea510eed673a49,
         type: 3}
       propertyPath: hitEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: PlayRandomClip
+      value: setFill
       objectReference: {fileID: 0}
     - target: {fileID: 1288405447730516040, guid: 1cb0d6e018a3c8d498ea510eed673a49,
         type: 3}
@@ -7833,7 +7845,7 @@ PrefabInstance:
     - target: {fileID: 1288405447730516040, guid: 1cb0d6e018a3c8d498ea510eed673a49,
         type: 3}
       propertyPath: hitEvent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: RandomAudioPlayer, Assembly-CSharp
+      value: Boss_Director, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1288405447730516040, guid: 1cb0d6e018a3c8d498ea510eed673a49,
         type: 3}
@@ -7844,6 +7856,11 @@ PrefabInstance:
         type: 3}
       propertyPath: hitEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288405447730516040, guid: 1cb0d6e018a3c8d498ea510eed673a49,
+        type: 3}
+      propertyPath: hitEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1288405447730516042, guid: 1cb0d6e018a3c8d498ea510eed673a49,
         type: 3}
@@ -7979,6 +7996,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288405447816342037, guid: 1cb0d6e018a3c8d498ea510eed673a49,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2975843525081769812, guid: 1cb0d6e018a3c8d498ea510eed673a49,
         type: 3}

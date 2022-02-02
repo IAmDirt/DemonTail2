@@ -19981,16 +19981,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb04e06069da23408887e06ca363d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpeed: 15
+  ballSpeed: 23
   rb: {fileID: 0}
   m_velocity: {x: 0, y: 0, z: 0}
-  playerBall: {fileID: 0}
+  playerBall: {fileID: 8099948903382539180, guid: 748a9aa46e713ac4c9a8db2c93832cfa,
+    type: 3}
   Friendly: 0
-  CanBeDeflected: 0
+  CanBeDeflected: 1
   CollisionLayer:
     serializedVersion: 2
     m_Bits: 4294967295
-  RotateSpeed: 1.5
+  RotateSpeed: 2
   target: {fileID: 0}
 --- !u!1 &8018496146417728604
 GameObject:

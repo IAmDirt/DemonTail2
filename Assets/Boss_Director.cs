@@ -31,6 +31,7 @@ public class Boss_Director : StateManager
         setNewState(stage1);
         rb = GetComponent<Rigidbody>();
         RotateTarget = player;
+        HealthUI.setMaxFill(block.maxHealth);
     }
     public void Init()
     {
@@ -227,7 +228,16 @@ public class Boss_Director : StateManager
         private IEnumerator AcrobaticSwing()
         {
             Debug.Log("AcrobaticSwing");
+            //jump out of arena
             yield return new WaitForSeconds(1);
+         //prediction where to swing
+            yield return new WaitForSeconds(1);
+            //swimg all predicted paths
+            //leav fire trail that damages
+            yield return new WaitForSeconds(1);
+            //land at position 
+            yield return new WaitForSeconds(1);
+        //end
         }
         [Header("StickSpin")]
         public Transform Stick;
@@ -269,11 +279,11 @@ public class Boss_Director : StateManager
                 Stick.eulerAngles = new Vector3(Stick.eulerAngles.x, yRotation, Stick.eulerAngles.z);
                 yield return null;
             }
-            LeanTween.rotateLocal(Stick.gameObject, new Vector3(0,0,0), 1);
+            LeanTween.rotateLocal(Stick.gameObject, new Vector3(0,0,0), 0.7f);
             yield return new WaitForSeconds(0.5f);
-            LeanTween.scale(Stick.gameObject, startSize, 0.6f).setEaseInOutBack();
+            LeanTween.scale(Stick.gameObject, startSize, 0.5f).setEaseInOutBack();
             Collider.active = false;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.4f);
             //stick Disapear
             Stick.gameObject.SetActive(false);
             //_brain.RotateToPLayer = true;
@@ -283,6 +293,9 @@ public class Boss_Director : StateManager
         private IEnumerator KnockAway()
         {
             Debug.Log("KnockAway");
+            //animation build up
+            yield return new WaitForSeconds(1);
+            //knock player away
             yield return new WaitForSeconds(1);
         }
         [Header("clusterSHot")]

@@ -7971,8 +7971,8 @@ MonoBehaviour:
   CurrentBallRecharge: 0
   AmmoImage: {fileID: 1502513093901608122}
   AmmofillImage: {fileID: 1502513093906094153}
-  minDeflectRadius: 9
-  maxDeflectRadius: 9
+  minDeflectRadius: 7
+  maxDeflectRadius: 7
   DeflectVisual: {fileID: 1502513094000655316}
   trail: {fileID: 1502513094504732166}
   turningParent: {fileID: 1502513093231977823}
