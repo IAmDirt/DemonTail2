@@ -33,7 +33,7 @@ public class Block : Health
             .setEasePunch()
             .setOnComplete(ResetScale);
 
-        if (!invonrable)
+        if (!invonrable|| !isDead)
             takeDamage(1);
     }
 

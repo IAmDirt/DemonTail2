@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
     public bool useInvulnerableFrames = false;
     public float invulnerableTime = 1f;
     private bool isInvulnerable;
-    private bool isDead;
+    [HideInInspector] public bool isDead;
     public void Awake()
     {
         Init();

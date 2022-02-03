@@ -167,7 +167,7 @@ public class BossWallMan : StateManager
     {
         var randomCircle = Random.insideUnitCircle * 20;
         var target = playerPosition + new Vector3(randomCircle.x, 0, randomCircle.y);
-
+        target = ClampVector(arenaRadius, Center.position, target);
         var velocityPredicition = player.GetComponent<Rigidbody>().velocity;
         velocityPredicition *= Random.Range(predictMultiplyer - 0.1f, predictMultiplyer + 0.2f);
 
@@ -176,6 +176,21 @@ public class BossWallMan : StateManager
         var ball = spawned.GetComponent<ArcProjectile>();
         ball.isDud = isDud;
         ball.PhysicsShoot(target, Random.Range(shootAngle - 5, shootAngle + 5), velocityPredicition);
+    }
+    private float arenaRadius = 25;
+    private Vector3 ClampVector(float radius, Vector3 center, Vector3 newLocation)
+    {
+        newLocation.y = 0;
+        float distance = Vector3.Distance(newLocation, center); //distance from ~green object~ to *black circle*
+
+        if (distance > radius) //If the distance is less than the radius, it is already within the circle.
+        {
+            //clamp in derection center, within arena circle
+            Vector3 fromOriginToObject = newLocation - center; //~GreenPosition~ - *BlackCenter*
+            fromOriginToObject *= radius / distance; //Multiply by radius //Divide by Distance
+            newLocation = center + fromOriginToObject; //*BlackCenter* + all that Math
+        }
+        return newLocation;
     }
 
     #endregion

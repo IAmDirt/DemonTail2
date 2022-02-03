@@ -133,8 +133,8 @@ public class Boss_Director : StateManager
         public void enterState(StateManager manager)
         {
             generateAttackQueue();
-            //chooseNextAttack();
-            CoroutineHelper.RunCoroutine(AcrobaticSwing());
+            chooseNextAttack();
+            //CoroutineHelper.RunCoroutine(AcrobaticSwing());
 
         }
         public void exitState(StateManager manager)
@@ -227,6 +227,8 @@ public class Boss_Director : StateManager
             yield return new WaitForSeconds(1);
         }
         private float arenaRadius = 28;
+        public GameObject FireTrailPredict;
+        public GameObject FireTrail;
         private IEnumerator AcrobaticSwing()
         {
             Debug.Log("AcrobaticSwing");
@@ -236,23 +238,27 @@ public class Boss_Director : StateManager
             yield return new WaitForSeconds(1);
             //prediction where to swing
             yield return new WaitForSeconds(1);
-            var swingAmount = 51;
+            var swingAmount = 4;
             var circleRandom = Random.insideUnitCircle.normalized;
             var swingDirection = new Vector3(circleRandom.x, 0, circleRandom.y).normalized;
 
             for (int i = 0; i < swingAmount; i++)
             {
 
-                Debug.DrawLine(_brain.player.position, swingDirection, Color.red, 5);
-                var position1 = ClampVector(arenaRadius, _brain.ArenaCenter.position, (-swingDirection )* arenaRadius + _brain.player.position);
-                var position2 = ClampVector(arenaRadius, _brain.ArenaCenter.position, (swingDirection ) * arenaRadius + _brain.player.position);
+                var position1 = ClampVector(arenaRadius, _brain.ArenaCenter.position, (-swingDirection )* arenaRadius*2 + _brain.player.position);
+                var position2 = ClampVector(arenaRadius, _brain.ArenaCenter.position, (swingDirection ) * arenaRadius*2 + _brain.player.position);
 
                 Debug.DrawLine(position1, position2, Color.white, 5);
                 var direction = position1 - position2;
                 //https://answers.unity.com/questions/1333667/perpendicular-to-a-3d-direction-vector.html
                 var perPendicularLeft = Vector3.Cross(swingDirection, Vector3.up).normalized;
                 swingDirection = perPendicularLeft;
-                yield return new WaitForSeconds(1);
+
+
+                spawnFirePrediction(position1, position2);
+                yield return new WaitForSeconds(0.75f);
+                spawnFiretrail(position1, position2);
+                yield return new WaitForSeconds(0.25f);
             }
 
 
@@ -264,6 +270,26 @@ public class Boss_Director : StateManager
             _brain.jumpArc(_brain.ArenaCenter.position );
         //end
         }
+        private void spawnFirePrediction(Vector3 startPos, Vector3 endPos)
+        {
+            var spawned = Instantiate(FireTrailPredict, startPos, Quaternion.LookRotation(endPos - startPos, Vector3.up));
+            var Length = Vector3.Distance(startPos, endPos);
+
+            var endScale = Vector3.one;
+            endScale.z = 0.5f * Length;
+            LeanTween.scale(spawned, endScale, 0.3f).setEaseInOutCirc();
+        }
+
+        private void spawnFiretrail(Vector3 startPos, Vector3 endPos)
+        {
+            var spawned = Instantiate(FireTrail, startPos, Quaternion.LookRotation(endPos - startPos, Vector3.up));
+            var Length = Vector3.Distance(startPos, endPos);
+
+            var endScale = Vector3.one;
+            endScale.z = 0.5f * Length;
+            LeanTween.scale(spawned, endScale, 1.2f).setEaseInOutCirc();
+        }
+
         private Vector3 ClampVector(float radius, Vector3 center, Vector3 newLocation)
         {
             newLocation.y = 0;
@@ -271,9 +297,22 @@ public class Boss_Director : StateManager
 
             if (distance > radius) //If the distance is less than the radius, it is already within the circle.
             {
-                Vector3 fromOriginToObject = newLocation - center; //~GreenPosition~ - *BlackCenter*
-                fromOriginToObject *= radius / distance; //Multiply by radius //Divide by Distance
-                newLocation = center + fromOriginToObject; //*BlackCenter* + all that Math
+                //clamp in derection center, within arena circle
+                //Vector3 fromOriginToObject = newLocation - center; //~GreenPosition~ - *BlackCenter*
+                //fromOriginToObject *= radius / distance; //Multiply by radius //Divide by Distance
+                //newLocation = center + fromOriginToObject; //*BlackCenter* + all that Math
+
+                //clamp in derection player, within arena circle
+                Vector3 DirectionPlayer =  _brain.player.position- newLocation ; //~GreenPosition~ - *BlackCenter*
+                for (int i = 0; distance > radius; i++)
+                {
+                    newLocation += DirectionPlayer.normalized * 1;
+                    distance = Vector3.Distance(newLocation, center);
+
+                    if (i > 100)
+                        break;
+                }
+
             }
             return newLocation;
         }
