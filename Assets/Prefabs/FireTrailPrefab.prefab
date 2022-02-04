@@ -9857,4 +9857,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f2b6703ed9f76548b8bc3c899004842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despwanDelay: 4
+  despwanDelay: 8

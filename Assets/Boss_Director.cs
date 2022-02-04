@@ -67,13 +67,14 @@ public class Boss_Director : StateManager
         float singleStep = RotateSpeed * Time.deltaTime;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction.normalized, singleStep, 0.0f);
 
-        transform.rotation = Quaternion.LookRotation(newDirection);
+         rb.rotation= Quaternion.LookRotation(newDirection);
     }
     [Header("Jump")]
     public AnimationCurve jumpCurve;
     public float jumpDuration = 1;
     public float jumpHeight;
-    IEnumerator jumpArc(Vector3 endPoint)
+
+    IEnumerator jumpArc(Vector3 endPoint, bool Inverse = false)
     {
         var startPoint = rb.transform.position;
         var timeElapsed = 0f;
@@ -83,9 +84,11 @@ public class Boss_Director : StateManager
 
             var prosentage = timeElapsed / jumpDuration;
             var jumpArc = Vector3.up * jumpHeight * jumpCurve.Evaluate(prosentage);   //calculate height of jumpArc
+            jumpArc *= Inverse ? -7: 1;
 
             //move foot here
             var animationPoint = Vector3.Lerp(startPoint, endPoint, prosentage) + jumpArc;
+            Debug.DrawRay(animationPoint, transform.forward);
             rb.MovePosition(animationPoint);
             yield return null;
         }
@@ -94,6 +97,12 @@ public class Boss_Director : StateManager
        // particleJump.Play();
        // JumpImpact.PlayRandomClip();
         impulse.GenerateImpulse(5);
+    }
+    public void RandomJump()
+    {
+        var randomDirection = new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)).normalized ;
+        randomDirection *= 16f;
+        StartCoroutine(jumpArc(ArenaCenter.position + randomDirection));
     }
 
 
@@ -134,7 +143,7 @@ public class Boss_Director : StateManager
         {
             generateAttackQueue();
             chooseNextAttack();
-            //CoroutineHelper.RunCoroutine(AcrobaticSwing());
+           // CoroutineHelper.RunCoroutine(AcrobaticSwing());
 
         }
         public void exitState(StateManager manager)
@@ -214,13 +223,12 @@ public class Boss_Director : StateManager
                 else
                 {
                     //when current task Is completed
-                    Debug.Log("CurrentTask completed execution normally.");
+                    //Debug.Log("CurrentTask completed execution normally.");
                     chooseNextAttack();
                 }
             };
 
         }
-
         private IEnumerator SomeCoroutine()
         {
             Debug.Log("SomeCoroutine");
@@ -231,9 +239,9 @@ public class Boss_Director : StateManager
         public GameObject FireTrail;
         private IEnumerator AcrobaticSwing()
         {
-            Debug.Log("AcrobaticSwing");
             //jump out of arena
-            _brain.jumpArc(_brain.ArenaCenter.position + Vector3.up * 100);
+
+            CoroutineHelper.RunCoroutine(_brain.jumpArc(_brain.ArenaCenter.position + Vector3.up * 60));
 
             yield return new WaitForSeconds(1);
             //prediction where to swing
@@ -245,10 +253,9 @@ public class Boss_Director : StateManager
             for (int i = 0; i < swingAmount; i++)
             {
 
-                var position1 = ClampVector(arenaRadius, _brain.ArenaCenter.position, (-swingDirection )* arenaRadius*2 + _brain.player.position);
-                var position2 = ClampVector(arenaRadius, _brain.ArenaCenter.position, (swingDirection ) * arenaRadius*2 + _brain.player.position);
+                var position1 = ClampVector(arenaRadius, _brain.ArenaCenter.position, (-swingDirection) * arenaRadius * 2 + _brain.player.position);
+                var position2 = ClampVector(arenaRadius, _brain.ArenaCenter.position, (swingDirection) * arenaRadius * 2 + _brain.player.position);
 
-                Debug.DrawLine(position1, position2, Color.white, 5);
                 var direction = position1 - position2;
                 //https://answers.unity.com/questions/1333667/perpendicular-to-a-3d-direction-vector.html
                 var perPendicularLeft = Vector3.Cross(swingDirection, Vector3.up).normalized;
@@ -257,18 +264,22 @@ public class Boss_Director : StateManager
 
                 spawnFirePrediction(position1, position2);
                 yield return new WaitForSeconds(0.75f);
-                spawnFiretrail(position1, position2);
-                yield return new WaitForSeconds(0.25f);
-            }
 
+                var trailDirection =  position2- position1 ;
+                _brain.transform.position = (position1 - trailDirection*0.5f ) + Vector3.up * 35;
+                CoroutineHelper.RunCoroutine(_brain.jumpArc((position2 + trailDirection*0.5f )+ Vector3.up * 35, true));
+
+                spawnFiretrail(position1, position2);
+                yield return new WaitForSeconds(0.5f);
+            }
 
             //swimg all predicted paths
             //leav fire trail that damages
             yield return new WaitForSeconds(1);
             //land at position 
             yield return new WaitForSeconds(1);
-            _brain.jumpArc(_brain.ArenaCenter.position );
-        //end
+            CoroutineHelper.RunCoroutine(_brain.jumpArc(_brain.ArenaCenter.position));
+            //end
         }
         private void spawnFirePrediction(Vector3 startPos, Vector3 endPos)
         {
@@ -328,7 +339,6 @@ public class Boss_Director : StateManager
         private IEnumerator StickSpin()
         {
          CoroutineHelper.RunCoroutine(    _brain.jumpArc(_brain.ArenaCenter.position));
-            Debug.Log("StickSpin");
             yield return new WaitForSeconds(_brain.jumpDuration +0.2f);
 
             Stick.localEulerAngles = new Vector3(0, 0, 0);
@@ -380,8 +390,9 @@ public class Boss_Director : StateManager
         public bulletSpawner clusterSpawner;
         private IEnumerator ClusterShot()
         {
+            _brain.RandomJump();
+                yield return new WaitForSeconds(_brain.jumpDuration +0.2f);
             var amountOfShots = 2;
-            Debug.Log("ClusterShot");
             while (amountOfShots > 0)
             {
                 amountOfShots--;
@@ -389,14 +400,15 @@ public class Boss_Director : StateManager
                 // spawn homing
                 yield return new WaitForSeconds(1f);
             }
-            yield return new WaitForSeconds(1);
         }
 
         [Header("HomingMIssiles")]
         public bulletSpawner HomingSpawner;
         private IEnumerator HomingMissiles()
         {
-            var amountOfShots = 3;
+            _brain.RandomJump();
+            yield return new WaitForSeconds(_brain.jumpDuration);
+            var amountOfShots = 5;
             Debug.Log("HomingMissiles");
 
             while (amountOfShots > 0)
@@ -407,7 +419,6 @@ public class Boss_Director : StateManager
                 yield return new WaitForSeconds(0.4f);
             }
             //
-            yield return new WaitForSeconds(1);
         }
     }
 
