@@ -8,8 +8,11 @@ public class ArcProjectile : projectile
     public override void OnEnable()
     {
         active = false;
+        rotate = true;
         rigid.isKinematic = false;
         transform.localScale = _startScale;
+        rotateAxis = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        rotateSpeed = Random.Range(1500, 2000f);
     }
     public void Awake()
     {
@@ -21,7 +24,6 @@ public class ArcProjectile : projectile
     Vector3 ArtificialGravity;
     public ParticleSystem landParticle;
     public Transform predictShadow;
-    public bulletSpawner spawner;
     public GameObject explotion;
     Rigidbody rigid;
 
@@ -85,10 +87,14 @@ public class ArcProjectile : projectile
         setPredictShadow(target);
         yield return new WaitForSeconds(fallPredict);
 
+
         if (isDud)
             LeanTween.move(gameObject, target - Vector3.up * 1, 0.6f).setOnComplete(dud);
         else
             LeanTween.move(gameObject, target - Vector3.up * 1, 0.6f).setOnComplete(explode);
+
+        yield return new WaitForSeconds(0.6f);
+        rotate = false;
 
 
         //go up from 
@@ -109,7 +115,12 @@ public class ArcProjectile : projectile
     {
         if (rigid != null)
             rigid.AddForce(ArtificialGravity, ForceMode.Acceleration);
+        if(rotate)
+        transform.Rotate(rotateAxis * rotateSpeed * Time.deltaTime);
     }
+    private Vector3 rotateAxis;
+    private bool rotate ;
+    private float rotateSpeed ;
     public override void OnCollisionEnter(Collision collision)
     {
         if (!collided && active)
@@ -138,7 +149,6 @@ public class ArcProjectile : projectile
     }
     public void dud()
     {
-        spawner.idleAnim = false;
         rigid.isKinematic = true;
         CanBeDeflected = true;
         CurrentPulsateSpeed = pulsateSpeed;

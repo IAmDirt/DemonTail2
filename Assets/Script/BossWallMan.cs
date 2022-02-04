@@ -166,7 +166,7 @@ public class BossWallMan : StateManager
     public void arcProjectile(bool isDud, Vector3 playerPosition)
     {
         var randomCircle = Random.insideUnitCircle * 20;
-        var target = playerPosition + new Vector3(randomCircle.x, 0, randomCircle.y);
+        var target = playerPosition + new Vector3(randomCircle.x, 1, randomCircle.y);
         target = ClampVector(arenaRadius, Center.position, target);
         var velocityPredicition = player.GetComponent<Rigidbody>().velocity;
         velocityPredicition *= Random.Range(predictMultiplyer - 0.1f, predictMultiplyer + 0.2f);
@@ -180,7 +180,6 @@ public class BossWallMan : StateManager
     private float arenaRadius = 25;
     private Vector3 ClampVector(float radius, Vector3 center, Vector3 newLocation)
     {
-        newLocation.y = 0;
         float distance = Vector3.Distance(newLocation, center); //distance from ~green object~ to *black circle*
 
         if (distance > radius) //If the distance is less than the radius, it is already within the circle.

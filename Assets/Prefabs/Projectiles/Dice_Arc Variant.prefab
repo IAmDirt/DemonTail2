@@ -4910,7 +4910,6 @@ GameObject:
   - component: {fileID: 3162327138324200021}
   - component: {fileID: 3162327138324200020}
   - component: {fileID: 8410499057709855887}
-  - component: {fileID: -2038144169615663913}
   m_Layer: 7
   m_Name: Dice_Arc Variant
   m_TagString: Untagged
@@ -4926,7 +4925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3162327138324200016}
   m_LocalRotation: {x: 0, y: 0.02786945, z: -0, w: -0.9996116}
-  m_LocalPosition: {x: -13.798333, y: 2.1299999, z: -30.258465}
+  m_LocalPosition: {x: -13.798333, y: 0, z: -30.258465}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4530268198105790225}
@@ -4993,37 +4992,11 @@ MonoBehaviour:
   landParticle: {fileID: 7423431364559855282}
   predictShadow: {fileID: 5110409199422494326, guid: fde9cb637cffdee40b87151020011f41,
     type: 3}
-  spawner: {fileID: -2038144169615663913}
+  spawner: {fileID: 0}
   explotion: {fileID: 5828764713310830271, guid: bb16b1f3d8377f24898ec5d4ac4b74b0,
     type: 3}
   isDud: 0
   explotionRadius: 5
---- !u!114 &-2038144169615663913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3162327138324200016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86a0cb6e96aadd943b8224c47d5c92e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bullet: {fileID: 9187445295896162903, guid: 48bd102de42b7f64e9b9eab3f02f82f1, type: 3}
-  isenabled: 0
-  idleAnim: 1
-  BulletAmount: 5
-  minAngle: -180
-  maxAngle: 180
-  BulletSpawner: {fileID: 399550622664649722}
-  rotationAxis1: {x: 2, y: 2, z: 2}
-  rotationAxis2: {x: 2, y: 2, z: 2}
-  rotationSpeed: 222
-  obj1: {fileID: 4530268198105790225}
-  obj2: {fileID: 6596114685336013789}
-  animationObj: {fileID: 0}
-  shadow: {fileID: 0}
 --- !u!1 &3162327139651175317
 GameObject:
   m_ObjectHideFlags: 0
@@ -6198,7 +6171,7 @@ ParticleSystem:
         serializedVersion: 2
         minMaxState: 3
         scalar: 10
-        minScalar: 25
+        minScalar: 20
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -6247,7 +6220,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 3
+      cycleCount: 1
       repeatInterval: 0.01
       probability: 1
   SizeModule:
@@ -15160,7 +15133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7423431364338844445
 Transform:
   m_ObjectHideFlags: 0
@@ -25096,7 +25069,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 60
+      scalar: 100
       minScalar: 40
       maxCurve:
         serializedVersion: 2
@@ -29740,15 +29713,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0ff4ff7fe361184ea32161e2649974e, type: 3}
---- !u!1 &3861113480587799979 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f0ff4ff7fe361184ea32161e2649974e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4130935077622599930}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4530268198105790225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f0ff4ff7fe361184ea32161e2649974e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4130935077622599930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3861113480587799979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f0ff4ff7fe361184ea32161e2649974e,
     type: 3}
   m_PrefabInstance: {fileID: 4130935077622599930}
   m_PrefabAsset: {fileID: 0}

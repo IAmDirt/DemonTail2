@@ -409,7 +409,6 @@ public class Boss_Director : StateManager
             _brain.RandomJump();
             yield return new WaitForSeconds(_brain.jumpDuration);
             var amountOfShots = 5;
-            Debug.Log("HomingMissiles");
 
             while (amountOfShots > 0)
             {

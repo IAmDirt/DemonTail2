@@ -128,7 +128,6 @@ public class bulletSpawner : MonoBehaviour
         var randomCircle = Random.insideUnitCircle.normalized;
         var direction = new Vector3(randomCircle.x, 0, randomCircle.y);
         var spawned = spawnBullet(direction, canBeDeflected);
-        Debug.Log(spawned.transform.name + "  " + spawned.GetComponent<homingProjectile>());
         spawned.GetComponent<homingProjectile>().target = player;
     }
 
