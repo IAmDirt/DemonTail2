@@ -116,7 +116,7 @@ public class ArcProjectile : projectile
         if (rigid != null)
             rigid.AddForce(ArtificialGravity, ForceMode.Acceleration);
         if(rotate)
-        transform.Rotate(rotateAxis * rotateSpeed * Time.deltaTime);
+        transform.GetChild(0).Rotate(rotateAxis * rotateSpeed * Time.deltaTime);
     }
     private Vector3 rotateAxis;
     private bool rotate ;

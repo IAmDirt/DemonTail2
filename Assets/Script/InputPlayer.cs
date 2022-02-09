@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputPlayer : MonoBehaviour
 {
-    PlayerControls controls;
+    PlayerInputs input;
     SlugMovement movement;
     deflector deflector;
 
@@ -18,35 +18,57 @@ public class InputPlayer : MonoBehaviour
     {
         movement = GetComponent<SlugMovement>();
         deflector= GetComponent<deflector>();
-        controls = new PlayerControls();
+        input = new PlayerInputs();
         SetInput();
     }
     public void Update()
     {
+        if(gameManager.Instance.isInGamePlay())
+        {
+            input.Gameplay.Enable();
+            input.Dialogue.Disable();
+        }
+        else
+        {
+            input.Gameplay.Disable();
+            input.Dialogue.Enable();
+
+        }
     }
     public void OnEnable()
     {
-        controls.Gameplay.Enable();
+        input.Gameplay.Enable();
     }
     public void OnDisable()
     {
-        controls.Gameplay.Disable();
+        input.Gameplay.Disable();
     }
     public void SetInput()
     {
-        controls.Gameplay.RightTrigger.performed += ctx => deflector.deflectRelease();
-        controls.Gameplay.LeftTrigger.performed += ctx => movement.Dash();
+        input.Dialogue.Select.performed += ctx => nextDialogue();
 
-        controls.Gameplay.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Move.canceled += ctx => _moveInput = Vector2.zero;
 
-        controls.Gameplay.Aim.performed += ctx => _rotationInput = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Aim.canceled += ctx => _rotationInput= Vector2.zero;
+        input.Gameplay.RightTrigger.performed += ctx => deflector.deflectRelease();
+        input.Gameplay.LeftTrigger.performed += ctx => movement.Dash();
+
+        input.Gameplay.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
+        input.Gameplay.Move.canceled += ctx => _moveInput = Vector2.zero;
+
+        input.Gameplay.Aim.performed += ctx => _rotationInput = ctx.ReadValue<Vector2>();
+        input.Gameplay.Aim.canceled += ctx => _rotationInput= Vector2.zero;
     
-        controls.Gameplay.Escape.performed += ctx => pauseGame();
-        controls.Gameplay.Restart.performed += ctx => restartLevel();
+        input.Gameplay.Escape.performed += ctx => pauseGame();
+        input.Gameplay.Restart.performed += ctx => restartLevel();
     }
- 
+
+
+    public DialogueManager dialogueManager;
+
+    public void nextDialogue()
+    {
+        if(dialogueManager)
+        dialogueManager.inputAdvanceDialogue();
+    }
     // create events fore each button
     public void ButtonEast()
     {
@@ -66,6 +88,6 @@ public class InputPlayer : MonoBehaviour
     //returns
     public Vector3 MousePosition()
     {
-        return controls.Gameplay.MousePosition.ReadValue<Vector2>();
+        return input.Gameplay.MousePosition.ReadValue<Vector2>();
     }
 }

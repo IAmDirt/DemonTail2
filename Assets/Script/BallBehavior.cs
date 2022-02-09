@@ -82,9 +82,9 @@ public class BallBehavior : projectile
     public void UpdateVisuals()
     {
         if (PowerProsentage > 0.5f)
-            glowLight.intensity = Mathf.Lerp(0f, 2.5f, PowerProsentage);
+            glowLight.intensity = Mathf.Lerp(0f, 9.5f, PowerProsentage);
         else
-            glowLight.intensity = 0;
+            glowLight.intensity = 2.5F;
 
         var scale = Mathf.Lerp(minScale, maxScale, PowerProsentage);
 

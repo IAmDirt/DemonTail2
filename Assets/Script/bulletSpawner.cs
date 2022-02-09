@@ -57,7 +57,7 @@ public class bulletSpawner : MonoBehaviour
     {
         StartCoroutine(firePatternSpiral());
     }
-
+    public float timeDalayShoot = 0.03f;
     private IEnumerator firePatternSpiral()
     {
 
@@ -76,7 +76,7 @@ public class bulletSpawner : MonoBehaviour
             SpawnCard(direction, canBeDeflected);
 
             angle += angleStep;
-            yield return new WaitForSeconds(0.03f);
+            yield return new WaitForSeconds(timeDalayShoot);
         }
 
             yield return new WaitForSeconds(Random.Range(4, 8));

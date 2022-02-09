@@ -43,7 +43,7 @@ public class EnemyBullet : projectile
     }
     public void Wobble()
     {
-        LeanTween.scale( gameObject, Vector3.one * Random.Range(1, 2), Random.Range(0.4f, 2f))
+        LeanTween.scale( gameObject, Vector3.one * Random.Range(1, 1.5f), Random.Range(0.4f, 1.5f))
             .setEasePunch()
             .setOnComplete(Wobble);
     }

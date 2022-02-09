@@ -10,6 +10,8 @@ public class deflector : MonoBehaviour
 
     [Header("shield")]
     public Transform shield;
+
+    public DialogueManager dialogueManager;
     public void Start()
     {
         manager.player = transform;
@@ -190,13 +192,23 @@ public class deflector : MonoBehaviour
                     if (!colliders.Contains(collider))
                     {
                         var projectille = collider.GetComponent<projectile>();
-                        if(projectille)
-                        if (projectille.CanBeDeflected)
-                        {
-                            projectille.deflect(deflectDir);
-                            colliders.Add(collider);
+                        if (projectille)
+
+                            if (projectille.CanBeDeflected)
+                            {
+                                projectille.deflect(deflectDir);
+                                colliders.Add(collider);
                                 // DoSlowmotion(ball.PowerProsentage, slowDownRecoverTime, slowdownFactor);
+                                yield break;
                             }
+
+                        var dialogue = collider.GetComponent<dialogueContainer>();
+                        if (dialogue)
+                        {
+                            dialogue.triggerDialogue(dialogueManager);
+                            yield break;
+                        }
+
                     }
                 }
             }

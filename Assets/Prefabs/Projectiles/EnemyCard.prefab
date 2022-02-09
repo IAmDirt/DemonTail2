@@ -4860,7 +4860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3403494675669689645
 Transform:
   m_ObjectHideFlags: 0
@@ -4868,12 +4868,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4635148179943783126}
-  m_LocalRotation: {x: -0.70710677, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.013290844}
-  m_LocalScale: {x: 0.010522772, y: 0.000052613872, z: 0.015929373}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
+  m_LocalPosition: {x: 0, y: -0.75, z: 0}
+  m_LocalScale: {x: 1.3267826, y: 0.0073710172, z: 2.3824635}
   m_Children: []
-  m_Father: {fileID: 452875733227484089}
-  m_RootOrder: 0
+  m_Father: {fileID: 9187445295896162897}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6369718482648864422
 MeshFilter:
@@ -5137,6 +5137,7 @@ Transform:
   - {fileID: 452875733227484089}
   - {fileID: 1146324766990386901}
   - {fileID: 1616392401400020589}
+  - {fileID: 3403494675669689645}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5167,7 +5168,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9187445295896162904
 MonoBehaviour:
@@ -5273,17 +5274,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4d21d165a390eb544a8606b1d168d1cc,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 64.33
+      value: 87.67691
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d21d165a390eb544a8606b1d168d1cc,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 76.30825
+      value: 104.00235
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d21d165a390eb544a8606b1d168d1cc,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 71.47778
+      value: 97.418785
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d21d165a390eb544a8606b1d168d1cc,
         type: 3}

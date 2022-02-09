@@ -52,7 +52,6 @@ public class MusicManager : MonoBehaviour
 
     public void fadeLoop1()
     {
-        Debug.Log("change");
         Fade.clip = BossLoop1;
         StartCoroutine(fadeInNew(Fade, 0.6f, Current));
 
@@ -94,7 +93,6 @@ public class MusicManager : MonoBehaviour
             fadeGhoal = fadeIn ? 1f : 0f;
             fadeCurrent = fadeIn ? 0.999f : 0.001f;
         }
-            Debug.Log(fadeCurrent + " "+ fadeGhoal);
         if (!audio.isPlaying) audio.Play();
         while (ReachedGhoal(fadeIn, fadeCurrent, fadeGhoal))
         {

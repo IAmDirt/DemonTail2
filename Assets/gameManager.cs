@@ -7,14 +7,32 @@ public class gameManager : MonoBehaviour
 {
 
 
+    public static gameManager Instance;
     private gameManager()
     {
         // initialize your game manager here. Do not reference to GameObjects here (i.e. GameObject.Find etc.)
         // because the game manager will be created before the objects
     }
+    public GameMode gameMode = GameMode.Gameplay;
+    public enum GameMode
+    {
+        Gameplay,
+        Cutscene,
+        DialogueMoment, //waiting for input
+    }
 
-    public static gameManager Instance;
-
+    public void startDialogue()
+    {
+        gameMode = GameMode.Cutscene;
+    }
+    public void returnToGameplay()
+    {
+        gameMode = GameMode.Gameplay;
+    }
+    public bool isInGamePlay()
+    {
+        return (gameMode == GameMode.Gameplay);
+    }
 
     public void Awake()
     {
