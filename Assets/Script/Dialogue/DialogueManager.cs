@@ -26,12 +26,12 @@ public class DialogueManager : MonoBehaviour
 
 
     //tags
-    private const string SPEAKER_TAG= "Speaker";
+    private const string SPEAKER_TAG = "Speaker";
     private const string PORTRAIT_TAG = "Portrait";
 
     void Start()
     {
-       // story = new Story(inkFile.text);
+        // story = new Story(inkFile.text);
         choiceSelected = null;
         textBox.SetActive(false);
     }
@@ -60,10 +60,10 @@ public class DialogueManager : MonoBehaviour
                 StartCoroutine(ShowChoices());
             }
         }
-        else if(!_choice)
+        else if (!_choice)
         {
             FinishDialogue();
-        gameManager.Instance.returnToGameplay();
+            gameManager.Instance.returnToGameplay();
         }
     }
     private void FinishDialogue()
@@ -88,11 +88,11 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return null;
         }
-      //  CharacterScript tempSpeaker = GameObject.FindObjectOfType<CharacterScript>();
+        //  CharacterScript tempSpeaker = GameObject.FindObjectOfType<CharacterScript>();
         //if (tempSpeaker.isTalking)
-       // {
+        // {
         //    SetAnimation("idle");
-       // }
+        // }
         yield return null;
     }
 
@@ -125,7 +125,7 @@ public class DialogueManager : MonoBehaviour
 
         yield return new WaitUntil(() => { return choiceSelected != null; });
 
-       AdvanceFromDecision();
+        AdvanceFromDecision();
     }
 
     // Tells the story which branch to go to
@@ -153,18 +153,17 @@ public class DialogueManager : MonoBehaviour
     /// This is just one way of doing it. Not the only method on how to trigger events. 
     void HandleTags(List<string> currentTags)
     {
-        Debug.Log(currentTags.Count);
         foreach (string tag in currentTags)
         {
             //parse the tag
             string[] splitTag = tag.Split(':');
-            if(splitTag.Length != 2)
+            if (splitTag.Length != 2)
 
             {
                 Debug.LogError("Tag could not be appropriatly parsed: " + tag);
             }
             string tagKey = splitTag[0].Trim();
-            string tagValue= splitTag[1].Trim();
+            string tagValue = splitTag[1].Trim();
 
             //handle the tag
 
@@ -183,29 +182,28 @@ public class DialogueManager : MonoBehaviour
     }
     void SetAnimation(string _name)
     {
-     //   CharacterScript cs = GameObject.FindObjectOfType<CharacterScript>();
-     //   cs.PlayAnimation(_name);
+        //   CharacterScript cs = GameObject.FindObjectOfType<CharacterScript>();
+        //   cs.PlayAnimation(_name);
     }
-   /* void SetTextColor(string _color)
-    {
-        switch (_color)
-        {
-            case "red":
-                message.color = Color.red;
-                break;
-            case "blue":
-                message.color = Color.cyan;
-                break;
-            case "green":
-                message.color = Color.green;
-                break;
-            case "white":
-                message.color = Color.white;
-                break;
-            default:
-                Debug.Log($"{_color} is not available as a text color");
-                break;
-        }
-    }*/
-
+    /* void SetTextColor(string _color)
+     {
+         switch (_color)
+         {
+             case "red":
+                 message.color = Color.red;
+                 break;
+             case "blue":
+                 message.color = Color.cyan;
+                 break;
+             case "green":
+                 message.color = Color.green;
+                 break;
+             case "white":
+                 message.color = Color.white;
+                 break;
+             default:
+                 Debug.Log($"{_color} is not available as a text color");
+                 break;
+         }
+     }*/
 }

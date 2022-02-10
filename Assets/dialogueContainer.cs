@@ -9,6 +9,11 @@ public class dialogueContainer : MonoBehaviour
 
     public bool OnlyTriggerOnce;
     private bool _alreadyTriggered;
+    public void Start()
+    {
+        ToglePromt();
+    }
+
     public void triggerDialogue(DialogueManager dialogueManager)
     {
         if(OnlyTriggerOnce && !_alreadyTriggered || !OnlyTriggerOnce)
@@ -16,6 +21,12 @@ public class dialogueContainer : MonoBehaviour
         dialogueManager.StartDialogue(inkFile);
             _alreadyTriggered = true;
         }
+        ToglePromt();
     }
 
+    public GameObject dialoguePromt;
+    public void ToglePromt()
+    {
+        dialoguePromt.SetActive(!_alreadyTriggered);
+    }
 }

@@ -45,11 +45,21 @@ public class InputPlayer : MonoBehaviour
     }
     public void SetInput()
     {
+        //Dialogue
         input.Dialogue.Select.performed += ctx => nextDialogue();
+        input.Dialogue.RightShoulder.performed += ctx =>nextDialogue();
+        input.Dialogue.LeftShoulder.performed += ctx => nextDialogue();
+        input.Dialogue.RightTrigger.performed += ctx => nextDialogue();
+        input.Dialogue.LeftTrigger.performed += ctx => nextDialogue();
 
 
+        //Gameplay
         input.Gameplay.RightTrigger.performed += ctx => deflector.deflectRelease();
+        input.Gameplay.RightShoulder.performed += ctx => deflector.deflectRelease();
+
         input.Gameplay.LeftTrigger.performed += ctx => movement.Dash();
+        input.Gameplay.LeftShoulder.performed += ctx => movement.Dash();
+
 
         input.Gameplay.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
         input.Gameplay.Move.canceled += ctx => _moveInput = Vector2.zero;

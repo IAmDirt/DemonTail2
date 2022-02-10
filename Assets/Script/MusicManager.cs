@@ -18,14 +18,14 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         Intro();
-      //  waitTime -= 1414;
-       // Current.time = 14;
+       // waitTime -= 90;
+        Current.time = 90;
         NextSwitch = waitTime;
 
 
     }
 
-        private float waitTime = 17f;
+        private float waitTime = 171f;
         private float NextSwitch;
 
     void Update()
