@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
     //tags
     private const string SPEAKER_TAG = "Speaker";
     private const string PORTRAIT_TAG = "Portrait";
+    private const string ADVANCE_TAG = "AdvanceCutscene";
 
     void Start()
     {
@@ -176,6 +177,9 @@ public class DialogueManager : MonoBehaviour
                 case PORTRAIT_TAG:
                     Debug.Log("Portrait=" + tagValue);
                     PoleyTestAnim.Play(tagValue);
+                    break;
+                case ADVANCE_TAG:
+                    Debug.Log("advance=" + tagValue);
                     break;
             }
         }

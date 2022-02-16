@@ -31,7 +31,6 @@ public class DialogueTrack : TrackAsset
     private bool _alreadyPlayed;
     public bool alreadyPlayed()
     {
-
         if (!onlyPlayOnce)
             return false;
 
