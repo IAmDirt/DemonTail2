@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1c93d2feb874fd49d1e903476e914b, type: 3}
+  m_Name: SmallBleh
+  m_EditorClassIdentifier: 
+  showFoldout: 1
+  clips:
+  - {fileID: 8300000, guid: 30fe6ca6ea545a545bbbed7345ec0c40, type: 3}
+  - {fileID: 8300000, guid: 62f5bd369c3860c4f89ae3b96e810408, type: 3}
+  - {fileID: 8300000, guid: 51b15e1c10c73dd429d9dd714a13c711, type: 3}
+  - {fileID: 8300000, guid: be1c30250a5996444aae3c7e63a896fc, type: 3}
+  - {fileID: 8300000, guid: 6a1b067a9eba71a4aa0fe4417af9bf17, type: 3}
+  - {fileID: 8300000, guid: fa36f8ca566297b469e911bd1e9443dc, type: 3}
+  - {fileID: 8300000, guid: 1b860593ccac2d9438dba669d5313785, type: 3}

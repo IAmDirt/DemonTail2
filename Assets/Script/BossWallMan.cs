@@ -67,7 +67,6 @@ public class BossWallMan : StateManager
     {
         dead = true;
         anim.SetTrigger(m_Dead);
-        anim.applyRootMotion = true;
         EnragedState.CurrentTask.Stop();
     }
     public void DamageTakenEvent()
@@ -825,7 +824,6 @@ public class BossWallMan : StateManager
             CoroutineHelper.RunCoroutine(_brain.moverArc(_brain.Center.position));
             yield return new WaitForSeconds(_brain.moveDuration + 0.2f);
             CoroutineHelper.RunCoroutine(_brain.hideState.fireCluster());
-
         }
         public void FixedUpdateState(StateManager manager)
         {

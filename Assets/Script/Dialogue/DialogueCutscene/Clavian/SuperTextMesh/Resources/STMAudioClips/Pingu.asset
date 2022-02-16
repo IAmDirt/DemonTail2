@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1c93d2feb874fd49d1e903476e914b, type: 3}
+  m_Name: Pingu
+  m_EditorClassIdentifier: 
+  showFoldout: 1
+  clips:
+  - {fileID: 8300000, guid: 1e0cccbd211c49a42864513296501775, type: 3}
+  - {fileID: 8300000, guid: 09078d051edcf1141b21a1e79329b8ae, type: 3}
+  - {fileID: 8300000, guid: 0d5f7a885e2f4ca4fbd02d89ce290840, type: 3}
+  - {fileID: 8300000, guid: 5ae76b0af9caadf47b09e9dc336fe4d4, type: 3}
+  - {fileID: 8300000, guid: d675d323051b04d4ab372f2474a440ef, type: 3}
+  - {fileID: 8300000, guid: 3b13d09fa4a4f254b931b2605674bc0e, type: 3}
+  - {fileID: 8300000, guid: 3109b4c6b189f5b41a8cd5bab4840dfd, type: 3}
+  - {fileID: 8300000, guid: b542ae5305f473344bf5de1ef58da39d, type: 3}
+  - {fileID: 8300000, guid: 1e235ecc3d10edb458a6bd39c8b44e6a, type: 3}

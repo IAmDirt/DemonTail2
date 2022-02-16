@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1c93d2feb874fd49d1e903476e914b, type: 3}
+  m_Name: BigVoice
+  m_EditorClassIdentifier: 
+  showFoldout: 1
+  clips:
+  - {fileID: 8300000, guid: 4a019e5390b5f36489401c3ed95b6673, type: 3}
+  - {fileID: 8300000, guid: efe345e37590f4f4b8f5e9068b565278, type: 3}
+  - {fileID: 8300000, guid: 3925fd3e4623c7d40a60ff0ff9c4ed45, type: 3}
+  - {fileID: 8300000, guid: 6d67039d5ab202642b6c531ea2939c42, type: 3}
+  - {fileID: 8300000, guid: 4a3bc30be08bad747a2d441a30b73253, type: 3}
+  - {fileID: 8300000, guid: 39bdfaaf05c8a614b884a60f72da15a9, type: 3}
+  - {fileID: 8300000, guid: 92206fcf2b17c984fbdfc9b41faa4724, type: 3}
+  - {fileID: 8300000, guid: b7c258a4d8b7d9f42892b3c87ae63a1c, type: 3}
+  - {fileID: 8300000, guid: 67f96436247ea2648bbfd24d6eaad55a, type: 3}

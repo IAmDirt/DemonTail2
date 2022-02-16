@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1c93d2feb874fd49d1e903476e914b, type: 3}
+  m_Name: SmallVoice
+  m_EditorClassIdentifier: 
+  showFoldout: 1
+  clips:
+  - {fileID: 8300000, guid: 4be414d26ae5c2f44be075b6630ca083, type: 3}
+  - {fileID: 8300000, guid: 01a62e2ea32aba24895a2d6c459d3422, type: 3}
+  - {fileID: 8300000, guid: 626638e400d165a4b93884ba51ff1499, type: 3}
+  - {fileID: 8300000, guid: d07871b3da0bb4a4cb58d0d352d6bbb4, type: 3}
+  - {fileID: 8300000, guid: d2ba11bf1ed5d7d4e86ee7f738462843, type: 3}
+  - {fileID: 8300000, guid: 78663ee5f17cc84459dcc37ac7f6ed93, type: 3}
+  - {fileID: 8300000, guid: 00022e22a63fe954ea99ebb2b5e9890f, type: 3}
+  - {fileID: 8300000, guid: 583834763b273e043a1520cdf2340ed2, type: 3}
+  - {fileID: 8300000, guid: e10bf824239ea434585cf902ebe9c1ba, type: 3}

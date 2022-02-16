@@ -41,6 +41,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0 )
         {
+            isDead = true;
             deathEvent.Invoke();
             Kill();
         }

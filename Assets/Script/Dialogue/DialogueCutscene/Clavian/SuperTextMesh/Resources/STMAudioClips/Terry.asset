@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1c93d2feb874fd49d1e903476e914b, type: 3}
+  m_Name: Terry
+  m_EditorClassIdentifier: 
+  showFoldout: 1
+  clips:
+  - {fileID: 8300000, guid: 66c058c26fa1d6a4aa0bcdac330440a3, type: 3}
+  - {fileID: 8300000, guid: eb143f1d28e15c84aa8f650c1079e890, type: 3}
+  - {fileID: 8300000, guid: 09a67514d960d6946b309d7b0ea787a7, type: 3}
+  - {fileID: 8300000, guid: 70bc5924f3998264a8fee2653a250df8, type: 3}
+  - {fileID: 8300000, guid: a62a17b8e910a1d458d36a8932c78655, type: 3}
+  - {fileID: 8300000, guid: 659693d66813c0445b65b38dbad444fc, type: 3}

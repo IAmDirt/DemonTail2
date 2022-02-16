@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1c93d2feb874fd49d1e903476e914b, type: 3}
+  m_Name: Pixo
+  m_EditorClassIdentifier: 
+  showFoldout: 1
+  clips:
+  - {fileID: 8300000, guid: 464cc3070cdba9d4288bb49b870f06a8, type: 3}
+  - {fileID: 8300000, guid: 5a1a079a3b71cd34bb88ff8351d7c7d5, type: 3}
+  - {fileID: 8300000, guid: 572eed677fd99974f9bd7edb73a4b209, type: 3}
+  - {fileID: 8300000, guid: 159342177a937494ba0959c756cf897a, type: 3}
+  - {fileID: 8300000, guid: 864788996dc1d594f9d21516ebf9c847, type: 3}
+  - {fileID: 8300000, guid: 95364c75ea0f95c4882e5f5022de5f7f, type: 3}
+  - {fileID: 8300000, guid: 275c42e36d9f2de4dac5131e2fcdf87d, type: 3}
+  - {fileID: 8300000, guid: 296c2a65cadd1574dab34adfbce375fa, type: 3}

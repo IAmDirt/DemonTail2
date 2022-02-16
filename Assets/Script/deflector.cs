@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class deflector : MonoBehaviour
 {
-    public GameManager manager;
     public LayerMask BallLayer;
 
     [Header("shield")]
@@ -14,7 +13,6 @@ public class deflector : MonoBehaviour
     public DialogueManager dialogueManager;
     public void Start()
     {
-        manager.player = transform;
         movement = GetComponent<SlugMovement>();
         trail.emitting = false;
         deflectRadius = minDeflectRadius;

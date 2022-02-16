@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1c93d2feb874fd49d1e903476e914b, type: 3}
+  m_Name: Blerp
+  m_EditorClassIdentifier: 
+  showFoldout: 1
+  clips:
+  - {fileID: 8300000, guid: bab58d3b70f44914c9593eb1c3cafdef, type: 3}
+  - {fileID: 8300000, guid: 781dca5fa519f994c8e88699c4d4b0d4, type: 3}
+  - {fileID: 8300000, guid: c470dd34d13e322429da45d92f1b2d1c, type: 3}
+  - {fileID: 8300000, guid: 8977aaa21a418d6409d3c227bf23260b, type: 3}
+  - {fileID: 8300000, guid: 31ff789827e19474887555cc7fdfee95, type: 3}
+  - {fileID: 8300000, guid: 93e8560d579ac584b904c2683fa56d31, type: 3}
+  - {fileID: 8300000, guid: e8572fb2aed97a7408232a72e545f0e7, type: 3}
