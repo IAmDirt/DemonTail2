@@ -105,7 +105,6 @@ public class Boss_Director : StateManager
         StartCoroutine(jumpArc(ArenaCenter.position + randomDirection));
     }
 
-
     [System.Serializable]
     public class Stage1 : IState
     {

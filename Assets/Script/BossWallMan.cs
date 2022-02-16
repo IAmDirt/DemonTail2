@@ -68,7 +68,7 @@ public class BossWallMan : StateManager
         dead = true;
         anim.SetTrigger(m_Dead);
         anim.applyRootMotion = true;
-        StopCoroutine(EnragedState.CurrentAction);
+        EnragedState.CurrentTask.Stop();
     }
     public void DamageTakenEvent()
     {
@@ -756,7 +756,7 @@ public class BossWallMan : StateManager
         BossWallMan _brain;
         public damageSphere DamageCollider_Jump;
         public bulletSpawner[] spiralSpawners;
-        public IEnumerator CurrentAction;
+        public Task CurrentTask;
 
         public float SpiralAttackDuration = 5.5f;
         public float jumpAttackDuration = 12f;
@@ -783,31 +783,29 @@ public class BossWallMan : StateManager
             }
             if (AttackDuration <= 0)
             {
+                IEnumerator nextTask;
+
                 switch (nextAttack)
                 {
 
                     case 0:     //chase
-                        CurrentAction = SpiralShoot();
-                        CoroutineHelper.RunCoroutine(CurrentAction);
+                        nextTask = SpiralShoot();
                         AttackDuration = SpiralAttackDuration;
                         nextAttack++;
                         break;
 
                     case 1:     //errectEyes
-                        CurrentAction = EnragedJumpAttack();
-                        CoroutineHelper.RunCoroutine(EnragedJumpAttack());
+                        nextTask = EnragedJumpAttack();
                         AttackDuration = jumpAttackDuration;
                         nextAttack++;
                         break;
                     case 2:     //errectEyes
-                        CurrentAction = FireProjectiles();
-                        CoroutineHelper.RunCoroutine(CurrentAction);
+                        nextTask = FireProjectiles();
                         AttackDuration = ProjectileDuration;
                         nextAttack++;
                         break;
                     case 3:     //errectEyes
-                        CurrentAction = EnragedJumpAttack();
-                        CoroutineHelper.RunCoroutine(CurrentAction);
+                        nextTask = EnragedJumpAttack();
                         AttackDuration = jumpAttackDuration;
                         nextAttack++;
                         break;
@@ -816,6 +814,7 @@ public class BossWallMan : StateManager
                         nextAttack = 0;
                         return;
                 }
+                CurrentTask = new Task(nextTask);
             }
             else
                 AttackDuration -= Time.deltaTime;

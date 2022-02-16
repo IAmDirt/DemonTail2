@@ -115,6 +115,7 @@ public class SlugMovement : movement
 
     [Header("Dash")]
     public ParticleSystem dashParticles;
+    public TrailRenderer dashTrail;
     public float dashDuration = 1;
     public float dashSpeed = 1;
     private bool isDashing;
@@ -143,7 +144,8 @@ public class SlugMovement : movement
         .setEasePunch();
         dashParticles.Play();
         DashSound.PlayRandomClip();
-        health.startInvonrableFrames(dashDuration);
+        health.startInvonrableFrames(dashDuration+0.3f);
+        dashTrail.emitting = true;
         while (dashProgress < dashDuration)
         {
             dashProgress += Time.deltaTime;
@@ -152,10 +154,12 @@ public class SlugMovement : movement
 
             yield return new WaitForFixedUpdate();
         }
-        dashParticles.Stop();
         isDashing = false;
 
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSeconds(0.15f);
+        dashTrail.emitting = false;
+        dashParticles.Stop();
+        yield return new WaitForSeconds(0.5f);
         canDash = true;
     }
 
