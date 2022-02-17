@@ -103,6 +103,7 @@ public class bulletSpawner : MonoBehaviour
     {
         var spawnPosition = new Vector3(BulletSpawner.position.x, 1.5f, BulletSpawner.position.z);
         var spawned = PoolManager.Spawn(Bullet, spawnPosition, Quaternion.LookRotation(direction));
+        spawned.transform.parent = this.transform;
         return spawned;
     }
 

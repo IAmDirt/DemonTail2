@@ -13533,13 +13533,8 @@ MonoBehaviour:
   minAngle: 0
   maxAngle: -360
   BulletSpawner: {fileID: 4083924864916527323}
-  rotationAxis1: {x: 0, y: 0, z: 0}
-  rotationAxis2: {x: 0, y: 0, z: 0}
-  rotationSpeed: 0
-  obj1: {fileID: 0}
-  obj2: {fileID: 0}
-  animationObj: {fileID: 0}
-  shadow: {fileID: 0}
+  timeDalayShoot: 0.03
+  player: {fileID: 0}
 --- !u!1 &2905773905566201182
 GameObject:
   m_ObjectHideFlags: 0
@@ -13590,13 +13585,8 @@ MonoBehaviour:
   minAngle: 0
   maxAngle: -360
   BulletSpawner: {fileID: 4083924864916527323}
-  rotationAxis1: {x: 0, y: 0, z: 0}
-  rotationAxis2: {x: 0, y: 0, z: 0}
-  rotationSpeed: 0
-  obj1: {fileID: 0}
-  obj2: {fileID: 0}
-  animationObj: {fileID: 0}
-  shadow: {fileID: 0}
+  timeDalayShoot: 0.03
+  player: {fileID: 0}
 --- !u!95 &4083924863164329085
 Animator:
   serializedVersion: 3
@@ -17443,6 +17433,7 @@ GameObject:
   - component: {fileID: 4083924864916527322}
   - component: {fileID: 4083924864916527320}
   - component: {fileID: 1905022549}
+  - component: {fileID: 1857553139}
   m_Layer: 12
   m_Name: Boss1
   m_TagString: Untagged
@@ -17496,11 +17487,23 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 4083924864916527319}
         m_TargetAssemblyTypeName: BossWallMan, Assembly-CSharp
         m_MethodName: DeathEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4083924864916527317}
+        m_TargetAssemblyTypeName: Block, Assembly-CSharp
+        m_MethodName: Kill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17563,6 +17566,7 @@ MonoBehaviour:
         m_CallState: 2
   useInvulnerableFrames: 0
   invulnerableTime: 1
+  isDead: 0
   DamageAudio: {fileID: 0}
   invonrable: 0
   scaleAmount: 1
@@ -17582,9 +17586,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 5
-  m_Height: 15
+  m_Height: 13.445934
   m_Direction: 1
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Center: {x: 0, y: 1.2229671, z: 0}
 --- !u!114 &4083924864916527319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17662,6 +17666,8 @@ MonoBehaviour:
   screamParticle: {fileID: 1472086462}
   JumpImpact: {fileID: 4083924864133471372}
   screamSound: {fileID: 517512104}
+  EndTimeline: {fileID: 0}
+  MiscBehaviors: {fileID: 8899790267297653128}
   headLookTarget: {fileID: 4083924864013489536}
   Center: {fileID: 0}
   moveDuration: 0.8
@@ -17822,17 +17828,42 @@ MonoBehaviour:
   Bullet: {fileID: 9187445295896162903, guid: 7a520257a4d53aa46a368f362ce3f387, type: 3}
   isenabled: 0
   idleAnim: 1
-  BulletAmount: 85
+  BulletAmount: 50
   minAngle: -45
   maxAngle: -135
   BulletSpawner: {fileID: 4083924864916527323}
-  rotationAxis1: {x: 0, y: 0, z: 0}
-  rotationAxis2: {x: 0, y: 0, z: 0}
-  rotationSpeed: 0
-  obj1: {fileID: 0}
-  obj2: {fileID: 0}
-  animationObj: {fileID: 0}
-  shadow: {fileID: 0}
+  timeDalayShoot: 0.07
+  player: {fileID: 0}
+--- !u!114 &1857553139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4083924864916527318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 85b7c21bd64568e4f81940718f3d7c8d, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4083924864916527319}
+          m_TargetAssemblyTypeName: BossWallMan, Assembly-CSharp
+          m_MethodName: activateBoss
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4083924864936457510
 GameObject:
   m_ObjectHideFlags: 0
@@ -18639,13 +18670,8 @@ MonoBehaviour:
   minAngle: 0
   maxAngle: -360
   BulletSpawner: {fileID: 4083924864916527323}
-  rotationAxis1: {x: 0, y: 0, z: 0}
-  rotationAxis2: {x: 0, y: 0, z: 0}
-  rotationSpeed: 0
-  obj1: {fileID: 0}
-  obj2: {fileID: 0}
-  animationObj: {fileID: 0}
-  shadow: {fileID: 0}
+  timeDalayShoot: 0.03
+  player: {fileID: 0}
 --- !u!1 &5034681819341438351
 GameObject:
   m_ObjectHideFlags: 0
@@ -39937,12 +39963,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 467716564}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2787722602320255313 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2787722602129428613, guid: 4d29626c8f15fc141838952e758daf64,
-    type: 3}
-  m_PrefabInstance: {fileID: 467716564}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8376696675856389579 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8376696675401292831, guid: 4d29626c8f15fc141838952e758daf64,
@@ -40000,6 +40020,12 @@ GameObject:
 --- !u!1 &583828920038217216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 583828919688011732, guid: 4d29626c8f15fc141838952e758daf64,
+    type: 3}
+  m_PrefabInstance: {fileID: 467716564}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2787722602320255313 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2787722602129428613, guid: 4d29626c8f15fc141838952e758daf64,
     type: 3}
   m_PrefabInstance: {fileID: 467716564}
   m_PrefabAsset: {fileID: 0}
@@ -40309,6 +40335,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d29626c8f15fc141838952e758daf64, type: 3}
+--- !u!4 &379414141576791973 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8843957895876481387, guid: 4d29626c8f15fc141838952e758daf64,
+    type: 3}
+  m_PrefabInstance: {fileID: 1823779120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5080153657134672506 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5080153656521474890, guid: 4d29626c8f15fc141838952e758daf64,
@@ -40357,9 +40389,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1823779120}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &379414141576791973 stripped
+--- !u!4 &1044758781059186184 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8843957895876481387, guid: 4d29626c8f15fc141838952e758daf64,
+  m_CorrespondingSourceObject: {fileID: 1044758779527436088, guid: 4d29626c8f15fc141838952e758daf64,
     type: 3}
   m_PrefabInstance: {fileID: 1823779120}
   m_PrefabAsset: {fileID: 0}
@@ -40372,12 +40404,6 @@ Transform:
 --- !u!4 &2384579433815413856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2384579432149007696, guid: 4d29626c8f15fc141838952e758daf64,
-    type: 3}
-  m_PrefabInstance: {fileID: 1823779120}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1044758781059186184 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1044758779527436088, guid: 4d29626c8f15fc141838952e758daf64,
     type: 3}
   m_PrefabInstance: {fileID: 1823779120}
   m_PrefabAsset: {fileID: 0}
@@ -40966,9 +40992,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4083924863520744187}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &8263152606258642832 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5332712232296488299, guid: aea5dec6ccfbfd640ab7455387298a92,
+--- !u!1 &398653558195849586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4406008393018354569, guid: aea5dec6ccfbfd640ab7455387298a92,
     type: 3}
   m_PrefabInstance: {fileID: 4083924863520744187}
   m_PrefabAsset: {fileID: 0}
@@ -40984,9 +41010,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4083924863520744187}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &398653558195849586 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4406008393018354569, guid: aea5dec6ccfbfd640ab7455387298a92,
+--- !u!4 &8263152606258642832 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5332712232296488299, guid: aea5dec6ccfbfd640ab7455387298a92,
     type: 3}
   m_PrefabInstance: {fileID: 4083924863520744187}
   m_PrefabAsset: {fileID: 0}
@@ -45519,7 +45545,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 91034b47fa7402b4e9871386735433f3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 91034b47fa7402b4e9871386735433f3,
         type: 3}

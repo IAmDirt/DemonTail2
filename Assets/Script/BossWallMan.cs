@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Animations.Rigging;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Playables;
 public class BossWallMan : StateManager
 {
     public bool dead;
@@ -71,11 +72,20 @@ public class BossWallMan : StateManager
         WiggleAnim(leftHand_IK);
     }
     #endregion
+    public PlayableDirector EndTimeline;
+    public GameObject MiscBehaviors;
     public void DeathEvent()
     {
         dead = true;
         anim.SetTrigger(m_Dead);
+        anim.applyRootMotion = true;
         EnragedState.CurrentTask.Stop();
+        EndTimeline.Play();
+
+
+        MiscBehaviors.SetActive(false);
+        transform.position = Center.position + Center.forward * 15 + Vector3.up *0.5f + Center.right *5;
+        transform.rotation = Quaternion.LookRotation(-Center.forward);
     }
     public void DamageTakenEvent()
     {
