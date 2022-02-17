@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-
+using Ink.Runtime;
 public class DialogueTrackMixer : PlayableBehaviour //putting logic over all clips on track here
 {
-
-    public cutSceneDialogue[] dialogue;
+    public TextAsset inkFile;
 
     private PlayableDirector director;
     private DialogueBehaviour lastClip;
@@ -37,13 +36,13 @@ public class DialogueTrackMixer : PlayableBehaviour //putting logic over all cli
         {
             //timeline is paused
             Debug.Log("paused track Mixer");
-            //GameManager.Instance.PauseTimeline(director);
+            gameManager.Instance.PauseTimeline(director);
             StartDialogue();
         }
     }
     private void StartDialogue()
     {
-        DialogueManagerCutscene.Instance.playDialogue(dialogue);
+        DialogueManager.Instance.StartDialogue(inkFile);
     }
 
     public override void OnBehaviourPause(Playable playable, FrameData info)    //when the the trackis stopped
@@ -69,14 +68,14 @@ public class DialogueTrackMixer : PlayableBehaviour //putting logic over all cli
             }
         }
 
-        if (lastClip != null)
+       /* if (lastClip != null)
             if (lastClip.onExitHideDialogue)
             {
                 DialogueManagerCutscene.Instance.StartCoroutine(DialogueManagerCutscene.Instance.hideDialogueDisplay());
                // GameManager.Instance.returnToGameplay();
                 lastClip = null;
                 Debug.Log("hide");
-            }
+            }*/
         return currentClip;
     }
 }

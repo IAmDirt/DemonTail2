@@ -20,12 +20,12 @@ public class DialogueTrack : TrackAsset
         }
 
         var mixer = ScriptPlayable<DialogueTrackMixer>.Create(graph, inputCount);    //tells track tp use dialogue behavior
-        mixer.GetBehaviour().dialogue = dialouge;
+        mixer.GetBehaviour().inkFile = inkFile;
         return mixer;
     }
 
     [Header("dialogue")]
-    public cutSceneDialogue[] dialouge;
+    public TextAsset inkFile;
 
     public bool onlyPlayOnce = false;
     private bool _alreadyPlayed;

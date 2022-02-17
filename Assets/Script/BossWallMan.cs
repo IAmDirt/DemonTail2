@@ -9,6 +9,7 @@ public class BossWallMan : StateManager
     public Hide hideState = new Hide();
     public ChasePlayer chaseState = new ChasePlayer();
     public EnragedChase EnragedState = new EnragedChase();
+    public IdleState idleState = new IdleState();
 
     public Animator anim;
 
@@ -39,10 +40,17 @@ public class BossWallMan : StateManager
         chaseState.SetBrain(this);
         EnragedState.SetBrain(this);
     }
+
+    public void activateBoss()
+    {
+        setNewState(hideState);
+    }
+
     public void Start()
     {
         HealthUI.setMaxFill(block.maxHealth);
-        setNewState(hideState);
+      
+        setNewState(idleState);
 
         rightHand_IK.StartOffset = rightHand_IK.target.localPosition;
         leftHand_IK.StartOffset = leftHand_IK.target.localPosition;
@@ -892,6 +900,33 @@ public class BossWallMan : StateManager
                 BulletSpawner.spiralStart();
             }
         }
+    }
+
+
+    public class IdleState : IState
+    {
+        BossWallMan _brain;
+        public void SetBrain(BossWallMan brain)
+        {
+            _brain = brain;
+        }
+        public void enterState(StateManager manager)
+        {
+            // CoroutineHelper.RunCoroutine(EnragedJumpAttack());
+        }
+        public void exitState(StateManager manager)
+        {
+        }
+        public void updateState(StateManager manager)
+        {
+        
+        }
+
+       
+        public void FixedUpdateState(StateManager manager)
+        {
+        }
+   
     }
     #endregion
 }

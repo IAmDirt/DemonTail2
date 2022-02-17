@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 using UnityEngine;
 
 public class gameManager : MonoBehaviour
@@ -86,4 +87,41 @@ public class gameManager : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
         PauseGame();
     }
+
+    //timeline
+    //--------------------------------------------------------------
+    private PlayableDirector activeDirector;
+    public void PauseTimeline(PlayableDirector whichOne)
+    {
+        gameMode = GameMode.Cutscene; //InputManager will be waiting for a spacebar to resume
+        paused = true;
+        if (whichOne != null)
+        {
+            activeDirector = whichOne;
+            activeDirector.playableGraph.GetRootPlayable(0).SetSpeed(0);
+        }
+    }
+    //Called by the InputManager
+    public void ResumeTimeline()
+    {
+        if (paused )//&& !DialogueManager.Instance.textIsReading())
+        {
+            if (activeDirector != null)
+            {
+                var playable = activeDirector.playableGraph.GetRootPlayable(0);
+                playable.SetSpeed(1);
+            }
+            paused = false;
+            //activeDirector.Resume();
+        }
+        //  else
+        // DialogueManager.Instance.SpeedRead();
+    }
+    public void endTimeLine()
+    {
+        gameMode = GameMode.Gameplay;
+        //DialogueManager.Instance.endDialogue();
+        Debug.Log("end");
+    }
+
 }

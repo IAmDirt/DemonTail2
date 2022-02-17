@@ -19,13 +19,13 @@ public class MusicManager : MonoBehaviour
     {
         Intro();
        // waitTime -= 90;
-        Current.time = 90;
+       // Current.time = 90;
         NextSwitch = waitTime;
 
 
     }
 
-        private float waitTime = 171f;
+        private float waitTime = 16;
         private float NextSwitch;
 
     void Update()

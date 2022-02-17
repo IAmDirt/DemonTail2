@@ -16,9 +16,9 @@ public class dialogueContainer : MonoBehaviour
 
     public void triggerDialogue(DialogueManager dialogueManager)
     {
-        if(OnlyTriggerOnce && !_alreadyTriggered || !OnlyTriggerOnce)
+        if (OnlyTriggerOnce && !_alreadyTriggered || !OnlyTriggerOnce)
         {
-        dialogueManager.StartDialogue(inkFile);
+            dialogueManager.StartDialogue(inkFile);
             _alreadyTriggered = true;
         }
         ToglePromt();

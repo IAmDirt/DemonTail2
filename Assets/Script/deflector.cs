@@ -197,7 +197,6 @@ public class deflector : MonoBehaviour
                                 projectille.deflect(deflectDir);
                                 colliders.Add(collider);
                                 // DoSlowmotion(ball.PowerProsentage, slowDownRecoverTime, slowdownFactor);
-                                yield break;
                             }
 
                         var dialogue = collider.GetComponent<dialogueContainer>();

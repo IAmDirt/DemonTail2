@@ -6,7 +6,7 @@ using Ink.Runtime;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : Singleton<DialogueManager>
 {
     public TextAsset inkFile;
     public GameObject customButton;
@@ -28,7 +28,7 @@ public class DialogueManager : MonoBehaviour
     //tags
     private const string SPEAKER_TAG = "Speaker";
     private const string PORTRAIT_TAG = "Portrait";
-    private const string ADVANCE_TAG = "AdvanceCutscene";
+    private const string ADVANCE_TAG = "Advance";
 
     void Start()
     {
@@ -180,6 +180,8 @@ public class DialogueManager : MonoBehaviour
                     break;
                 case ADVANCE_TAG:
                     Debug.Log("advance=" + tagValue);
+                    gameManager.Instance.ResumeTimeline();
+                    inputAdvanceDialogue();
                     break;
             }
         }
