@@ -46,6 +46,7 @@ public class gameManager : MonoBehaviour
         }
     }
     private bool paused;
+    #region Time
     public void pause()
     {
         if (paused)
@@ -74,22 +75,42 @@ public class gameManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+    #endregion
 
+    #region scenes
     public void restartLVL()
     {
         SetNormalTime();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
     }
+    public Animator fadeAnim;
+    public void loadScene(int i)
+    {
+        StartCoroutine(loadSceneDelay(i));
+    }
+    public IEnumerator loadSceneDelay(int i)
+    {
+        fadeBlack(true);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(i);
+    }
+    public void fadeBlack(bool bo)
+    {
+        fadeAnim.SetBool("fadeBlack", bo);
+    }
+
     public GameObject gameOverScreen;
     public void GameOver()
     {
         transform.GetChild(0).gameObject.SetActive(true);
         PauseGame();
     }
+    #endregion
 
+    #region Timeline
     //timeline
     //--------------------------------------------------------------
+
     private PlayableDirector activeDirector;
     public void PauseTimeline(PlayableDirector whichOne)
     {
@@ -123,5 +144,5 @@ public class gameManager : MonoBehaviour
         //DialogueManager.Instance.endDialogue();
         Debug.Log("end");
     }
-
+    #endregion
 }

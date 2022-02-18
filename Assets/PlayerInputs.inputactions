@@ -786,6 +786,14 @@
             "id": "601b1da8-13a9-4281-afce-1543da4b94d9",
             "actions": [
                 {
+                    "name": "Back",
+                    "type": "Button",
+                    "id": "24f3697c-83ec-4da5-a53c-e1c33c853975",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Select",
                     "type": "Button",
                     "id": "2c3bded2-1b1d-4778-b92e-34dab4ac4709",
@@ -879,6 +887,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RightShoulder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f6c87dfe-fe85-41c2-af31-73ab0c4764cc",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

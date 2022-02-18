@@ -180,6 +180,7 @@ public class BossWallMan : StateManager
         direction.y = 0;
         return direction = direction.normalized;
     }
+    public bulletSpawner ProjectileArc;
     public void arcProjectile(bool isDud, Vector3 playerPosition)
     {
         var randomCircle = Random.insideUnitCircle * 20;
@@ -194,7 +195,7 @@ public class BossWallMan : StateManager
         ball.isDud = isDud;
         ball.PhysicsShoot(target, Random.Range(shootAngle - 5, shootAngle + 5), velocityPredicition);
     }
-    private float arenaRadius = 25;
+    private float arenaRadius = 22;
     private Vector3 ClampVector(float radius, Vector3 center, Vector3 newLocation)
     {
         float distance = Vector3.Distance(newLocation, center); //distance from ~green object~ to *black circle*
@@ -440,7 +441,7 @@ public class BossWallMan : StateManager
                     if (!SpawnersSummoned)
                     {
                         SpawnersSummoned = true;
-                        var Bulletspawner = _brain.GetComponent<bulletSpawner>();
+                        var Bulletspawner = _brain.ProjectileArc;
                         Bulletspawner.spiralStart();
                         AttackDuration = CardThrowDuration;
                     }

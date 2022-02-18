@@ -799,6 +799,14 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
             ""id"": ""601b1da8-13a9-4281-afce-1543da4b94d9"",
             ""actions"": [
                 {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""24f3697c-83ec-4da5-a53c-e1c33c853975"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Select"",
                     ""type"": ""Button"",
                     ""id"": ""2c3bded2-1b1d-4778-b92e-34dab4ac4709"",
@@ -894,6 +902,17 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""action"": ""RightShoulder"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f6c87dfe-fe85-41c2-af31-73ab0c4764cc"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -930,6 +949,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
+        m_Dialogue_Back = m_Dialogue.FindAction("Back", throwIfNotFound: true);
         m_Dialogue_Select = m_Dialogue.FindAction("Select", throwIfNotFound: true);
         m_Dialogue_LeftTrigger = m_Dialogue.FindAction("LeftTrigger", throwIfNotFound: true);
         m_Dialogue_RightTrigger = m_Dialogue.FindAction("RightTrigger", throwIfNotFound: true);
@@ -1226,6 +1246,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     // Dialogue
     private readonly InputActionMap m_Dialogue;
     private IDialogueActions m_DialogueActionsCallbackInterface;
+    private readonly InputAction m_Dialogue_Back;
     private readonly InputAction m_Dialogue_Select;
     private readonly InputAction m_Dialogue_LeftTrigger;
     private readonly InputAction m_Dialogue_RightTrigger;
@@ -1235,6 +1256,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     {
         private @PlayerInputs m_Wrapper;
         public DialogueActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Back => m_Wrapper.m_Dialogue_Back;
         public InputAction @Select => m_Wrapper.m_Dialogue_Select;
         public InputAction @LeftTrigger => m_Wrapper.m_Dialogue_LeftTrigger;
         public InputAction @RightTrigger => m_Wrapper.m_Dialogue_RightTrigger;
@@ -1249,6 +1271,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_DialogueActionsCallbackInterface != null)
             {
+                @Back.started -= m_Wrapper.m_DialogueActionsCallbackInterface.OnBack;
+                @Back.performed -= m_Wrapper.m_DialogueActionsCallbackInterface.OnBack;
+                @Back.canceled -= m_Wrapper.m_DialogueActionsCallbackInterface.OnBack;
                 @Select.started -= m_Wrapper.m_DialogueActionsCallbackInterface.OnSelect;
                 @Select.performed -= m_Wrapper.m_DialogueActionsCallbackInterface.OnSelect;
                 @Select.canceled -= m_Wrapper.m_DialogueActionsCallbackInterface.OnSelect;
@@ -1268,6 +1293,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
             m_Wrapper.m_DialogueActionsCallbackInterface = instance;
             if (instance != null)
             {
+                @Back.started += instance.OnBack;
+                @Back.performed += instance.OnBack;
+                @Back.canceled += instance.OnBack;
                 @Select.started += instance.OnSelect;
                 @Select.performed += instance.OnSelect;
                 @Select.canceled += instance.OnSelect;
@@ -1319,6 +1347,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     }
     public interface IDialogueActions
     {
+        void OnBack(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnLeftTrigger(InputAction.CallbackContext context);
         void OnRightTrigger(InputAction.CallbackContext context);
