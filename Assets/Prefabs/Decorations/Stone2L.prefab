@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1771589278494136196}
   - component: {fileID: 3403077021310883873}
   - component: {fileID: 639194267295116523}
+  - component: {fileID: 7256461041332521835}
   m_Layer: 0
   m_Name: Stone2L
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7256461041332521835
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431621024498634046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 196667147428340533, guid: 92edf924e3667f64ead3c7eb5c311ca8, type: 3}
