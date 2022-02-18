@@ -11,13 +11,12 @@ public class sceneLoader : MonoBehaviour
     {
         if (input == null)
         {
-            {
                 var inputPlayer = other.GetComponent<InputPlayer>();
                 if (inputPlayer)
                 {
                     input = inputPlayer.input;
                 }
-            }
+        }
 
             if (other.gameObject.layer == 10)
             {
@@ -30,7 +29,6 @@ public class sceneLoader : MonoBehaviour
 
                 }
             }
-        }
     }
 
     public void loadScene()
