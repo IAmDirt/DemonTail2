@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputPlayer : MonoBehaviour
 {
-    PlayerInputs input;
+   [HideInInspector] public PlayerInputs input;
     SlugMovement movement;
     deflector deflector;
 
