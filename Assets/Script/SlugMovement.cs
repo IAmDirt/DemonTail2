@@ -79,6 +79,7 @@ public class SlugMovement : movement
             return;
         ForceBodyStand();
     }
+    public bool inOverworld;
     public void faceCursor()
     {
         RaycastHit hit;
@@ -99,6 +100,9 @@ public class SlugMovement : movement
         lookDirection = lookDirection - transform.position;
         lookDirection = lookDirection.normalized;
 
+        if(inOverworld)
+        rotateBody(input.MoveInput, baseRb);
+        else
         rotateBody(lookDirection, baseRb);
         //  else
         //  {
