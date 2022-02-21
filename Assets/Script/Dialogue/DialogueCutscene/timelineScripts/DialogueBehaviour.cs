@@ -9,10 +9,12 @@ public class DialogueBehaviour : PlayableBehaviour// old behavior logis is clip 
     [Space(10)]
     [Header("Dialouge Related")]
     public bool onEnterPauseTimeline = true;
-    public bool onExitHideDialogue = true;
+   // public bool onExitHideDialogue = true;
+    public bool displayDialogue= true;
 
 
     private bool clipPlayed = false;
+    private bool dialoguePlayed = false;
     private PlayableDirector director;
 
     public override void OnPlayableCreate(Playable playable)
@@ -30,6 +32,15 @@ public class DialogueBehaviour : PlayableBehaviour// old behavior logis is clip 
         return false;
     }
 
+    public bool canPlayDialogue()
+    {
+        if (displayDialogue && !dialoguePlayed)   //pause timeline when enter
+        {
+            dialoguePlayed = true;
+            return true;
+        }
+        return false;
+    }
     #region behaviors
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)//kind of like update, but when track plays
     {

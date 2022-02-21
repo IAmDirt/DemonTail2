@@ -112,8 +112,23 @@ public class gameManager : MonoBehaviour
     //--------------------------------------------------------------
 
     private PlayableDirector activeDirector;
+    private bool skipPause;
+    public void skipNextPause()
+    {
+        skipPause = true;
+    }
+    public void resetSkip()
+    {
+        skipPause = false;
+    }
     public void PauseTimeline(PlayableDirector whichOne)
     {
+        if (skipPause)
+        {
+            skipPause = false;
+            return;
+        }
+
         gameMode = GameMode.Cutscene; //InputManager will be waiting for a spacebar to resume
         paused = true;
         if (whichOne != null)

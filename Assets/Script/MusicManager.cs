@@ -19,7 +19,7 @@ public class MusicManager : MonoBehaviour
     {
         Intro();
        // waitTime -= 90;
-        Current.time = 10;
+       // Current.time = 10;
         NextSwitch = waitTime ;
 
 

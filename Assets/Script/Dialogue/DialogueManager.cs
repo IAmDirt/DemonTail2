@@ -29,6 +29,7 @@ public class DialogueManager : Singleton<DialogueManager>
     private const string SPEAKER_TAG = "Speaker";
     private const string PORTRAIT_TAG = "Portrait";
     private const string ADVANCE_TAG = "Advance";
+    private const string HIDE_TAG = "Hide";
 
     void Start()
     {
@@ -38,6 +39,15 @@ public class DialogueManager : Singleton<DialogueManager>
     }
     public void StartDialogue(TextAsset newInkFile)
     {
+        if (currentStory)
+            if (currentStory.canContinue)
+            {
+                showDialogueUI(true);
+                inputAdvanceDialogue();
+                return;
+            }
+
+
         currentStory = new Story(newInkFile.text);
         showDialogueUI(true);
         AdvanceDialogue();
@@ -45,11 +55,20 @@ public class DialogueManager : Singleton<DialogueManager>
     }
     public void showDialogueUI(bool bo)
     {
+        isHidden = !bo;
         textBox.SetActive(bo);
         optionPanel.SetActive(bo);
     }
+    private bool isHidden;
+    public void hideDialogue()
+    {
+        isHidden = true;
+        showDialogueUI(false);
+    }
     public void inputAdvanceDialogue()
     {
+        if (isHidden)
+            return;
         //Is there more to the story?
         if (currentStory.canContinue)
         {
@@ -181,8 +200,15 @@ public class DialogueManager : Singleton<DialogueManager>
                 case ADVANCE_TAG:
                     Debug.Log("advance=" + tagValue);
                     gameManager.Instance.ResumeTimeline();
+                    gameManager.Instance.skipNextPause();
                     inputAdvanceDialogue();
                     break;
+                case HIDE_TAG:
+                    Debug.Log("Hide=" + tagValue);
+                    hideDialogue();
+                    break;
+
+                    
             }
         }
     }

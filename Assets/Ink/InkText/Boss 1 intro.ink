@@ -6,5 +6,5 @@ and you DIE! HA HA HA ha....
 
 I am going to enjoy Crushing you!
 
-...  #Advance: Cutscene
+...  #Advance: Cutscene #Hide: Cutscene
     -> END

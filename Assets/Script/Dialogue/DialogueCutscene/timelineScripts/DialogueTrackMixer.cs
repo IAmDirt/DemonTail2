@@ -26,29 +26,30 @@ public class DialogueTrackMixer : PlayableBehaviour //putting logic over all cli
             return;
         }
 
-        //if (onEnterExitCutscene) 
-        //{
-        //    DialogueManager.Instance.CutsceneEndDialogue();
-        //    GameManager.Instance.endTimeLine();
-        //}
+        /*if (newClip.onExitHideDialogue) 
+        {
+            DialogueManager.Instance.hideDialogue();
+            return;
+        }*/
 
         if (newClip.canPause())
         {
             //timeline is paused
             Debug.Log("paused track Mixer");
             gameManager.Instance.PauseTimeline(director);
-            StartDialogue();
         }
+        if (newClip.canPlayDialogue())
+            StartDialogue();
     }
     private void StartDialogue()
     {
         DialogueManager.Instance.StartDialogue(inkFile);
+        gameManager.Instance.resetSkip();
     }
 
     public override void OnBehaviourPause(Playable playable, FrameData info)    //when the the trackis stopped
     {
     }
-
     public DialogueBehaviour getCurrentBehavior(Playable playable)
     {
         DialogueBehaviour currentClip = null;
@@ -68,14 +69,14 @@ public class DialogueTrackMixer : PlayableBehaviour //putting logic over all cli
             }
         }
 
-       /* if (lastClip != null)
-            if (lastClip.onExitHideDialogue)
-            {
-                DialogueManagerCutscene.Instance.StartCoroutine(DialogueManagerCutscene.Instance.hideDialogueDisplay());
-               // GameManager.Instance.returnToGameplay();
-                lastClip = null;
-                Debug.Log("hide");
-            }*/
+        /* if (lastClip != null)
+             if (lastClip.onExitHideDialogue)
+             {
+                 DialogueManagerCutscene.Instance.StartCoroutine(DialogueManagerCutscene.Instance.hideDialogueDisplay());
+                // GameManager.Instance.returnToGameplay();
+                 lastClip = null;
+                 Debug.Log("hide");
+             }*/
         return currentClip;
     }
 }
