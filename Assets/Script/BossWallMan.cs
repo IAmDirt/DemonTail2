@@ -781,7 +781,7 @@ public class BossWallMan : StateManager
         public float ProjectileDuration = 7.5f;
 
         public float AttackDuration = 0;
-        private int nextAttack = 0;
+        private int nextAttack = -1;
         public void SetBrain(BossWallMan brain)
         {
             _brain = brain;
@@ -805,7 +805,11 @@ public class BossWallMan : StateManager
 
                 switch (nextAttack)
                 {
+                    case -1:
 
+                        nextTask = SpiralShoot();
+
+                     break;
                     case 0:     //chase
                         nextTask = SpiralShoot();
                         AttackDuration = SpiralAttackDuration;
@@ -837,8 +841,15 @@ public class BossWallMan : StateManager
             else
                 AttackDuration -= Time.deltaTime;
         }
+        public MusicManager musicManager;
+        private IEnumerator enterRage()
+        {
+            _brain.anim.SetTrigger(_brain.m_Scream);
+            yield return new WaitForSeconds(2);
+            musicManager.fadeLoop2();
+        }
 
-        public IEnumerator FireProjectiles()
+            public IEnumerator FireProjectiles()
         {
             CoroutineHelper.RunCoroutine(_brain.moverArc(_brain.Center.position));
             yield return new WaitForSeconds(_brain.moveDuration + 0.2f);

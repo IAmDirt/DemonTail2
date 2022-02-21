@@ -19,33 +19,33 @@ public class MusicManager : MonoBehaviour
     {
         Intro();
        // waitTime -= 90;
-       // Current.time = 90;
-        NextSwitch = waitTime;
+        Current.time = 10;
+        NextSwitch = waitTime ;
 
 
     }
 
-        private float waitTime = 16;
+        private float waitTime = 16f;
         private float NextSwitch;
 
-    void Update()
+    void FixedUpdate()
     {
-
-        if (NextSwitch < 0)
+        
+        if (NextSwitch <= Current.time)
         {
             fadeLoop1();
             NextSwitch = waitTime +1000;
         }
-        else
-            NextSwitch -= Time.unscaledDeltaTime ;
        // Debug.Log(NextSwitch - 14);
     }
 
     public void Intro()
     {
-
         Current.clip = bossIntro;
-        StartCoroutine(fadeInNew(Current, 1));
+
+     
+
+        fadeInNew(Current, 0.01f, 0.01f);
     }
     private Task fade1;
     private Task fade2;
@@ -53,42 +53,42 @@ public class MusicManager : MonoBehaviour
     public void fadeLoop1()
     {
         Fade.clip = BossLoop1;
-        StartCoroutine(fadeInNew(Fade, 0.6f, Current));
-
+        Fade.Play();
+        fadeInNew(Fade, 0.01f, 4.5f, Current);
     }
     public void fadeLoop2()
     {
         Fade.clip = BossLoop2;
-        StartCoroutine(fadeInNew(Fade, _fadeTime, Current));
+        fadeInNew(Fade, _fadeTime, _fadeTime, Current);
     }
     public void fadeOutro()
     {
         Fade.clip = bossOutro;
-        StartCoroutine(fadeInNew(Fade, _fadeTime, Current));
+        fadeInNew(Fade, _fadeTime, _fadeTime, Current);
     }
 
-    public IEnumerator fadeInNew(AudioSource newAudio,  float fadeTime, AudioSource currentAudio = null)
+    public void fadeInNew(AudioSource newAudio,  float fadeTime, float fadeTimeCurrent, AudioSource currentAudio = null)
     {
       if(fade1 != null)  fade1.Stop();
         if (fade2 != null) fade2.Stop();
 
         fade1 = new Task(FadeAudio(newAudio, fadeTime, true));                      //fadeIn
-       if(currentAudio) fade2 = new Task(FadeAudio(currentAudio, fadeTime, false)); //fadeOut
+       if(currentAudio) fade2 = new Task(FadeAudio(currentAudio, fadeTimeCurrent, false)); //fadeOut
 
         var newCurrent = newAudio;
         var newFade = currentAudio;
         if (newCurrent) Current = newCurrent;
         if (newFade) Fade = newFade;
-        yield return null;
     }
 
-    private float _fadeTime =2;
+    private float _fadeTime =1f;
     public IEnumerator FadeAudio(AudioSource audio, float fadeTime, bool fadeIn = true)
     {
         var fadeGhoal = fadeIn ? 1f : 0f;
         var fadeCurrent = fadeIn ? 0f : 1f;
         var timeElapsed = 0.0f;
-        if(fadeTime <=0.001f)
+
+        if (fadeTime <= 0.01f)
         {
             fadeGhoal = fadeIn ? 1f : 0f;
             fadeCurrent = fadeIn ? 0.999f : 0.001f;
