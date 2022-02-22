@@ -42,6 +42,7 @@ public class DialogueManager : Singleton<DialogueManager>
         if (currentStory)
             if (currentStory.canContinue)
             {
+                Debug.Log("currentStory");
                 showDialogueUI(true);
                 inputAdvanceDialogue();
                 return;
@@ -50,7 +51,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
         currentStory = new Story(newInkFile.text);
         showDialogueUI(true);
-        AdvanceDialogue();
+        inputAdvanceDialogue();
         gameManager.Instance.startDialogue();
     }
     public void showDialogueUI(bool bo)
@@ -73,6 +74,7 @@ public class DialogueManager : Singleton<DialogueManager>
         if (currentStory.canContinue)
         {
             AdvanceDialogue();
+
 
             //Are there any choices?
             if (currentStory.currentChoices.Count != 0)

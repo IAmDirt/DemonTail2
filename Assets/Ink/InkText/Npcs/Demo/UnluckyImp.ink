@@ -1,6 +1,6 @@
 # Speaker: Unlucky imp
 
-huh? youou looking for someone?
+huh? you looking for someone?
 
 If I were you I would try my luck at the gambling den.
 

@@ -12,6 +12,8 @@ public class dialogueContainer : MonoBehaviour
     public GameObject promt;
     public void Start()
     {
+        dialoguePromt = Instantiate(promt, transform.position, promt.transform.rotation, transform);
+
         ToglePromt();
     }
 
@@ -25,7 +27,7 @@ public class dialogueContainer : MonoBehaviour
         ToglePromt();
     }
 
-    public GameObject dialoguePromt;
+    private GameObject dialoguePromt;
     public void ToglePromt()
     {
         dialoguePromt.SetActive(!_alreadyTriggered);

@@ -47,10 +47,10 @@ public class InputPlayer : MonoBehaviour
     {
         //Dialogue
         input.Dialogue.Select.performed += ctx => nextDialogue();
-        input.Dialogue.RightShoulder.performed += ctx =>nextDialogue();
-        input.Dialogue.LeftShoulder.performed += ctx => nextDialogue();
-        input.Dialogue.RightTrigger.performed += ctx => nextDialogue();
-        input.Dialogue.LeftTrigger.performed += ctx => nextDialogue();
+        //input.Dialogue.RightShoulder.performed += ctx =>nextDialogue();
+        //input.Dialogue.LeftShoulder.performed += ctx => nextDialogue();
+        //input.Dialogue.RightTrigger.performed += ctx => nextDialogue();
+        //input.Dialogue.LeftTrigger.performed += ctx => nextDialogue();
 
 
         //Gameplay
