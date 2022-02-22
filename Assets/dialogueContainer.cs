@@ -9,6 +9,7 @@ public class dialogueContainer : MonoBehaviour
 
     public bool OnlyTriggerOnce;
     private bool _alreadyTriggered;
+    public GameObject promt;
     public void Start()
     {
         ToglePromt();
