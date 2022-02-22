@@ -201,7 +201,7 @@ public class DialogueManager : Singleton<DialogueManager>
                     Debug.Log("advance=" + tagValue);
                     gameManager.Instance.ResumeTimeline();
                     gameManager.Instance.skipNextPause();
-                    inputAdvanceDialogue();
+                   // inputAdvanceDialogue();
                     break;
                 case HIDE_TAG:
                     Debug.Log("Hide=" + tagValue);

@@ -503,6 +503,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 17159046, guid: dce72df0cf131614c93e7f181432d7dd, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 856bb72af0e20654bbff791a4f292182, type: 3}
     - target: {fileID: 573232013, guid: dce72df0cf131614c93e7f181432d7dd, type: 3}
       propertyPath: m_FollowOffset.y
       value: 60
