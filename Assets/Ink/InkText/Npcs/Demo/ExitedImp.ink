@@ -4,6 +4,9 @@ This circus sure is amazing, I can't wait for the main show to begin!
 
 -> Main
 === Main ===
+*[Leave]
+see you around kid. 
+-> DONE
 * [main show?]
 Yes, it is truly to die for !
 
@@ -21,7 +24,5 @@ Now that you mention it, I haven’t seen him in a while…
 Nothing to worry about! he probably just fell asleep somewhere.
 ->Main
 
-*[Leave]
-see you around kid. 
--> DONE
+
     -> END

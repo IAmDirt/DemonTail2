@@ -130,7 +130,7 @@ public class DialogueManager : Singleton<DialogueManager>
         {
 
             GameObject temp = Instantiate(customButton, optionPanel.transform);
-            temp.transform.GetChild(0).GetComponent<Text>().text = _choices[i].text;
+            temp.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _choices[i].text;
             temp.AddComponent<Selectable>();
             temp.GetComponent<Selectable>().element = _choices[i];
             temp.GetComponent<Button>().onClick.AddListener(() => { temp.GetComponent<Selectable>().Decide(); });

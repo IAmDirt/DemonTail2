@@ -21,6 +21,6 @@ I have to take a closer look, see with my own eyes what that Carnival is up to.
 "smart observation line"
 
 I should ask around, maybe someone knows where he is? 
-...#Advance: Cutscene #Hide: Cutscene
+...#Advance: Cutscene 
 
     -> END
