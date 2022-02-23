@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class gameManager : MonoBehaviour
@@ -45,7 +46,12 @@ public class gameManager : MonoBehaviour
             return;
         }
     }
+
     private bool paused;
+    [Header("PauseMenu")]
+    public GameObject PauseGo;
+    public Button firstButton;
+
     #region Time
     public void pause()
     {
@@ -56,12 +62,16 @@ public class gameManager : MonoBehaviour
     }
     void PauseGame()
     {
+        PauseGo.SetActive(true);
+        firstButton.GetComponent<Button>().Select();
         paused = true;
+
         StopTime();
     }
 
     void unpauseGame()
     {
+        PauseGo.SetActive(false);
         paused = false;
         SetNormalTime();
     }

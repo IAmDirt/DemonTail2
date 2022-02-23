@@ -68,7 +68,8 @@ public class InputPlayer : MonoBehaviour
         input.Gameplay.Aim.canceled += ctx => _rotationInput= Vector2.zero;
     
         input.Gameplay.Escape.performed += ctx => pauseGame();
-        input.Gameplay.Restart.performed += ctx => restartLevel();
+        input.Gameplay.Options.performed += ctx => pauseGame();
+        //input.Gameplay.Restart.performed += ctx => restartLevel();
     }
 
 

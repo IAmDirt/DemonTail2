@@ -129,6 +129,14 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Options"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea97bb48-6d80-47f8-a543-e3d6daba2ccb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -283,6 +291,17 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""LeftShoulder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1c2ac4e-cdc2-4fac-b089-e5aedb39b8e8"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Options"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -935,6 +954,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_Gameplay_Select = m_Gameplay.FindAction("Select", throwIfNotFound: true);
         m_Gameplay_RightShoulder = m_Gameplay.FindAction("RightShoulder", throwIfNotFound: true);
         m_Gameplay_LeftShoulder = m_Gameplay.FindAction("LeftShoulder", throwIfNotFound: true);
+        m_Gameplay_Options = m_Gameplay.FindAction("Options", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1018,6 +1038,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Select;
     private readonly InputAction m_Gameplay_RightShoulder;
     private readonly InputAction m_Gameplay_LeftShoulder;
+    private readonly InputAction m_Gameplay_Options;
     public struct GameplayActions
     {
         private @PlayerInputs m_Wrapper;
@@ -1036,6 +1057,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         public InputAction @Select => m_Wrapper.m_Gameplay_Select;
         public InputAction @RightShoulder => m_Wrapper.m_Gameplay_RightShoulder;
         public InputAction @LeftShoulder => m_Wrapper.m_Gameplay_LeftShoulder;
+        public InputAction @Options => m_Wrapper.m_Gameplay_Options;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1087,6 +1109,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @LeftShoulder.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeftShoulder;
                 @LeftShoulder.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeftShoulder;
                 @LeftShoulder.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeftShoulder;
+                @Options.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOptions;
+                @Options.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOptions;
+                @Options.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOptions;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -1133,6 +1158,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @LeftShoulder.started += instance.OnLeftShoulder;
                 @LeftShoulder.performed += instance.OnLeftShoulder;
                 @LeftShoulder.canceled += instance.OnLeftShoulder;
+                @Options.started += instance.OnOptions;
+                @Options.performed += instance.OnOptions;
+                @Options.canceled += instance.OnOptions;
             }
         }
     }
@@ -1331,6 +1359,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         void OnSelect(InputAction.CallbackContext context);
         void OnRightShoulder(InputAction.CallbackContext context);
         void OnLeftShoulder(InputAction.CallbackContext context);
+        void OnOptions(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

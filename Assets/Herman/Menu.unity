@@ -835,7 +835,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
     m_PressedColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7882353, g: 0.7647059, b: 0.8784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4368,7 +4368,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
     m_PressedColor: {r: 0.4627451, g: 0.4627451, b: 0.4627451, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7882353, g: 0.7647059, b: 0.8784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4969,7 +4969,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
     m_PressedColor: {r: 0.4627451, g: 0.4627451, b: 0.4627451, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7882353, g: 0.7647059, b: 0.8784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5073,6 +5073,8 @@ GameObject:
   - component: {fileID: 8605318297113273839}
   - component: {fileID: 8605318297113273838}
   - component: {fileID: 8605318297113273837}
+  - component: {fileID: 8605318297113273841}
+  - component: {fileID: 8605318297113273840}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5141,6 +5143,59 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &8605318297113273840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605318297113273836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 23d38fd0a5f317d428e9516659d3ef7c,
+    type: 3}
+  m_PointAction: {fileID: 4733390437540739929, guid: 23d38fd0a5f317d428e9516659d3ef7c,
+    type: 3}
+  m_MoveAction: {fileID: 4037048084096116335, guid: 23d38fd0a5f317d428e9516659d3ef7c,
+    type: 3}
+  m_SubmitAction: {fileID: 8386983182824574961, guid: 23d38fd0a5f317d428e9516659d3ef7c,
+    type: 3}
+  m_CancelAction: {fileID: 4943857286653493662, guid: 23d38fd0a5f317d428e9516659d3ef7c,
+    type: 3}
+  m_LeftClickAction: {fileID: -5942195386322240205, guid: 23d38fd0a5f317d428e9516659d3ef7c,
+    type: 3}
+  m_MiddleClickAction: {fileID: 30980043173667373, guid: 23d38fd0a5f317d428e9516659d3ef7c,
+    type: 3}
+  m_RightClickAction: {fileID: -4983785513961103547, guid: 23d38fd0a5f317d428e9516659d3ef7c,
+    type: 3}
+  m_ScrollWheelAction: {fileID: 1350108829817879498, guid: 23d38fd0a5f317d428e9516659d3ef7c,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: -4370014176602915799, guid: 23d38fd0a5f317d428e9516659d3ef7c,
+    type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: -8909054466469217328, guid: 23d38fd0a5f317d428e9516659d3ef7c,
+    type: 3}
+  m_DeselectOnBackgroundClick: 0
+  m_PointerBehavior: 0
+--- !u!114 &8605318297113273841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605318297113273836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 979991274}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
 --- !u!1 &8605318297117768216
 GameObject:
   m_ObjectHideFlags: 0
@@ -5194,7 +5249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6bd4141b443ef4c9f2bf85c43d7a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
+  level: 1
 --- !u!1 &8605318297165749618
 GameObject:
   m_ObjectHideFlags: 0
@@ -5258,7 +5313,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
     m_PressedColor: {r: 0.4627451, g: 0.4627451, b: 0.4627451, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.7882353, g: 0.7647059, b: 0.8784314, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
