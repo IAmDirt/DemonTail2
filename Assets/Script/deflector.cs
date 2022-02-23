@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-
+using Cinemachine;
 public class deflector : MonoBehaviour
 {
     public LayerMask BallLayer;
@@ -13,6 +13,7 @@ public class deflector : MonoBehaviour
     public DialogueManager dialogueManager;
     public void Start()
     {
+
         movement = GetComponent<SlugMovement>();
         trail.emitting = false;
         deflectRadius = minDeflectRadius;
@@ -21,19 +22,19 @@ public class deflector : MonoBehaviour
         shield.gameObject.SetActive(false);
         //movement.lockrotation(false);
 
-      playerMaterial = new Material(playerMaterial);
-   flashMaterial= new Material(flashMaterial);
-    Cursor.lockState = CursorLockMode.Confined;
+        playerMaterial = new Material(playerMaterial);
+        flashMaterial = new Material(flashMaterial);
+        Cursor.lockState = CursorLockMode.Confined;
     }
     public int deflectType = 1;
     public void Update()
     {
-       /* if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            deflectType = 2;
-            shield.gameObject.SetActive(false);
-            movement.lockrotation(false);
-        }*/
+        /* if (Input.GetKeyDown(KeyCode.Alpha2))
+         {
+             deflectType = 2;
+             shield.gameObject.SetActive(false);
+             movement.lockrotation(false);
+         }*/
         /* 
              if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -55,21 +56,21 @@ public class deflector : MonoBehaviour
             if (nextReflect <= 0)
             {
 
-              /*  if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Comma))
-                {
-                    deflectRelease();
-                    nextReflect = reflectFireRate;
-                }*/
+                /*  if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Comma))
+                  {
+                      deflectRelease();
+                      nextReflect = reflectFireRate;
+                  }*/
             }
             else
             {
                 nextReflect = Mathf.Clamp(nextReflect - Time.deltaTime, 0, 10);
             }
 
-          /*  if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Comma))
-            {
-                // SpawnBall();
-            }*/
+            /*  if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Comma))
+              {
+                  // SpawnBall();
+              }*/
 
             //charge
             /* if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Period))
@@ -128,7 +129,7 @@ public class deflector : MonoBehaviour
             var spawned = Instantiate(Ball, transform.position, transform.rotation);
         }
     }
-  
+
     public float minDeflectRadius = 2;
     public float maxDeflectRadius = 4;
     private float deflectRadius;
@@ -157,7 +158,7 @@ public class deflector : MonoBehaviour
     {
         if (nextReflect <= 0)
         {
-          //  SpawnBall();
+            //  SpawnBall();
             nextReflect = reflectFireRate;
             StartCoroutine(openHitBox());
             StartCoroutine(wickedFlip(0.13f));
@@ -249,72 +250,88 @@ public class deflector : MonoBehaviour
     private Vector3 lastDeflect;
     private float lastRadius = 4;
 
-    public Material playerMaterial;
-    public Material flashMaterial;
-    public GameObject[] body;
+  
 
     [Header("Damage Rumble")]
-    public float rumbleTime =0.5f;
+    public float rumbleTime = 0.5f;
     public float low = 0.5f;
     public float high = 1f;
     public bool Rumble = true;
     [SerializeField] Rumbler rumbler;
+    public CinemachineImpulseSource impulse;
     public void DamageFlash()
     {
+        impulse.GenerateImpulse(5);
         StartCoroutine(Flash());
-        if(Rumble)
-        rumbler.RumbleConstant(low, high, rumbleTime);
+
+        //StartCoroutine(Flash());
+        if (Rumble)
+            rumbler.RumbleConstant(low, high, rumbleTime);
         DoSlowmotion(slowDownProsentage, slowDownRecoverTime, slowdownFactor);
     }
+
+    public Material playerMaterial;
+    public Material flashMaterial;
+    public MeshRenderer[] MeshRenderers;
+    public SkinnedMeshRenderer skineedRenderer;
     public IEnumerator Flash()
     {
-        playerMaterial.SetFloat("_ToonRimPower", 0.0f);
+        SetEmissionMaterial(true);
         yield return new WaitForSeconds(0.08f);
 
 
-        var blinkAmount = 2;
+        var blinkAmount = 4;
         for (int i = 0; i < blinkAmount; i++)
         {
 
-        playerMaterial.SetFloat("_ToonRimPower", 1.1f);
+            SetEmissionMaterial(false);
             yield return new WaitForSeconds(0.03f);
-        playerMaterial.SetFloat("_ToonRimPower", 0.0f);
+            SetEmissionMaterial(true);
 
-            yield return new WaitForSeconds(0.1f);
-        playerMaterial.SetFloat("_ToonRimPower", 1.1f);
+            yield return new WaitForSeconds(0.08f);
+            SetEmissionMaterial(false);
         }
     }
 
-    
-  [Header("slowDown")]
+    private void SetEmissionMaterial(bool bo)
+    {
+        Material mat = bo ? flashMaterial : playerMaterial;
 
-  public float slowDownProsentage = 0.05f;
-  public float slowdownFactor = 0.05f;
-  public float slowDownStayTime = 0.05f;   //time stay at slow factor
-  public float slowDownRecoverTime = 1;    //time to smoothe back to normal time
+        skineedRenderer.materials = new Material[2] { mat, skineedRenderer.materials[1] };
+        foreach (var renderer in MeshRenderers)
+        {
+            renderer.materials = new Material[2] { mat, renderer.materials[1] };
+        }
+    }
 
-  #region slowDown
-  public void DoSlowmotion(float prosentage, float slowDownLength, float slowDownFactor)
-  {
-      Time.timeScale = slowDownFactor;
-      Time.fixedDeltaTime = Time.timeScale * 0.01333f;
-      StartCoroutine(resetTime(prosentage, slowDownLength));
-  }
+    #region slowDown
+    [Header("slowDown")]
 
-  IEnumerator resetTime(float prosentage, float slowDownLength)
-  {
-      yield return new WaitForSecondsRealtime(Mathf.Lerp(0, slowDownStayTime, prosentage));
-      while (Time.timeScale < 1)
-      {
-          Time.timeScale += (1f / slowDownLength) * Time.deltaTime;
-          Time.timeScale = Mathf.Clamp(Time.timeScale, 0, 1f);
+    public float slowDownProsentage = 0.05f;
+    public float slowdownFactor = 0.05f;
+    public float slowDownStayTime = 0.05f;   //time stay at slow factor
+    public float slowDownRecoverTime = 1;    //time to smoothe back to normal time
+    public void DoSlowmotion(float prosentage, float slowDownLength, float slowDownFactor)
+    {
+        Time.timeScale = slowDownFactor;
+        Time.fixedDeltaTime = Time.timeScale * 0.01333f;
+        StartCoroutine(resetTime(prosentage, slowDownLength));
+    }
 
-          Time.fixedDeltaTime = Time.timeScale * 0.01333f;
-          yield return null;
-      }
-  }
-  #endregion
-  
+    IEnumerator resetTime(float prosentage, float slowDownLength)
+    {
+        yield return new WaitForSecondsRealtime(Mathf.Lerp(0, slowDownStayTime, prosentage));
+        while (Time.timeScale < 1)
+        {
+            Time.timeScale += (1f / slowDownLength) * Time.deltaTime;
+            Time.timeScale = Mathf.Clamp(Time.timeScale, 0, 1f);
+
+            Time.fixedDeltaTime = Time.timeScale * 0.01333f;
+            yield return null;
+        }
+    }
+    #endregion
+
     /*
     private float waitBeforeSlow = 0.4f;
     private float maxSlow = 0.4f;

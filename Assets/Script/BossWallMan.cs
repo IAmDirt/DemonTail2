@@ -494,7 +494,7 @@ public class BossWallMan : StateManager
                 {
                     ballCollider.enabled = false;
                     var moveTime = 1.5f;
-                    LeanTween.move(behavior.gameObject, _brain.transform.position, moveTime);
+                  //  LeanTween.move(behavior.gameObject, _brain.transform.position, moveTime);
                     behavior.Invoke("selfDestroy", moveTime);
                 }
             }
@@ -781,7 +781,7 @@ public class BossWallMan : StateManager
         public float ProjectileDuration = 7.5f;
 
         public float AttackDuration = 0;
-        private int nextAttack = -1;
+        private int nextAttack = 0;
         public void SetBrain(BossWallMan brain)
         {
             _brain = brain;
@@ -805,11 +805,6 @@ public class BossWallMan : StateManager
 
                 switch (nextAttack)
                 {
-                    case -1:
-
-                        nextTask = SpiralShoot();
-
-                     break;
                     case 0:     //chase
                         nextTask = SpiralShoot();
                         AttackDuration = SpiralAttackDuration;
