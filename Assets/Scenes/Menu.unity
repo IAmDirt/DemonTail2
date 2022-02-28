@@ -151,17 +151,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80971518}
-  m_LocalRotation: {x: -0, y: -0, z: 0.15376914, w: 0.98810685}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 187483587}
   m_Father: {fileID: 8605318297117768217}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 17.691}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 403, y: 168}
+  m_AnchoredPosition: {x: 403.80225, y: 196.64569}
   m_SizeDelta: {x: 2242.396, y: 1001.5884}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &80971520
@@ -283,17 +283,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187483586}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.09992754, w: 0.99499476}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 80971519}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 11.47}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 26, y: -155}
+  m_SizeDelta: {x: 2242, y: 1002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &187483588
 MonoBehaviour:
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Demon\n   \t    in\n\t          a\n\t\t    Tivoli"
+  m_text: Demon Tail
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4188c0a23b20fe543b3b018b8b9475c9, type: 2}
   m_sharedMaterial: {fileID: -1771523324155519535, guid: 4188c0a23b20fe543b3b018b8b9475c9,
@@ -3854,7 +3854,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 495df66df976227488a883e7dea80a51, type: 2}
   - {fileID: 2100000, guid: ba58e04eaf9ae08408419d71271d575a, type: 2}
-  - {fileID: 2100000, guid: 48ec0b77ee1d15c4da813b109fb44b97, type: 2}
+  - {fileID: 2100000, guid: ba58e04eaf9ae08408419d71271d575a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
