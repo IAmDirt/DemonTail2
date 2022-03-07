@@ -52,8 +52,8 @@ MonoBehaviour:
   active: 1
   m_AdvancedMode: 0
   postExposure:
-    m_OverrideState: 0
-    m_Value: 0.6
+    m_OverrideState: 1
+    m_Value: 0.63
   contrast:
     m_OverrideState: 1
     m_Value: 4
@@ -75,6 +75,23 @@ MonoBehaviour:
     m_Value: 0
     min: -100
     max: 100
+--- !u!114 &-6772373895276285544
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
+  m_Name: Tonemapping
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  mode:
+    m_OverrideState: 1
+    m_Value: 2
 --- !u!114 &-4067195638943639724
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -158,6 +175,7 @@ MonoBehaviour:
   - {fileID: 2642424143081054061}
   - {fileID: 1802296423732301122}
   - {fileID: -6831993321140919008}
+  - {fileID: -6772373895276285544}
 --- !u!114 &1802296423732301122
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -194,17 +212,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
   m_Name: LiftGammaGain
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   lift:
-    m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
-  gamma:
     m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.088261254}
+  gamma:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0.08826126}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.12356577}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.017652249}
 --- !u!114 &2659553907138630189
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -282,12 +300,12 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.4}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.224
     min: 0
     max: 1
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.412
+    m_Value: 0.418
     min: 0.01
     max: 1
   rounded:
