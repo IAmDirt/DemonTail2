@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Boss_Body
   m_Shader: {fileID: 4800000, guid: 589366c8d179a91428574ab8bc5cf021, type: 3}
-  m_ShaderKeywords: _ENERGYCONSERVATION_ON _ENVIRONMENTREFLECTIONS_OFF _MASKMAP _OUTLINEINSCREENSPACE
-    _RAMP_OFF _TEXMODE_ONE _TOONRIM
+  m_ShaderKeywords: _COMPENSATESCALE _ENERGYCONSERVATION_ON _ENVIRONMENTREFLECTIONS_OFF
+    _MASKMAP _RAMP_OFF _TEXMODE_ONE _TOONRIM
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -97,14 +97,14 @@ Material:
     - _Anisotropy: 0
     - _ApplyNormal: 0
     - _Blend: 0
-    - _Border: 2.63
+    - _Border: 70
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _ColorMask: 15
     - _ColorizedShadowsAdd: 1
     - _ColorizedShadowsMain: 1
-    - _CompensateScale: 0
+    - _CompensateScale: 1
     - _Coverage: 0
     - _Cull: 2
     - _CullOutline: 1
@@ -126,7 +126,7 @@ Material:
     - _LightColorContribution: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _OutlineInScreenSpace: 1
+    - _OutlineInScreenSpace: 0
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _Ramp: 0
