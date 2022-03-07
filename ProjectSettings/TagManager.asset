@@ -12,14 +12,14 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - SeeThrough
   - NonFriendlyProjectiles
   - FriendlyProjectiles
   - enviroment
   - player
   - DamageColliders
   - bulletSpawner
-  - 
+  - Mask
   - 
   - 
   - 

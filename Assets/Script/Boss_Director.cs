@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Boss_Director : StateManager
 {
-
     public class Action
     {
         //eiter have duration

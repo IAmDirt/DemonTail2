@@ -48,9 +48,11 @@ public class BallBehavior : projectile
         col = GetComponent<Collider>();
         col.enabled = true;
     }
+    public bool frozenStart;
     public override void Start()
     {
         base.Start();
+        if(!frozenStart)
         m_velocity = transform.forward.normalized;
 
         var meshRenderer = animationTarget.GetComponent<MeshRenderer>();

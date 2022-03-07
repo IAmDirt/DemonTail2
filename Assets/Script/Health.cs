@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
     {
         Init();
     }
-    private void Init()
+    public void Init()
     {
         currentHealth = maxHealth;
     }
