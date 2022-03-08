@@ -1,8 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.InputSystem;
 using UnityEngine;
-using Raycasting;
 //refference for movemetn https://catlikecoding.com/unity/tutorials/movement/sliding-a-sphere/
 
 public class SlugMovement : movement
@@ -154,7 +151,7 @@ public class SlugMovement : movement
         {
             dashProgress += Time.deltaTime;
 
-            baseRb.velocity = dashDirection * dashSpeed;
+            baseRb.velocity = dashDirection * dashSpeed* Time.deltaTime;
 
             yield return new WaitForFixedUpdate();
         }

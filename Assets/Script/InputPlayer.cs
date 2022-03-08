@@ -70,6 +70,10 @@ public class InputPlayer : MonoBehaviour
         input.Gameplay.Escape.performed += ctx => pauseGame();
         input.Gameplay.Options.performed += ctx => pauseGame();
         //input.Gameplay.Restart.performed += ctx => restartLevel();
+
+
+        input.Gameplay.ButtonWest.performed += ctx => deflector.deflectSuper();
+        input.Gameplay.ButtonSouth.performed += ctx => deflector.deflectSuper();
     }
 
 

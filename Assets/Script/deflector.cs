@@ -6,153 +6,39 @@ using Cinemachine;
 public class deflector : MonoBehaviour
 {
     public LayerMask BallLayer;
-
-    [Header("shield")]
-    public Transform shield;
-
     public DialogueManager dialogueManager;
     public void Start()
     {
-
         movement = GetComponent<SlugMovement>();
         trail.emitting = false;
         deflectRadius = minDeflectRadius;
-
-        deflectType = 2;
-        shield.gameObject.SetActive(false);
-        //movement.lockrotation(false);
 
         playerMaterial = new Material(playerMaterial);
         flashMaterial = new Material(flashMaterial);
         Cursor.lockState = CursorLockMode.Confined;
     }
-    public int deflectType = 1;
     public void Update()
     {
-        /* if (Input.GetKeyDown(KeyCode.Alpha2))
-         {
-             deflectType = 2;
-             shield.gameObject.SetActive(false);
-             movement.lockrotation(false);
-         }*/
-        /* 
-             if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (nextReflect > 0)
         {
-            deflectType = 1;
-            shield.gameObject.SetActive(true);
-            movement.lockrotation(true);
+            nextReflect = Mathf.Clamp(nextReflect - Time.deltaTime, 0, 10);
         }
-      if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            deflectType = 3;
-            shield.gameObject.SetActive(false);
-            movement.lockrotation(false, true);
-        }*/
-
-
-        if (deflectType == 2 || deflectType == 3)
-        {
-            // instant
-            if (nextReflect <= 0)
-            {
-
-                /*  if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Comma))
-                  {
-                      deflectRelease();
-                      nextReflect = reflectFireRate;
-                  }*/
-            }
-            else
-            {
-                nextReflect = Mathf.Clamp(nextReflect - Time.deltaTime, 0, 10);
-            }
-
-            /*  if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Comma))
-              {
-                  // SpawnBall();
-              }*/
-
-            //charge
-            /* if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Period))
-             {
-                 chargeProgress = 0;
-                 ChargingDeflect = true;
-                 //StartCoroutine(SlowDownPlayer());
-             }
-             else if (Input.GetKey(KeyCode.Mouse1) || Input.GetKey(KeyCode.Period))
-             {
-                 deflectCharge();
-             }
-             else if (Input.GetKeyUp(KeyCode.Mouse1) || Input.GetKeyUp(KeyCode.Period))
-             {
-                 deflectRelease(true);
-                 ChargingDeflect = false;
-             }*/
-        }
-
-
-        updateAmmoUI();
     }
 
-    public float nextReflect;
-    private float reflectFireRate = 0.3f;
+
+    #region ball deflect
     [Header("ballRecovery")]
-    public GameObject Ball;
-
-    public int BallAmmo = 1;
-    public float ballRechargeTime = 5;
-    public float CurrentBallRecharge;
-
-    public Transform AmmoImage;
-    public Image AmmofillImage;
-
-    public void updateAmmoUI()
-    {
-        if (CurrentBallRecharge < ballRechargeTime)
-        {
-            CurrentBallRecharge += Time.deltaTime;
-            AmmofillImage.color = Color.white;
-        }
-        else
-            AmmofillImage.color = Color.red * Color.white;
-
-        var prosentageDone = CurrentBallRecharge / ballRechargeTime;
-        AmmoImage.localScale = Vector3.one * Mathf.Lerp(0, 1, prosentageDone);
-
-    }
-    public void SpawnBall()
-    {
-        if (CurrentBallRecharge >= ballRechargeTime)
-        {
-            CurrentBallRecharge = 0;
-
-            var spawned = Instantiate(Ball, transform.position, transform.rotation);
-        }
-    }
-
     public float minDeflectRadius = 2;
-    public float maxDeflectRadius = 4;
+
+    private float reflectFireRate = 0.3f;
     private float deflectRadius;
-    // private float chargeProgress;
-    //  private float chargeTime = 0.6f;
+    private float nextReflect;
+    private float lastRadius = 4;
 
-    //  private bool ChargingDeflect;
-    public Transform DeflectVisual;
+    public Transform turningParent;
     private SlugMovement movement;
-    /*  private void deflectCharge()
-      {
-          //scale ring
-          //slow down player
-
-          chargeProgress = Mathf.Clamp(chargeProgress + Time.deltaTime / chargeTime, 0, 1);
-          deflectRadius = Mathf.Lerp(minDeflectRadius, maxDeflectRadius, chargeProgress);
-
-          DeflectVisual.localScale = new Vector3(deflectRadius*2, 0.01f, deflectRadius*2);
-
-          movement.setSlowness(Mathf.Lerp(1, maxSlow,  chargeProgress));
-
-          DeflectVisual.gameObject.SetActive(true);
-      }*/
+    public TrailRenderer trail;
+    private Vector3 lastDeflect;
 
     public void deflectRelease()
     {
@@ -163,7 +49,6 @@ public class deflector : MonoBehaviour
             StartCoroutine(openHitBox());
             StartCoroutine(wickedFlip(0.13f));
 
-            DeflectVisual.gameObject.SetActive(false);
 
             rumbler.RumbleConstant(1, 1, 0.06f);
         }
@@ -214,8 +99,6 @@ public class deflector : MonoBehaviour
         }
     }
 
-    public TrailRenderer trail;
-    public Transform turningParent;
     IEnumerator wickedFlip(float duration)
     {
         movement.setSlowness(0.3f);
@@ -236,22 +119,13 @@ public class deflector : MonoBehaviour
         movement.setSlowness(1);
     }
 
-    private void OnDrawGizmos()
+    public void deflectSuper()
     {
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(transform.position, deflectRadius);
-
-        Gizmos.color = Color.black;
-
-        Gizmos.DrawWireSphere(lastDeflect, lastRadius);
-        Gizmos.DrawSphere(lastDeflect, 0.5f);
+        Debug.Log("super");
     }
+    #endregion
 
-    private Vector3 lastDeflect;
-    private float lastRadius = 4;
-
-  
-
+    #region damageSignals
     [Header("Damage Rumble")]
     public float rumbleTime = 0.5f;
     public float low = 0.5f;
@@ -304,6 +178,8 @@ public class deflector : MonoBehaviour
         }
     }
 
+    #endregion
+
     #region slowDown
     [Header("slowDown")]
 
@@ -332,6 +208,74 @@ public class deflector : MonoBehaviour
     }
     #endregion
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, deflectRadius);
+
+        Gizmos.color = Color.black;
+
+        Gizmos.DrawWireSphere(lastDeflect, lastRadius);
+        Gizmos.DrawSphere(lastDeflect, 0.5f);
+    }
+
+
+
+
+
+
+
+    //public GameObject Ball;
+    // public int BallAmmo = 1;
+    // public float ballRechargeTime = 5;
+    // public float CurrentBallRecharge;
+    /*
+        public Transform AmmoImage;
+        public Image AmmofillImage;
+
+        public void updateAmmoUI()
+        {
+            if (CurrentBallRecharge < ballRechargeTime)
+            {
+                CurrentBallRecharge += Time.deltaTime;
+                AmmofillImage.color = Color.white;
+            }
+            else
+                AmmofillImage.color = Color.red * Color.white;
+
+            var prosentageDone = CurrentBallRecharge / ballRechargeTime;
+            AmmoImage.localScale = Vector3.one * Mathf.Lerp(0, 1, prosentageDone);
+
+        }
+        public void SpawnBall()
+        {
+            if (CurrentBallRecharge >= ballRechargeTime)
+            {
+                CurrentBallRecharge = 0;
+
+                var spawned = Instantiate(Ball, transform.position, transform.rotation);
+            }
+        }
+    */
+    //  public float maxDeflectRadius = 4;
+    // private float chargeProgress;
+    //  private float chargeTime = 0.6f;
+
+    //  private bool ChargingDeflect;
+    /*  private void deflectCharge()
+      {
+          //scale ring
+          //slow down player
+
+          chargeProgress = Mathf.Clamp(chargeProgress + Time.deltaTime / chargeTime, 0, 1);
+          deflectRadius = Mathf.Lerp(minDeflectRadius, maxDeflectRadius, chargeProgress);
+
+          DeflectVisual.localScale = new Vector3(deflectRadius*2, 0.01f, deflectRadius*2);
+
+          movement.setSlowness(Mathf.Lerp(1, maxSlow,  chargeProgress));
+
+          DeflectVisual.gameObject.SetActive(true);
+      }*/
     /*
     private float waitBeforeSlow = 0.4f;
     private float maxSlow = 0.4f;
