@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M Toon Additional Outline
+  m_Name: PropOutline
   m_Shader: {fileID: 4800000, guid: 9011653c7b53549269abaa631561a460, type: 3}
   m_ShaderKeywords: GRADIENT_ON _COMPENSATESCALE
   m_LightmapFlags: 4
@@ -101,7 +101,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.17647055, g: 0.36078432, b: 0.59607846, a: 1}
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.04936511, g: 0.047525756, b: 0.11320745, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShadedBaseColor: {r: 0, g: 0, b: 0, a: 1}
