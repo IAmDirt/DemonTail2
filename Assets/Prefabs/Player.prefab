@@ -7837,7 +7837,6 @@ GameObject:
   - component: {fileID: 1502513093697067907}
   - component: {fileID: 1502513093697067906}
   - component: {fileID: 1502513093697067905}
-  - component: {fileID: 1502513093697067904}
   - component: {fileID: 1502513093697067910}
   - component: {fileID: 99458512}
   m_Layer: 10
@@ -7925,9 +7924,11 @@ MonoBehaviour:
   MaxAllowedJumps: 2
   AllowedJumps: 2
   DashSound: {fileID: 14788224}
+  inOverworld: 0
   dashParticles: {fileID: 870902758}
+  dashTrail: {fileID: 0}
   dashDuration: 0.1
-  dashSpeed: 120
+  dashSpeed: 9000
   Mesh: {fileID: 1502513093231977824}
   health: {fileID: 1502513093697067910}
 --- !u!54 &1502513093697067906
@@ -7958,11 +7959,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2905d9d5dedb04e8a08870e1b5e653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 11400000, guid: f04bb69e789e38e4681ab1bb9dc90db7, type: 2}
   BallLayer:
     serializedVersion: 2
     m_Bits: 384
   shield: {fileID: 1502513094573868104}
+  dialogueManager: {fileID: 0}
   deflectType: 2
   nextReflect: 0
   Ball: {fileID: 8099948903382539180, guid: 748a9aa46e713ac4c9a8db2c93832cfa, type: 3}
@@ -7976,36 +7977,20 @@ MonoBehaviour:
   DeflectVisual: {fileID: 1502513094000655316}
   trail: {fileID: 1502513094504732166}
   turningParent: {fileID: 1502513093231977823}
-  playerMaterial: {fileID: 2100000, guid: c5ad3cf3f5c78cd40b7fd92dd58b40d6, type: 2}
-  flashMaterial: {fileID: 2100000, guid: 35cf7f196517faa45bbc4b43e53fc8b1, type: 2}
-  body:
-  - {fileID: 5516579019329483089}
-  - {fileID: 1502513093531787819}
-  - {fileID: 1502513094071488145}
-  - {fileID: 1502513093263510111}
   rumbleTime: 0.65
   low: 0.6
   high: 1
   Rumble: 0
   rumbler: {fileID: 628531027}
+  impulse: {fileID: 0}
+  playerMaterial: {fileID: 2100000, guid: c5ad3cf3f5c78cd40b7fd92dd58b40d6, type: 2}
+  flashMaterial: {fileID: 2100000, guid: 35cf7f196517faa45bbc4b43e53fc8b1, type: 2}
+  MeshRenderers: []
+  skineedRenderer: {fileID: 0}
   slowDownProsentage: 0.05
   slowdownFactor: 0.05
   slowDownStayTime: 0.05
   slowDownRecoverTime: 0.25
---- !u!114 &1502513093697067904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1502513093697067912}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ffcedf21bde4014dabdcac8fdb2b643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentStateName: 
-  player: {fileID: 0}
 --- !u!114 &1502513093697067910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8076,6 +8061,7 @@ MonoBehaviour:
         m_CallState: 2
   useInvulnerableFrames: 1
   invulnerableTime: 1
+  isDead: 0
   DamageAudio: {fileID: 994747102}
 --- !u!114 &99458512
 MonoBehaviour:
@@ -8089,6 +8075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55638a515b2be9e40ad690cd90512111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 0}
 --- !u!1 &1502513093820734792
 GameObject:
   m_ObjectHideFlags: 0
@@ -9352,6 +9339,7 @@ MonoBehaviour:
       m_Calls: []
   useInvulnerableFrames: 0
   invulnerableTime: 1
+  isDead: 0
   DamageAudio: {fileID: 0}
   invonrable: 1
   scaleAmount: 0.3
