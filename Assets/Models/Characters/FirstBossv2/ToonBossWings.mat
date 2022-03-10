@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ToonBossWings
-  m_Shader: {fileID: -6465566751694194690, guid: b4ca407065ebd29428dcf026ebad5e6e,
+  m_Shader: {fileID: -6465566751694194690, guid: 6b599ed76bb3be34f956e31cc2e74f5a,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
