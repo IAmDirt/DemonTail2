@@ -20,10 +20,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material 9
+  m_Name: ToonBossBody
   m_Shader: {fileID: -6465566751694194690, guid: b4ca407065ebd29428dcf026ebad5e6e,
     type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: RIM_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -34,7 +34,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 270524ee21ed71d4a91ce6f8e3bb634a, type: 3}
+        m_Texture: {fileID: 2800000, guid: efa976b1906beed4f96dc2cb5051319b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -116,13 +116,13 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DiffuseFallOff: 0.01
-    - _DiffuseStep: 0.26
+    - _DiffuseFallOff: 0
+    - _DiffuseStep: -1
     - _DstBlend: 0
     - _EnableNormalMap: 0
     - _EnableRamp: 0
     - _EnableSpecular: 0
-    - _EnableToonRim: 0
+    - _EnableToonRim: 1
     - _EnergyConservation: 1
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -157,8 +157,8 @@ Material:
     - _Steps: 1
     - _Surface: 0
     - _ToonRimAttenuation: 0
-    - _ToonRimFallOff: 0
-    - _ToonRimPower: 1
+    - _ToonRimFallOff: 0.151
+    - _ToonRimPower: 0.705
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
@@ -172,5 +172,5 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Specular: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
-    - _ToonRimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ToonRimColor: {r: 0, g: 0.381798, b: 0.4056604, a: 1}
   m_BuildTextureStacks: []

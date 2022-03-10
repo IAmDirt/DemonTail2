@@ -39,6 +39,25 @@ MonoBehaviour:
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 0}
       cameraFieldOfView: 60
+--- !u!114 &-2618411725787905910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4641969ffd302f4ba2bcf2d83f19cb5, type: 3}
+  m_Name: NewCustomPostProcess
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    renderersAfterOpaqueAndSky:
+    - Yetman.PostProcess.EdgeDetectionEffectRenderer, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    renderersBeforePostProcess: []
+    renderersAfterPostProcess: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,7 +76,8 @@ MonoBehaviour:
   - {fileID: -3526183865991837586}
   - {fileID: 3635503401172484457}
   - {fileID: 8344574296137101472}
-  m_RendererFeatureMap: 325dc883f80b7c1404b18a38b7bacb456ec8d7d6747a10cf69419ce614e77332a0701b631ce2cd73
+  - {fileID: -2618411725787905910}
+  m_RendererFeatureMap: 325dc883f80b7c1404b18a38b7bacb456ec8d7d6747a10cf69419ce614e77332a0701b631ce2cd738ac0b1886888a9db
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
@@ -73,10 +93,10 @@ MonoBehaviour:
     materialErrorPS: {fileID: 4800000, guid: 5fd9a8feb75a4b5894c241777f519d4e, type: 3}
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 8119
+    m_Bits: 4294967295
   m_TransparentLayerMask:
     serializedVersion: 2
-    m_Bits: 8119
+    m_Bits: 4294967295
   m_DefaultStencilState:
     overrideStencilState: 0
     stencilReference: 0

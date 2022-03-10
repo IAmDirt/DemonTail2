@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material 8
+  m_Name: ToonBossWings
   m_Shader: {fileID: -6465566751694194690, guid: b4ca407065ebd29428dcf026ebad5e6e,
     type: 3}
   m_ShaderKeywords: 
@@ -34,7 +34,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: efa976b1906beed4f96dc2cb5051319b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 270524ee21ed71d4a91ce6f8e3bb634a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
