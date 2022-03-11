@@ -34,6 +34,7 @@ public class MenuButton : MonoBehaviour
 
         LeanTween.scale(gameObject, Vector3.one , 0.8f).setEaseOutQuart();
     }
+
     public void selelected()
     {
         LeanTween.scale(gameObject, Vector3.one * 0.6f, 0.4f).setEasePunch();

@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
     {
 
     }
-
+    public RandomAudioPlayer selectAudio;
     void Update()
     {
         if (currentButton)
@@ -28,6 +28,7 @@ public class MenuManager : MonoBehaviour
 
                 currentButton = MenuEventSystem.currentSelectedGameObject.GetComponent<MenuButton>();
                 currentButton.selelected();
+                selectAudio.PlayRandomClip();
             }
         }
         else
