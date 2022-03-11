@@ -5458,7 +5458,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5133945, g: 0.7830189, b: 0.5556248, a: 0.38431373}
+      maxColor: {r: 0.5941171, g: 0.61155933, b: 0.745283, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6211,7 +6211,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 1
+        scalar: 2
         minScalar: 1
         maxCurve:
           serializedVersion: 2
@@ -6261,8 +6261,8 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 1
-      repeatInterval: 0.01
+      cycleCount: 2
+      repeatInterval: 0.05
       probability: 1
   SizeModule:
     enabled: 1
@@ -13581,7 +13581,7 @@ MonoBehaviour:
   Bullet: {fileID: 9187445295896162903, guid: 7a520257a4d53aa46a368f362ce3f387, type: 3}
   isenabled: 0
   idleAnim: 1
-  BulletAmount: 185
+  BulletAmount: 160
   minAngle: 0
   maxAngle: -360
   BulletSpawner: {fileID: 4083924864916527323}
@@ -13633,7 +13633,7 @@ MonoBehaviour:
   Bullet: {fileID: 9187445295896162903, guid: 7a520257a4d53aa46a368f362ce3f387, type: 3}
   isenabled: 0
   idleAnim: 1
-  BulletAmount: 185
+  BulletAmount: 160
   minAngle: 0
   maxAngle: -360
   BulletSpawner: {fileID: 4083924864916527323}
@@ -17564,6 +17564,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MusicManager, Assembly-CSharp
+        m_MethodName: fadeOutro
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   hitEvent:
     m_PersistentCalls:
       m_Calls:
@@ -17712,6 +17724,7 @@ MonoBehaviour:
     jumpAttackDuration: 6.5
     ProjectileDuration: 4.5
     AttackDuration: 0
+    musicManager: {fileID: 0}
   anim: {fileID: 5836769519970091359}
   ballSuck: {fileID: 7349672655872780532}
   screamParticle: {fileID: 1472086462}
@@ -18012,7 +18025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5.200012}
+  m_AnchoredPosition: {x: 0, y: -5.199951}
   m_SizeDelta: {x: 403, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4083924865002676876
@@ -18697,7 +18710,7 @@ MonoBehaviour:
   Bullet: {fileID: 9187445295896162903, guid: 7a520257a4d53aa46a368f362ce3f387, type: 3}
   isenabled: 0
   idleAnim: 1
-  BulletAmount: 185
+  BulletAmount: 160
   minAngle: 0
   maxAngle: -360
   BulletSpawner: {fileID: 4083924864916527323}
@@ -24954,7 +24967,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.3
+      scalar: 0.4
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2
@@ -25061,7 +25074,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.8207547, g: 0.56910825, b: 0.56910825, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -25814,7 +25827,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 30
+        scalar: 40
         minScalar: 20
         maxCurve:
           serializedVersion: 2
@@ -29673,7 +29686,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49082503332bd5e4781e3314344c131d, type: 2}
+  - {fileID: 2100000, guid: 9d8b0cbaa3ecff74dbcf48b7844840d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39710,7 +39723,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4d29626c8f15fc141838952e758daf64,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.9
+      value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d29626c8f15fc141838952e758daf64,
         type: 3}
@@ -39882,6 +39895,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 145.634
       objectReference: {fileID: 0}
+    - target: {fileID: 1129603032752897145, guid: 4d29626c8f15fc141838952e758daf64,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026081558148769356, guid: 4d29626c8f15fc141838952e758daf64,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 44440781bd624024f96ffe02fb68397c, type: 2}
     - target: {fileID: 2384579432149007696, guid: 4d29626c8f15fc141838952e758daf64,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -40260,6 +40283,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Wings (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2026081558148769356, guid: 4d29626c8f15fc141838952e758daf64,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 44440781bd624024f96ffe02fb68397c, type: 2}
     - target: {fileID: 2384579432149007696, guid: 4d29626c8f15fc141838952e758daf64,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -45639,6 +45667,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 89.998
       objectReference: {fileID: 0}
+    - target: {fileID: 4765379547874591242, guid: 91034b47fa7402b4e9871386735433f3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d9ddd3f861e51b14bacaa6df3bbd2e33, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91034b47fa7402b4e9871386735433f3, type: 3}
 --- !u!4 &8938405738042386459 stripped
