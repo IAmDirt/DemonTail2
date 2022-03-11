@@ -23,6 +23,6 @@ public class parisWhellRotate : MonoBehaviour
             item.transform.rotation= startRotation;
         }
         float rY = Time.time * speed ;
-        RotationParent.localRotation = Quaternion.Euler( 0,rY, 0);
+        RotationParent.localRotation = Quaternion.Euler(rY, 0, 0);
     }
 }
