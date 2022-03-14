@@ -35,7 +35,12 @@ public class MenuButton : MonoBehaviour
     }
     public void selelected()
     {
-        LeanTween.scale(gameObject, Vector3.one * 0.6f, 0.4f).setEasePunch();
+        LeanTween.scale(gameObject, Vector3.one * 0.7f, 0.4f).setEasePunch();
+        StartCoroutine(fadecolor(select, 0.1f));
+    }
+
+    public void startSelecter()
+    {
         StartCoroutine(fadecolor(select, 0.1f));
     }
     public void deselect()
@@ -76,7 +81,6 @@ public class MenuButton : MonoBehaviour
             currentTime += Time.deltaTime;
 
             var prosentage = currentTime / fadeTime;
-            Debug.Log(prosentage);
             backPanel.color = Color.Lerp(backPanel.color, wanted, prosentage);
             yield return null;
         }

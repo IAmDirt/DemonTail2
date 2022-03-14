@@ -68,6 +68,8 @@ public class DialogueManager : Singleton<DialogueManager>
     }
     public void inputAdvanceDialogue()
     {
+        showPromt(false);
+
         if (isHidden)
             return;
         //Is there more to the story?
@@ -100,22 +102,38 @@ public class DialogueManager : Singleton<DialogueManager>
         StopAllCoroutines();
         StartCoroutine(TypeSentence(currentSentence));
     }
-
+    public GameObject promt;
     // Type out the sentence letter by letter and make character idle if they were talking
+
+    public void showPromt(bool bo)
+    {
+        if(bo)
+        {
+            promt.SetActive(true);
+            promt.transform.localScale = Vector3.one * 0.01f;
+            LeanTween.scale(promt, Vector3.one , 0.1f).setEaseInOutBack();
+        }
+        else
+        {
+            LeanTween.scale(promt, Vector3.one * 0.01f, 0.1f).setEaseInOutBack().setOnComplete(disablePromt);
+        }
+
+    }
+    private void disablePromt()
+    {
+        promt.SetActive(false);
+    }
     IEnumerator TypeSentence(string sentence)
     {
+
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
             yield return null;
         }
-        //  CharacterScript tempSpeaker = GameObject.FindObjectOfType<CharacterScript>();
-        //if (tempSpeaker.isTalking)
-        // {
-        //    SetAnimation("idle");
-        // }
-        yield return null;
+        showPromt(true);
+         yield return null;
     }
 
     // Create then show the choices on the screen until one got selected
@@ -130,7 +148,7 @@ public class DialogueManager : Singleton<DialogueManager>
         {
 
             GameObject temp = Instantiate(customButton, optionPanel.transform);
-            temp.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _choices[i].text;
+            temp.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _choices[i].text;
             temp.AddComponent<Selectable>();
             temp.GetComponent<Selectable>().element = _choices[i];
             temp.GetComponent<Button>().onClick.AddListener(() => { temp.GetComponent<Selectable>().Decide(); });

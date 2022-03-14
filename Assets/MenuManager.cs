@@ -32,6 +32,13 @@ public class MenuManager : MonoBehaviour
             }
         }
         else
-            currentButton = MenuEventSystem.currentSelectedGameObject.GetComponent<MenuButton>();
+        {
+            if (MenuEventSystem.currentSelectedGameObject)
+            {
+
+                currentButton = MenuEventSystem.currentSelectedGameObject.GetComponent<MenuButton>();
+                if (currentButton) currentButton.startSelecter();
+            }
+        }
     }
 }
