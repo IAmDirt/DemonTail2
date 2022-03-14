@@ -26,9 +26,13 @@ public class IkLook : MonoBehaviour
         [HideInInspector] public float directionChangeTimer;
     }
     public IkTarget head;
-  //  public IkTarget rightHand_IK;
-  //  public IkTarget Root_IK;
+    //  public IkTarget rightHand_IK;
+    //  public IkTarget Root_IK;
 
+    public void Start()
+    {
+        head.StartOffset = head.target.transform.position;
+    }
     public void Update()
     {
         WiggleAnim(head);

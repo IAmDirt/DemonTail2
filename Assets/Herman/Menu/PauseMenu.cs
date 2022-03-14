@@ -7,9 +7,10 @@ public class PauseMenu : MonoBehaviour
 {
     [Header("Sett den på som menyen er")]
     public int level = 0;
+    public string mainMenu = "Menu NewVariant";
     public void MainMenu()
     {
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(mainMenu);
     }
 
     public void Restart()
