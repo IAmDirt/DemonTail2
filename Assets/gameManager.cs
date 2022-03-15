@@ -135,6 +135,7 @@ public class gameManager : MonoBehaviour
     {
         if (skipPause)
         {
+            Debug.Log("skipPause");
             skipPause = false;
             return;
         }
