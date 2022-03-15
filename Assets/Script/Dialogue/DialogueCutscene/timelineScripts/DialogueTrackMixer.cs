@@ -31,13 +31,13 @@ public class DialogueTrackMixer : PlayableBehaviour //putting logic over all cli
             DialogueManager.Instance.hideDialogue();
             return;
         }*/
-
         if (newClip.canPause())
         {
             //timeline is paused
             Debug.Log("paused track Mixer");
             gameManager.Instance.PauseTimeline(director);
         }
+
         if (newClip.canPlayDialogue())
             StartDialogue();
     }
