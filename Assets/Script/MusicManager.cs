@@ -25,8 +25,8 @@ public class MusicManager : MonoBehaviour
 
     }
 
-        private float waitTime = 16f;
-        private float NextSwitch;
+        public float waitTime = 16f;
+        public float NextSwitch;
 
     void FixedUpdate()
     {
