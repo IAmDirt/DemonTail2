@@ -20,6 +20,9 @@ public class InputPlayer : MonoBehaviour
         deflector= GetComponent<deflector>();
         input = new PlayerInputs();
         SetInput();
+
+        if (!movement.inOverworld)
+            ClipBoardManager.gameObject.SetActive(false);
     }
     public void Update()
     {
@@ -46,7 +49,8 @@ public class InputPlayer : MonoBehaviour
     public void SetInput()
     {
         //Dialogue
-        input.Dialogue.Select.performed += ctx => nextDialogue();
+        if (dialogueManager)
+            input.Dialogue.Select.performed += ctx => nextDialogue();
         //input.Dialogue.RightShoulder.performed += ctx =>nextDialogue();
         //input.Dialogue.LeftShoulder.performed += ctx => nextDialogue();
         //input.Dialogue.RightTrigger.performed += ctx => nextDialogue();
@@ -74,14 +78,16 @@ public class InputPlayer : MonoBehaviour
 
         input.Gameplay.ButtonWest.performed += ctx => deflector.deflectSuper();
         input.Gameplay.ButtonSouth.performed += ctx => deflector.deflectSuper();
+        if(ClipBoardManager)
+        input.Gameplay.ButtonNorth.performed += ctx => ClipBoardManager.inputClipBoard();
     }
 
 
     public DialogueManager dialogueManager;
+    public clipboardUIManager ClipBoardManager;
 
     public void nextDialogue()
     {
-        if(dialogueManager)
         dialogueManager.inputAdvanceDialogue();
     }
     // create events fore each button

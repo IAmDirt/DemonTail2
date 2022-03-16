@@ -28,7 +28,7 @@ public class MenuManager : MonoBehaviour
 
                 currentButton = MenuEventSystem.currentSelectedGameObject.GetComponent<MenuButton>();
                 currentButton.selelected();
-                selectAudio.PlayRandomClip();
+             if(selectAudio)   selectAudio.PlayRandomClip();
             }
         }
         else

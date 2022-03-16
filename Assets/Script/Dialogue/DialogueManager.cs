@@ -6,6 +6,7 @@ using Ink.Runtime;
 using TMPro;
 using UnityEngine.EventSystems;
 
+//origional https://github.com/RisingArtist/Ink-with-Unity-2019.3/blob/master/Assets/DialogueManager.cs
 public class DialogueManager : Singleton<DialogueManager>
 {
     public TextAsset inkFile;
@@ -30,6 +31,7 @@ public class DialogueManager : Singleton<DialogueManager>
     private const string PORTRAIT_TAG = "Portrait";
     private const string ADVANCE_TAG = "Advance";
     private const string HIDE_TAG = "Hide";
+    private const string Clue_TAG = "Clue";
 
     void Start()
     {
@@ -42,7 +44,7 @@ public class DialogueManager : Singleton<DialogueManager>
         if (currentStory)
             if (currentStory.canContinue)
             {
-                Debug.Log("currentStory");
+                debugConsole("currentStory");
                 showDialogueUI(true);
                 inputAdvanceDialogue();
                 return;
@@ -78,11 +80,12 @@ public class DialogueManager : Singleton<DialogueManager>
             AdvanceDialogue();
 
 
-            //Are there any choices?
-            if (currentStory.currentChoices.Count != 0)
-            {
-                StartCoroutine(ShowChoices());
-            }
+
+        }
+        else if (currentStory.currentChoices.Count != 0) //Are there any choices?
+        {
+
+            StartCoroutine(ShowChoices());
         }
         else if (!_choice)
         {
@@ -92,7 +95,7 @@ public class DialogueManager : Singleton<DialogueManager>
     }
     private void FinishDialogue()
     {
-        Debug.Log("End of Dialogue!");
+        debugConsole("End of Dialogue!");
         showDialogueUI(false);
     }
     void AdvanceDialogue()
@@ -140,7 +143,7 @@ public class DialogueManager : Singleton<DialogueManager>
     private bool _choice = false;
     IEnumerator ShowChoices()
     {
-        Debug.Log("There are choices need to be made here!");
+        debugConsole("There are choices need to be made here!");
         List<Choice> _choices = currentStory.currentChoices;
         _choice = true;
         Button firstButton = null;
@@ -191,14 +194,15 @@ public class DialogueManager : Singleton<DialogueManager>
     /*** Tag Parser ***/
     /// In Inky, you can use tags which can be used to cue stuff in a game.
     /// This is just one way of doing it. Not the only method on how to trigger events. 
+    /// 
+    public ClipBoardBooleans clipboardBools;
     void HandleTags(List<string> currentTags)
     {
         foreach (string tag in currentTags)
         {
             //parse the tag
             string[] splitTag = tag.Split(':');
-            if (splitTag.Length != 2)
-
+            if (splitTag.Length < 2)
             {
                 Debug.LogError("Tag could not be appropriatly parsed: " + tag);
             }
@@ -210,28 +214,51 @@ public class DialogueManager : Singleton<DialogueManager>
             switch (tagKey)
             {
                 case SPEAKER_TAG:
-                    Debug.Log("speaker=" + tagValue);
+                    debugConsole("speaker=" + tagValue);
                     dialogueName.text = tagValue;
                     break;
                 case PORTRAIT_TAG:
-                    Debug.Log("Portrait=" + tagValue);
+                    debugConsole("Portrait=" + tagValue);
                     PoleyTestAnim.Play(tagValue);
                     break;
                 case ADVANCE_TAG:
-                    Debug.Log("advance=" + tagValue);
+                    debugConsole("advance=" + tagValue);
                     gameManager.Instance.ResumeTimeline();
                     gameManager.Instance.skipNextPause();
                    // inputAdvanceDialogue();
                     break;
                 case HIDE_TAG:
-                    Debug.Log("Hide=" + tagValue);
+                    debugConsole("Hide=" + tagValue);
                     hideDialogue();
                     break;
+                case Clue_TAG:
 
-                    
+                    //split dialogue 
+                    //
+                    //  string[] splitValue = tagValue.Split(',');
+
+                    // string clueKey = splitValue[0].Trim();
+                    // string clueValue = splitValue[1].Trim();
+                    string ClueValue = splitTag[2].Trim(); // Location, Boss, ETC...
+
+                     clipboardBools.setBool(int.Parse(tagValue), ClueValue);
+
+                    //change blackboard 
+                    debugConsole("Clue=" + tagValue);
+                    break;
             }
         }
     }
+    public bool DialogueDebug = false;
+
+    public void debugConsole(string output)
+    {
+        if (DialogueDebug)
+            Debug.Log(output);
+    }
+
+
+
     void SetAnimation(string _name)
     {
         //   CharacterScript cs = GameObject.FindObjectOfType<CharacterScript>();
