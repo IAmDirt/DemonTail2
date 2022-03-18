@@ -15,7 +15,10 @@ public class cluePrefabBehavior : MonoBehaviour
     {
         visualisation = newVisual;
 
-        sprite.sprite = visualisation.sprite1;
+        if (visualisation.sprite1)
+            sprite.sprite = visualisation.sprite1;
+        else
+            sprite.enabled = false;
         text.text = visualisation.clueDescription;
     }
 }

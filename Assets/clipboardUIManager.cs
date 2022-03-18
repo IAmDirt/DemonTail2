@@ -12,7 +12,7 @@ public class clueVisualization
 }
 public class clipboardUIManager : MonoBehaviour
 {
-    public enum DictionaryKey { Location, Boss }
+    public enum DictionaryKey { Location, Boss, Mechanic1, Mechanic2 }
     [System.Serializable]
     public class clue
     {
@@ -153,7 +153,7 @@ public class clipboardUIManager : MonoBehaviour
 
         newClue.isEnabled = true;
 
-        var mainText = spawned.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+        var mainText = spawned.transform.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>();
         mainText.text = newClue.ClueText;
 
         var checkBox = spawned.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -170,7 +170,7 @@ public class clipboardUIManager : MonoBehaviour
 
     public bool ClueRestrictionsMet()
     {
-        if (_currentCount >= 1)
+        if (_currentCount >= 2)
         {
             return true;
         }
@@ -209,9 +209,8 @@ public class clipboardUIManager : MonoBehaviour
 
         foreach (var Clue in clueList)
         {
-             if (!Clue.isEnabled || Clue.AlreadyDisplayed)
-             yield return null;
-
+            if (!Clue.isEnabled || Clue.AlreadyDisplayed)
+                yield break;
 
             Clue.AlreadyDisplayed = true;
 
@@ -232,7 +231,6 @@ public class clipboardUIManager : MonoBehaviour
         //if not
         //animate get clues into tips
 
-
         //enable "enter casino" button when enough clues
     }
     public void displayClue(GameObject CluePrefab)
@@ -240,7 +238,6 @@ public class clipboardUIManager : MonoBehaviour
         //animate clueParent
         LeanTween.rotateZ(clueparent, 8, 0.3f).setEasePunch().setDelay(0.1f);
 
-        
         var spawned = Instantiate(CluePrefab, ClueParent_Hidden.transform.position, CluePrefab.transform.rotation, restrictionDropdown.parent.parent);
         var Position = restrictionDropdownPositions.GetChild(_currentCount);
 

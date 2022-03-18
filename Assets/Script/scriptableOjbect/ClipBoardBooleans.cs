@@ -39,11 +39,11 @@ public class firstBoss
     public Dictionary<string, bool> boolHolder = new Dictionary<string, bool>()
     {
         {"Location", false },
+        {"Mechanic1", false },
+        {"Mechanic2", false },
         {"Boss", false }
     };
 
 
 
-    public bool clue1;
-    public bool clue2;
 }
