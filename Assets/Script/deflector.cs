@@ -7,6 +7,7 @@ public class deflector : MonoBehaviour
 {
     public LayerMask BallLayer;
     public DialogueManager dialogueManager;
+    public GameObject combatUI;
     public void Start()
     {
         movement = GetComponent<SlugMovement>();
@@ -16,6 +17,11 @@ public class deflector : MonoBehaviour
         playerMaterial = new Material(playerMaterial);
         flashMaterial = new Material(flashMaterial);
         Cursor.lockState = CursorLockMode.Confined;
+
+        if(movement.inOverworld)
+        {
+            combatUI.SetActive(false);
+        }
     }
     public void Update()
     {

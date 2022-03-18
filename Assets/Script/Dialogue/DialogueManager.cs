@@ -50,7 +50,6 @@ public class DialogueManager : Singleton<DialogueManager>
                 return;
             }
 
-
         currentStory = new Story(newInkFile.text);
         showDialogueUI(true);
         inputAdvanceDialogue();
