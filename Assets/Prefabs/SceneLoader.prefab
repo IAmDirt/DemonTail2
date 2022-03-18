@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -14}
+  m_AnchoredPosition: {x: 0, y: -44}
   m_SizeDelta: {x: 740, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7127598805124681088
@@ -65,7 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Do you Want to enter \nthe Cassino?\n\nPress A to continue"
+  m_text: 'The Cassino
+
+    Press A to enter'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f563244417f3c2d41b0c4ee70981c46b, type: 2}
   m_sharedMaterial: {fileID: 21905342162499540, guid: f563244417f3c2d41b0c4ee70981c46b,
@@ -93,8 +95,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -105,7 +107,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -11.9
+  m_lineSpacing: 25
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -170,8 +172,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00007966309, y: 0}
-  m_SizeDelta: {x: 882.7, y: 495.3}
+  m_AnchoredPosition: {x: 0, y: -402}
+  m_SizeDelta: {x: 700, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7127598805176100585
 CanvasRenderer:
@@ -248,7 +250,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000021760468, y: 0}
-  m_SizeDelta: {x: 882.7, y: 495.3}
+  m_SizeDelta: {x: 700, y: 235}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7127598805781878137
 CanvasRenderer:
@@ -400,7 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlToLoad: 0
   ButtonPromet: {fileID: 7127598805176100586}
-  useRestriction: 0
+  useRestriction: 1
 --- !u!1 &7127598807217439399
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +461,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7127598807217439402
 MonoBehaviour:

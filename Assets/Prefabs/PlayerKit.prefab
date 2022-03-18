@@ -9004,6 +9004,8 @@ MonoBehaviour:
       sprite1: {fileID: 0}
       sprite2: {fileID: 0}
       clueDescription: Lavie was last seen entering the Casino in the North
+    sprite1: {fileID: 0}
+    sprite2: {fileID: 0}
   - dictionaryKey: 2
     isEnabled: 0
     ClueText: Hit dice to play them before they explode.
@@ -9014,6 +9016,10 @@ MonoBehaviour:
       sprite2: {fileID: 5776621569140214074, guid: 55a90979899bc7f40ad3f5fb4af61f42,
         type: 3}
       clueDescription: Hit dice to play them before they explode.
+    sprite1: {fileID: -1956078333907455738, guid: 55a90979899bc7f40ad3f5fb4af61f42,
+      type: 3}
+    sprite2: {fileID: 5776621569140214074, guid: 55a90979899bc7f40ad3f5fb4af61f42,
+      type: 3}
   - dictionaryKey: 3
     isEnabled: 0
     ClueText: No one can beat his card game, stay clear of the cards.
@@ -9024,6 +9030,10 @@ MonoBehaviour:
       sprite2: {fileID: 2108723897897699109, guid: 55a90979899bc7f40ad3f5fb4af61f42,
         type: 3}
       clueDescription: No one can beat his card game, stay clear of the cards.
+    sprite1: {fileID: -307434208496531811, guid: 55a90979899bc7f40ad3f5fb4af61f42,
+      type: 3}
+    sprite2: {fileID: 2108723897897699109, guid: 55a90979899bc7f40ad3f5fb4af61f42,
+      type: 3}
   - dictionaryKey: 1
     isEnabled: 0
     ClueText: 'Vivamus hendrerit leo arcu, hendrerit leo arcu, '
@@ -9032,6 +9042,8 @@ MonoBehaviour:
       sprite1: {fileID: 0}
       sprite2: {fileID: 0}
       clueDescription: 
+    sprite1: {fileID: 0}
+    sprite2: {fileID: 0}
   restrictionDropdown: {fileID: 4226452524694734757}
   restrictionDropdownPositions: {fileID: 1495850978678846701}
   Promt: {fileID: 2060211447435626215}
@@ -15978,7 +15990,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4713981390708531594}
-  m_LocalRotation: {x: 0.52074784, y: 3.0329893e-15, z: -1.850068e-15, w: 0.8537106}
+  m_LocalRotation: {x: 0.5207478, y: -0.000000025442558, z: 0.000000015519493, w: 0.8537106}
   m_LocalPosition: {x: 0.07000005, y: 14.424435, z: 24.694237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -16562,7 +16574,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4713981390957189216}
-  m_LocalRotation: {x: 0.52074784, y: 3.0329893e-15, z: -1.850068e-15, w: 0.8537106}
+  m_LocalRotation: {x: 0.5207478, y: -0.000000025442558, z: 0.000000015519493, w: 0.8537106}
   m_LocalPosition: {x: 0.07000005, y: 14.424435, z: 24.694237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -25,6 +25,8 @@ public class clipboardUIManager : MonoBehaviour
         public bool AlreadyDisplayed;
         [Header("restrictions")]
         public clueVisualization visualization;
+    public Sprite sprite1;
+    public Sprite sprite2;
     }
 
 
@@ -217,7 +219,7 @@ public class clipboardUIManager : MonoBehaviour
 
                 //set prefab information
                 var newPrefab = tutorialPrefab;
-                newPrefab.GetComponent<cluePrefabBehavior>().setVisuals(Clue.visualization);
+                newPrefab.GetComponent<cluePrefabBehavior>().setVisuals(Clue.visualization, Clue.sprite1, Clue.sprite2);
 
                 displayClue(tutorialPrefab);
 

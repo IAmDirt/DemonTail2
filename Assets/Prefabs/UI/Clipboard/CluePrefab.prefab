@@ -59,7 +59,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 6176005427781267604}
+  _sprite1: {fileID: -307434208496531811, guid: 55a90979899bc7f40ad3f5fb4af61f42,
+    type: 3}
+  _sprite2: {fileID: 2108723897897699109, guid: 55a90979899bc7f40ad3f5fb4af61f42,
+    type: 3}
   text: {fileID: 6391741951144217569}
+  animate: 1
 --- !u!1 &1638847934198505248
 GameObject:
   m_ObjectHideFlags: 0

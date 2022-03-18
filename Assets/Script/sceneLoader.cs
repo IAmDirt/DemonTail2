@@ -32,8 +32,7 @@ public class sceneLoader : MonoBehaviour
         {
             if (input != null)
             {
-                input.Dialogue.Select.performed += loadSceneAction;
-                input.Dialogue.Back.performed += deselectAction;
+                Invoke("setInput", 1.5f);
                 gameManager.Instance.startDialogue();
                 openUI();
 
@@ -43,9 +42,20 @@ public class sceneLoader : MonoBehaviour
 
     #region input
     //refrence https://forum.unity.com/threads/how-to-remove-and-inputaction-phase-callback.894601/
+    public void setInput()
+    {
+        input.Dialogue.Select.performed += loadSceneAction;
+        input.Dialogue.Back.performed += deselectAction;
+
+        ButtonPromet.transform.localScale = Vector3.one * 0.1f;
+        ButtonPromet.SetActive(true);
+        LeanTween.scale(ButtonPromet, Vector3.one, 0.3f).setEaseOutBack();
+    }
+
     private void loadSceneAction(InputAction.CallbackContext ctx)//need this to add and move actions to input
     {
         // do the thing
+        deselect();
         loadScene();
     }
     private void deselectAction(InputAction.CallbackContext ctx)//need this to add and move actions to input
@@ -65,10 +75,9 @@ public class sceneLoader : MonoBehaviour
 
     public void loadScene()
     {
-
         if (useRestriction )
         {
-            if (!_clipBoardManager.ClueRestrictionsMet())
+            if (!_clipBoardManager.ClueRestrictionsMet())   
             {
                 disableHitbox = true;
                 deselect();
@@ -86,7 +95,6 @@ public class sceneLoader : MonoBehaviour
 
     public void openUI()
     {
-        ButtonPromet.SetActive(true);
         if(useRestriction) _clipBoardManager.OpenUI();
     }
     public void deselect()
