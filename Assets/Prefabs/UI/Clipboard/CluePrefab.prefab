@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lavie was last seen entering the Casino in the North
+  m_text: No one can beat his card game, stay clear of the cards.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 72303e32268948343bbdf454d4127e04, type: 2}
   m_sharedMaterial: {fileID: 6666022383865388836, guid: 72303e32268948343bbdf454d4127e04,
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8994365039629483768}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

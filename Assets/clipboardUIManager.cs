@@ -209,23 +209,25 @@ public class clipboardUIManager : MonoBehaviour
 
         foreach (var Clue in clueList)
         {
-            if (!Clue.isEnabled || Clue.AlreadyDisplayed)
-                yield break;
-
-            Clue.AlreadyDisplayed = true;
-
-            //set prefab information
-            var newPrefab = tutorialPrefab;
-            newPrefab.GetComponent<cluePrefabBehavior>().setVisuals(Clue.visualization);
-
-            displayClue(tutorialPrefab);
-
-            //update count;
-            _currentCount++;
-            ClueCount.text = _currentCount.ToString() + "/ 3";
+            if (Clue.isEnabled && !Clue.AlreadyDisplayed)
+            {
 
 
-            yield return new WaitForSeconds(0.35f);
+                Clue.AlreadyDisplayed = true;
+
+                //set prefab information
+                var newPrefab = tutorialPrefab;
+                newPrefab.GetComponent<cluePrefabBehavior>().setVisuals(Clue.visualization);
+
+                displayClue(tutorialPrefab);
+
+                //update count;
+                _currentCount++;
+                ClueCount.text = _currentCount.ToString() + "/ 3";
+
+
+                yield return new WaitForSeconds(0.35f);
+            }
         }
         //is clue already displayed on right
         //if not
