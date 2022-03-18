@@ -60,6 +60,19 @@ public class deflector : MonoBehaviour
         }
     }
     //open hitbox more frames when hit
+
+    public void OverwordlInteract()
+    {
+        if (!movement.inOverworld)
+            return;
+        if (nextReflect <= 0)
+        {
+            //  SpawnBall();
+            nextReflect = reflectFireRate;
+            StartCoroutine(openHitBox());
+            rumbler.RumbleConstant(1, 1, 0.06f);
+        }
+    }
     public IEnumerator openHitBox()
     {
         var deflectDir = transform.forward;

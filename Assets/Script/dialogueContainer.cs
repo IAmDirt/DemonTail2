@@ -10,10 +10,12 @@ public class dialogueContainer : MonoBehaviour
     public bool OnlyTriggerOnce;
     private bool _alreadyTriggered;
     public GameObject promt;
+    private GameObject buttonPromt;
     public void Start()
     {
         dialoguePromt = Instantiate(promt, transform.position, promt.transform.rotation, transform);
-
+        buttonPromt = dialoguePromt.transform.GetChild(0).gameObject;
+        buttonPromt.SetActive(false);
         ToglePromt();
     }
 
@@ -31,5 +33,23 @@ public class dialogueContainer : MonoBehaviour
     public void ToglePromt()
     {
         dialoguePromt.SetActive(!_alreadyTriggered);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 10)
+        {
+            buttonPromt.SetActive(true);
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+
+
+        if (other.gameObject.layer == 10)
+        {
+            buttonPromt.SetActive(false);
+        }
     }
 }

@@ -76,8 +76,8 @@ public class InputPlayer : MonoBehaviour
         //input.Gameplay.Restart.performed += ctx => restartLevel();
 
 
-        input.Gameplay.ButtonWest.performed += ctx => deflector.deflectSuper();
-        input.Gameplay.ButtonSouth.performed += ctx => deflector.deflectSuper();
+        input.Gameplay.ButtonWest.performed += ctx => deflector.OverwordlInteract();
+        input.Gameplay.ButtonSouth.performed += ctx => deflector.OverwordlInteract();
         if(ClipBoardManager)
         input.Gameplay.ButtonNorth.performed += ctx => ClipBoardManager.inputClipBoard();
     }
