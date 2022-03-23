@@ -22,7 +22,12 @@ public class InputPlayer : MonoBehaviour
         SetInput();
 
         if (!movement.inOverworld)
+        {
             ClipBoardManager.gameObject.SetActive(false);
+
+        }
+        else
+            ClipBoardManager.gameObject.SetActive(true);
     }
     public void Update()
     {

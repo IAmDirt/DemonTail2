@@ -176,6 +176,7 @@ MonoBehaviour:
   - {fileID: 1802296423732301122}
   - {fileID: -6831993321140919008}
   - {fileID: -6772373895276285544}
+  - {fileID: 8835457331644555150}
 --- !u!114 &1802296423732301122
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -350,3 +351,42 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
     min: 0
+--- !u!114 &8835457331644555150
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c5ea8b8f805ce43b86daa829394e70, type: 3}
+  m_Name: EdgeDetectionEffect
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.74
+    min: 0
+    max: 1
+  thickness:
+    m_OverrideState: 1
+    m_Value: 0.7
+    min: 0
+  normalThreshold:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 30}
+    min: 0
+    max: 360
+  depthThreshold:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0.05}
+    min: 0
+    max: 1
+  color:
+    m_OverrideState: 0
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    hdr: 1
+    showAlpha: 0
+    showEyeDropper: 1

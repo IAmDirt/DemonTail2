@@ -51,10 +51,16 @@ public class Boss_Director : StateManager
 
     public override void Update()
     {
-        if(RotateToPLayer)
-        Rotate();
+
         base.Update();
 
+    }
+
+    public override void FixedUpdate()
+    {
+        if (RotateToPLayer)
+            Rotate();
+        base.FixedUpdate();
     }
     public bool RotateToPLayer = true;
     public float RotateSpeed = 2;
