@@ -63,4 +63,10 @@ public class MainMenu : MonoBehaviour {
             yield return null;
         }
     }
+
+    public void RestartLevel()
+    {
+        gameManager.Instance.restartLVL();
+    }
+
 }

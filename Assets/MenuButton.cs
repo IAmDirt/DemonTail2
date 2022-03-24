@@ -15,7 +15,7 @@ public class MenuButton : MonoBehaviour
         if (!startdeselect)
             eventSystem.SetSelectedGameObject(gameObject);
         transform.localScale = Vector3.zero;
-        Invoke("starteScaleIn", delayFadeIn * 0.8f);
+        StartCoroutine(delayScaleIn());
     }
     public void Start()
     {
@@ -25,17 +25,24 @@ public class MenuButton : MonoBehaviour
         }
 
         transform.localScale = Vector3.zero;
-        Invoke("starteScaleIn", delayFadeIn *0.8f);
+        StartCoroutine(delayScaleIn());
 
     }
+    public IEnumerator delayScaleIn()
+    {
+        yield return new WaitForSecondsRealtime(delayFadeIn * 0.8f);
+
+        starteScaleIn();
+    }
+
     public void starteScaleIn()
     {
 
-        LeanTween.scale(gameObject, Vector3.one , 0.8f).setEaseOutQuart();
+        LeanTween.scale(gameObject, Vector3.one , 0.8f).setEaseOutQuart().setIgnoreTimeScale(true);
     }
     public void selelected()
     {
-        LeanTween.scale(gameObject, Vector3.one * 0.7f, 0.4f).setEasePunch();
+        LeanTween.scale(gameObject, Vector3.one * 0.7f, 0.4f).setEasePunch().setIgnoreTimeScale(true);
         StartCoroutine(fadecolor(select, 0.1f));
     }
 
@@ -45,7 +52,7 @@ public class MenuButton : MonoBehaviour
     }
     public void deselect()
     {
-        LeanTween.scale(gameObject, Vector3.one , 0.4f).setEaseInOutCirc();
+        LeanTween.scale(gameObject, Vector3.one , 0.4f).setEaseInOutCirc().setIgnoreTimeScale(true);
         StopAllCoroutines();
 
         backPanel.color = deselected;
@@ -60,14 +67,14 @@ public class MenuButton : MonoBehaviour
     public Color click;
     public void pressed()
     {
-        LeanTween.scale(gameObject, Vector3.one *1.4f, 0.3f).setEasePunch();
+        LeanTween.scale(gameObject, Vector3.one *1.4f, 0.3f).setEasePunch().setIgnoreTimeScale(true);
         backPanel.color = click;
         StartCoroutine(pressedColor());
     }
     private IEnumerator pressedColor()
     {
         yield return new WaitForSeconds(0.2f);
-        LeanTween.scale(gameObject, Vector3.one *0.9f, 0.2f).setEasePunch();
+        LeanTween.scale(gameObject, Vector3.one *0.9f, 0.2f).setEasePunch().setIgnoreTimeScale(true);
         StartCoroutine(fadecolor(select, 0.1f));
     }
 
@@ -78,7 +85,7 @@ public class MenuButton : MonoBehaviour
         var currentTime = 0f;
         while (currentTime <= fadeTime)
         {
-            currentTime += Time.deltaTime;
+            currentTime += Time.unscaledDeltaTime;
 
             var prosentage = currentTime / fadeTime;
             backPanel.color = Color.Lerp(backPanel.color, wanted, prosentage);

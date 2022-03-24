@@ -10,6 +10,7 @@ public class gameManager : MonoBehaviour
 
 
     public static gameManager Instance;
+    public InputPlayer inputPlayer;
     private gameManager()
     {
         // initialize your game manager here. Do not reference to GameObjects here (i.e. GameObject.Find etc.)
@@ -90,7 +91,10 @@ public class gameManager : MonoBehaviour
     #region scenes
     public void restartLVL()
     {
+        Time.timeScale = 1;
         SetNormalTime();
+        inputPlayer.input.Gameplay.Enable();
+        inputPlayer.input.GameManager.Disable();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public Animator fadeAnim;
@@ -112,8 +116,35 @@ public class gameManager : MonoBehaviour
     public GameObject gameOverScreen;
     public void GameOver()
     {
+        StopAllCoroutines();
+        inputPlayer.input.Gameplay.Disable();
+        inputPlayer.input.GameManager.Enable();
         transform.GetChild(0).gameObject.SetActive(true);
-        PauseGame();
+        StopTime();
+    }
+    #endregion
+
+    #region slowDown
+  
+    public void DoSlowmotion(float prosentage, float slowDownLength, float slowDownFactor, float slowDownStayTime)
+    {
+        Time.timeScale = slowDownFactor;
+        Time.fixedDeltaTime = Time.timeScale * 0.01333f;
+        StartCoroutine(resetTime(prosentage, slowDownLength, slowDownStayTime));
+    }
+
+    IEnumerator resetTime(float prosentage, float slowDownLength, float slowDownStayTime)
+    {
+
+        yield return new WaitForSecondsRealtime(Mathf.Lerp(0, slowDownStayTime, prosentage));
+        while (Time.timeScale < 1)
+        {
+            Time.timeScale += (1f / slowDownLength) * Time.deltaTime;
+            Time.timeScale = Mathf.Clamp(Time.timeScale, 0, 1f);
+
+            Time.fixedDeltaTime = Time.timeScale * 0.01333f;
+            yield return null;
+        }
     }
     #endregion
 

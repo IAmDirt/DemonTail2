@@ -8,6 +8,11 @@ public class deflector : MonoBehaviour
     public LayerMask BallLayer;
     public DialogueManager dialogueManager;
     public GameObject combatUI;
+
+    public void Awake()
+    {
+        StopAllCoroutines();
+    }
     public void Start()
     {
         movement = GetComponent<SlugMovement>();
@@ -160,8 +165,9 @@ public class deflector : MonoBehaviour
         //StartCoroutine(Flash());
         if (Rumble)
             rumbler.RumbleConstant(low, high, rumbleTime);
-        DoSlowmotion(slowDownProsentage, slowDownRecoverTime, slowdownFactor);
+     gameManager.Instance.   DoSlowmotion(slowDownProsentage, slowDownRecoverTime, slowdownFactor, slowDownStayTime);
     }
+ 
 
     public Material playerMaterial;
     public Material flashMaterial;
@@ -198,34 +204,13 @@ public class deflector : MonoBehaviour
     }
 
     #endregion
-
-    #region slowDown
     [Header("slowDown")]
 
     public float slowDownProsentage = 0.05f;
     public float slowdownFactor = 0.05f;
     public float slowDownStayTime = 0.05f;   //time stay at slow factor
-    public float slowDownRecoverTime = 1;    //time to smoothe back to normal time
-    public void DoSlowmotion(float prosentage, float slowDownLength, float slowDownFactor)
-    {
-        Time.timeScale = slowDownFactor;
-        Time.fixedDeltaTime = Time.timeScale * 0.01333f;
-        StartCoroutine(resetTime(prosentage, slowDownLength));
-    }
+    public float slowDownRecoverTime = 0.25f;    //time to smoothe back to normal time
 
-    IEnumerator resetTime(float prosentage, float slowDownLength)
-    {
-        yield return new WaitForSecondsRealtime(Mathf.Lerp(0, slowDownStayTime, prosentage));
-        while (Time.timeScale < 1)
-        {
-            Time.timeScale += (1f / slowDownLength) * Time.deltaTime;
-            Time.timeScale = Mathf.Clamp(Time.timeScale, 0, 1f);
-
-            Time.fixedDeltaTime = Time.timeScale * 0.01333f;
-            yield return null;
-        }
-    }
-    #endregion
 
     private void OnDrawGizmos()
     {

@@ -934,6 +934,90 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""GameManager"",
+            ""id"": ""a20ee92a-ed76-404c-8291-1bd5de710fe4"",
+            ""actions"": [
+                {
+                    ""name"": ""ButtonNorth"",
+                    ""type"": ""Button"",
+                    ""id"": ""251c6bb2-8c6e-408e-a3a9-2cc5950ff581"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ButtonEast"",
+                    ""type"": ""Button"",
+                    ""id"": ""04d95aab-8f00-4865-9f46-3613a15b30d9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ButtonWest"",
+                    ""type"": ""Button"",
+                    ""id"": ""731264a5-f6fc-429b-bc3a-d57ba45f07b1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ButtonSouth"",
+                    ""type"": ""Button"",
+                    ""id"": ""db86a632-018c-4a6a-a3f5-ab747a1e4912"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""197427bd-5be6-4cfc-91bf-be20a2fbb233"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ButtonSouth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0006f3ac-f3b4-41ef-b869-b4d602d6c82c"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ButtonWest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40b4bea9-17b1-49cb-a481-de5860aa9549"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ButtonEast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35f68122-847c-464f-9f1e-16145a544f4c"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ButtonNorth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -975,6 +1059,12 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_Dialogue_RightTrigger = m_Dialogue.FindAction("RightTrigger", throwIfNotFound: true);
         m_Dialogue_RightShoulder = m_Dialogue.FindAction("RightShoulder", throwIfNotFound: true);
         m_Dialogue_LeftShoulder = m_Dialogue.FindAction("LeftShoulder", throwIfNotFound: true);
+        // GameManager
+        m_GameManager = asset.FindActionMap("GameManager", throwIfNotFound: true);
+        m_GameManager_ButtonNorth = m_GameManager.FindAction("ButtonNorth", throwIfNotFound: true);
+        m_GameManager_ButtonEast = m_GameManager.FindAction("ButtonEast", throwIfNotFound: true);
+        m_GameManager_ButtonWest = m_GameManager.FindAction("ButtonWest", throwIfNotFound: true);
+        m_GameManager_ButtonSouth = m_GameManager.FindAction("ButtonSouth", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1343,6 +1433,63 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         }
     }
     public DialogueActions @Dialogue => new DialogueActions(this);
+
+    // GameManager
+    private readonly InputActionMap m_GameManager;
+    private IGameManagerActions m_GameManagerActionsCallbackInterface;
+    private readonly InputAction m_GameManager_ButtonNorth;
+    private readonly InputAction m_GameManager_ButtonEast;
+    private readonly InputAction m_GameManager_ButtonWest;
+    private readonly InputAction m_GameManager_ButtonSouth;
+    public struct GameManagerActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public GameManagerActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ButtonNorth => m_Wrapper.m_GameManager_ButtonNorth;
+        public InputAction @ButtonEast => m_Wrapper.m_GameManager_ButtonEast;
+        public InputAction @ButtonWest => m_Wrapper.m_GameManager_ButtonWest;
+        public InputAction @ButtonSouth => m_Wrapper.m_GameManager_ButtonSouth;
+        public InputActionMap Get() { return m_Wrapper.m_GameManager; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GameManagerActions set) { return set.Get(); }
+        public void SetCallbacks(IGameManagerActions instance)
+        {
+            if (m_Wrapper.m_GameManagerActionsCallbackInterface != null)
+            {
+                @ButtonNorth.started -= m_Wrapper.m_GameManagerActionsCallbackInterface.OnButtonNorth;
+                @ButtonNorth.performed -= m_Wrapper.m_GameManagerActionsCallbackInterface.OnButtonNorth;
+                @ButtonNorth.canceled -= m_Wrapper.m_GameManagerActionsCallbackInterface.OnButtonNorth;
+                @ButtonEast.started -= m_Wrapper.m_GameManagerActionsCallbackInterface.OnButtonEast;
+                @ButtonEast.performed -= m_Wrapper.m_GameManagerActionsCallbackInterface.OnButtonEast;
+                @ButtonEast.canceled -= m_Wrapper.m_GameManagerActionsCallbackInterface.OnButtonEast;
+                @ButtonWest.started -= m_Wrapper.m_GameManagerActionsCallbackInterface.OnButtonWest;
+                @ButtonWest.performed -= m_Wrapper.m_GameManagerActionsCallbackInterface.OnButtonWest;
+                @ButtonWest.canceled -= m_Wrapper.m_GameManagerActionsCallbackInterface.OnButtonWest;
+                @ButtonSouth.started -= m_Wrapper.m_GameManagerActionsCallbackInterface.OnButtonSouth;
+                @ButtonSouth.performed -= m_Wrapper.m_GameManagerActionsCallbackInterface.OnButtonSouth;
+                @ButtonSouth.canceled -= m_Wrapper.m_GameManagerActionsCallbackInterface.OnButtonSouth;
+            }
+            m_Wrapper.m_GameManagerActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ButtonNorth.started += instance.OnButtonNorth;
+                @ButtonNorth.performed += instance.OnButtonNorth;
+                @ButtonNorth.canceled += instance.OnButtonNorth;
+                @ButtonEast.started += instance.OnButtonEast;
+                @ButtonEast.performed += instance.OnButtonEast;
+                @ButtonEast.canceled += instance.OnButtonEast;
+                @ButtonWest.started += instance.OnButtonWest;
+                @ButtonWest.performed += instance.OnButtonWest;
+                @ButtonWest.canceled += instance.OnButtonWest;
+                @ButtonSouth.started += instance.OnButtonSouth;
+                @ButtonSouth.performed += instance.OnButtonSouth;
+                @ButtonSouth.canceled += instance.OnButtonSouth;
+            }
+        }
+    }
+    public GameManagerActions @GameManager => new GameManagerActions(this);
     public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -1382,5 +1529,12 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         void OnRightTrigger(InputAction.CallbackContext context);
         void OnRightShoulder(InputAction.CallbackContext context);
         void OnLeftShoulder(InputAction.CallbackContext context);
+    }
+    public interface IGameManagerActions
+    {
+        void OnButtonNorth(InputAction.CallbackContext context);
+        void OnButtonEast(InputAction.CallbackContext context);
+        void OnButtonWest(InputAction.CallbackContext context);
+        void OnButtonSouth(InputAction.CallbackContext context);
     }
 }
