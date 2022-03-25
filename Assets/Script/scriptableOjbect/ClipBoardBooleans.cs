@@ -7,12 +7,7 @@ public class ClipBoardBooleans : ScriptableObject
 {
     public clipboardUIManager manager;
     public firstBoss clueCollection1;
-
-
-
-
-
-
+    public seccondBoss clueCollection2;
 
     public void setBool(int key, string value)
     {
@@ -33,7 +28,6 @@ public class ClipBoardBooleans : ScriptableObject
 [System.Serializable]
 public class firstBoss
 {
-
     //location
     //
     public Dictionary<string, bool> boolHolder = new Dictionary<string, bool>()
@@ -43,7 +37,15 @@ public class firstBoss
         {"Mechanic2", false },
         {"Boss", false }
     };
+}
+[System.Serializable]
+public class seccondBoss
+{
+    //location
+    //
 
-
-
+    public bool haveTicket = false;
+    public Dictionary<string, bool> boolHolder = new Dictionary<string, bool>()
+    {
+    };
 }

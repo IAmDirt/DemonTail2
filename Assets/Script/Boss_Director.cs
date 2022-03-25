@@ -121,7 +121,7 @@ public class Boss_Director : StateManager
         //reached end location
        // particleJump.Play();
        // JumpImpact.PlayRandomClip();
-        impulse.GenerateImpulse(5);
+       if(!Inverse) impulse.GenerateImpulse(5);
     }
 
     public IEnumerator swingobjectRotate(Vector3 point1, Vector3 point2)

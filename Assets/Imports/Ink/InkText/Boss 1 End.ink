@@ -1,9 +1,1 @@
-I wasn't supposed to lose...
-
-You play well for a imp
-
-But you stand no chance agains the Circus DIRECTIOR!
-
-HA HA ha ha haaaa.......
-...  #Advance: Cutscene
-    -> END
+﻿{"inkVersion":20,"root":[["^I… I lost ? But the house always wins…","\n","^HaHaHA, finding your stupid friend will be REALLY hard !","\n","^You think you stand a chance don't you ?","\n","^Based on what is coming your way, i don't think you'll survive the day","\n",["ev",{"^->":"0.8.$r1"},{"temp=":"$r"},"str",{"->":".^.s"},[{"#n":"$r1"}],"/str","/ev",{"*":"0.c-0","flg":18},{"s":["^Coughs* The circus director… ",{"->":"$r","var":true},null]}],{"c-0":["ev",{"^->":"0.c-0.$r2"},"/ev",{"temp=":"$r"},{"->":"0.8.s"},[{"#n":"$r2"}],"\n","^Is waiting for you… *Coughs*","\n","^You will know where to find him.","\n","^...  ",{"#":"Advance: Cutscene"},{"#":"Hide : Cutscene"},"\n","end",{"->":"0.g-0"},{"#f":5}],"g-0":["done",{"#f":5}]}],"done",{"#f":1}],"listDefs":{}}

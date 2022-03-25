@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: ClipBoardBooleans
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  clueCollection1:
-    clue1: 0
-    clue2: 0
+  clueCollection2:
+    haveTicket: 1
