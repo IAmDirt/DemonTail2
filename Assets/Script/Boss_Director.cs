@@ -15,7 +15,6 @@ public class Boss_Director : StateManager
         public IEnumerator AttackCoroutine;
     }
 
-
     public Stage1 stage1;
     public Stage2 stage2;
     public Stage3 stage3;
@@ -23,6 +22,14 @@ public class Boss_Director : StateManager
     public CinemachineImpulseSource impulse;
     public Transform ArenaCenter;
     public Rigidbody rb;
+
+    [Header("animation")]
+    public Animator anim;
+
+    readonly int m_ErrectStaf = Animator.StringToHash("StafErrect");
+    readonly int m_CardSlash = Animator.StringToHash("CardSlash");
+    readonly int m_Swing = Animator.StringToHash("Swing");
+    readonly int m_Jump = Animator.StringToHash("Jump");
 
     void Start()
     {
@@ -51,22 +58,36 @@ public class Boss_Director : StateManager
 
     public override void Update()
     {
-        if(RotateToPLayer)
-        Rotate();
+
         base.Update();
 
+    }
+
+    public override void FixedUpdate()
+    {
+        if (RotateToPLayer)
+        {
+            var directionPlayer = RotateTarget.position - transform.position;
+
+            Rotate(directionPlayer);
+        }
+        base.FixedUpdate();
     }
     public bool RotateToPLayer = true;
     public float RotateSpeed = 2;
     public Transform RotateTarget;
-    public void Rotate()
+    public void Rotate(Vector3 direction)
     {
-        var direction = RotateTarget.position - transform.position;
         direction.y = 0;
         float singleStep = RotateSpeed * Time.deltaTime;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction.normalized, singleStep, 0.0f);
 
          rb.rotation= Quaternion.LookRotation(newDirection);
+    }
+
+    public void setRotation(Vector3 direction)
+    {
+        rb.rotation = Quaternion.LookRotation(direction);
     }
     [Header("Jump")]
     public AnimationCurve jumpCurve;
@@ -75,6 +96,8 @@ public class Boss_Director : StateManager
 
     IEnumerator jumpArc(Vector3 endPoint, bool Inverse = false)
     {
+        anim.SetTrigger(m_Jump);
+
         var startPoint = rb.transform.position;
         var timeElapsed = 0f;
         do
@@ -84,6 +107,9 @@ public class Boss_Director : StateManager
             var prosentage = timeElapsed / jumpDuration;
             var jumpArc = Vector3.up * jumpHeight * jumpCurve.Evaluate(prosentage);   //calculate height of jumpArc
             jumpArc *= Inverse ? -7: 1;
+
+            //swing object rotate
+          
 
             //move foot here
             var animationPoint = Vector3.Lerp(startPoint, endPoint, prosentage) + jumpArc;
@@ -97,6 +123,29 @@ public class Boss_Director : StateManager
        // JumpImpact.PlayRandomClip();
         impulse.GenerateImpulse(5);
     }
+
+    public IEnumerator swingobjectRotate(Vector3 point1, Vector3 point2)
+    {
+
+        var midpoint = Vector3.Lerp(point1, point2, 0.5f);
+
+        var timeElapsed = 0f;
+        do
+        {
+            timeElapsed += Time.deltaTime;
+
+            var xRotation = Mathf.Lerp(45, -45, timeElapsed*0.8f);
+      
+           // transform.rotation = LookAtRotationOnly_Y;
+
+
+            stage1.SwingObject.transform.localRotation = Quaternion.Euler(xRotation, 0, 90); ;
+
+            yield return null;
+        }
+        while (timeElapsed <= jumpDuration);
+    }
+
     public void RandomJump()
     {
         var randomDirection = new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)).normalized ;
@@ -185,7 +234,6 @@ public class Boss_Director : StateManager
                 chooseNextAttack();
                 return;
             }
-
             IEnumerator nextTask;
 
 
@@ -235,10 +283,12 @@ public class Boss_Director : StateManager
         private float arenaRadius = 28;
         public GameObject FireTrailPredict;
         public GameObject FireTrail;
+        public GameObject SwingObject;
         private IEnumerator AcrobaticSwing()
         {
             //jump out of arena
-
+           _brain. RotateToPLayer = false;
+            SwingObject.SetActive(true);
             CoroutineHelper.RunCoroutine(_brain.jumpArc(_brain.ArenaCenter.position + Vector3.up * 60));
 
             yield return new WaitForSeconds(1);
@@ -262,11 +312,13 @@ public class Boss_Director : StateManager
 
                 spawnFirePrediction(position1, position2);
                 yield return new WaitForSeconds(0.75f);
+                _brain.anim.SetTrigger(_brain.m_Swing);
+                var trailDirection = position2 - position1;
+                _brain.transform.position = (position1 - trailDirection * 0.5f) + Vector3.up * 35;
+                CoroutineHelper.RunCoroutine(_brain.jumpArc((position2 + trailDirection * 0.5f) + Vector3.up * 35, true));
+                CoroutineHelper.RunCoroutine(_brain.swingobjectRotate(position1 , position2 ));
 
-                var trailDirection =  position2- position1 ;
-                _brain.transform.position = (position1 - trailDirection*0.5f ) + Vector3.up * 35;
-                CoroutineHelper.RunCoroutine(_brain.jumpArc((position2 + trailDirection*0.5f )+ Vector3.up * 35, true));
-
+                _brain.setRotation(trailDirection);
                 spawnFiretrail(position1, position2);
                 yield return new WaitForSeconds(0.5f);
             }
@@ -276,9 +328,15 @@ public class Boss_Director : StateManager
             yield return new WaitForSeconds(1);
             //land at position 
             yield return new WaitForSeconds(1);
+            _brain.RotateToPLayer = true;
+            SwingObject.SetActive(false);
             CoroutineHelper.RunCoroutine(_brain.jumpArc(_brain.ArenaCenter.position));
             //end
         }
+
+
+
+
         private void spawnFirePrediction(Vector3 startPos, Vector3 endPos)
         {
             var spawned = Instantiate(FireTrailPredict, startPos, Quaternion.LookRotation(endPos - startPos, Vector3.up));
@@ -346,6 +404,7 @@ public class Boss_Director : StateManager
             yield return new WaitForSeconds(0.1f);
             LeanTween.scale(Stick.gameObject, endSize, 0.6f).setEaseInOutBack();
 
+            _brain.anim.SetTrigger(_brain.m_ErrectStaf);
             yield return new WaitForSeconds(1);
            // _brain.RotateToPLayer = false;
             _brain.RotateTarget = StickEnd;
@@ -388,16 +447,19 @@ public class Boss_Director : StateManager
         public bulletSpawner clusterSpawner;
         private IEnumerator ClusterShot()
         {
+
             _brain.RandomJump();
                 yield return new WaitForSeconds(_brain.jumpDuration +0.2f);
-            var amountOfShots = 2;
+            _brain.anim.SetTrigger(_brain.m_CardSlash);
+         /*   var amountOfShots = 2;
             while (amountOfShots > 0)
             {
                 amountOfShots--;
             clusterSpawner. FirePatternCircle();
                 // spawn homing
                 yield return new WaitForSeconds(1f);
-            }
+            }*/
+                yield return new WaitForSeconds(6f);
         }
 
         [Header("HomingMIssiles")]
@@ -407,6 +469,8 @@ public class Boss_Director : StateManager
             _brain.RandomJump();
             yield return new WaitForSeconds(_brain.jumpDuration);
             var amountOfShots = 5;
+
+            _brain.anim.SetTrigger(_brain.m_ErrectStaf);
 
             while (amountOfShots > 0)
             {

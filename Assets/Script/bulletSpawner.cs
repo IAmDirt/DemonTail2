@@ -8,13 +8,29 @@ public class bulletSpawner : MonoBehaviour
     public bool isenabled;
     public bool idleAnim = true;
 
+    private GameObject SpawnedParent;
     public void OnEnable()
     {
         idleAnim = true;
+        if(SpawnedParent)
+        SpawnedParent.SetActive(true);
+    }
+
+    public void OnDisable()
+    {
+
+        if(SpawnedParent)
+        SpawnedParent.SetActive(false);
     }
 
     public void Start()
     {
+        if(SpawnedParent == null)
+        {
+
+            SpawnedParent = new GameObject();
+            SpawnedParent.transform.name = "ProjectileParent";
+        }
         if(isenabled)
             StartCoroutine(firePatternSpiral());
     }
@@ -99,11 +115,12 @@ public class bulletSpawner : MonoBehaviour
         }
     }
 
-    public GameObject spawnBullet( Vector3 direction, bool canBeDeflected)
+    public GameObject spawnBullet(Vector3 direction, bool canBeDeflected)
     {
         var spawnPosition = new Vector3(BulletSpawner.position.x, 1.5f, BulletSpawner.position.z);
         var spawned = PoolManager.Spawn(Bullet, spawnPosition, Quaternion.LookRotation(direction));
-        spawned.transform.parent = this.transform;
+
+        spawned.transform.parent = SpawnedParent.transform;
         return spawned;
     }
 

@@ -29,7 +29,7 @@ public class Rumbler : MonoBehaviour
         activeRumbePattern = RumblePattern.Constant;
         lowA = low;
         highA = high;
-        rumbleDurration = Time.time + durration;
+        rumbleDurration = Time.unscaledTime + durration;
     }
 
     public void RumblePulse(float low, float high, float burstTime, float durration)
@@ -38,8 +38,8 @@ public class Rumbler : MonoBehaviour
         lowA = low;
         highA = high;
         rumbleStep = burstTime;
-        pulseDurration = Time.time + burstTime;
-        rumbleDurration = Time.time + durration;
+        pulseDurration = Time.unscaledTime + burstTime;
+        rumbleDurration = Time.unscaledTime + durration;
         isMotorActive = true;
         var g = GetGamepad();
         g?.SetMotorSpeeds(lowA, highA);
@@ -52,7 +52,7 @@ public class Rumbler : MonoBehaviour
         highA = highStart;
         lowStep = (lowEnd - lowStart) / durration;
         highStep = (highEnd - highStart) / durration;
-        rumbleDurration = Time.time + durration;
+        rumbleDurration = Time.unscaledTime + durration;
     }
 
     public void StopRumble()
@@ -73,7 +73,7 @@ public class Rumbler : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time > rumbleDurration)
+        if (Time.unscaledTime > rumbleDurration)
         {
             StopRumble();
             return;
@@ -91,10 +91,10 @@ public class Rumbler : MonoBehaviour
 
             case RumblePattern.Pulse:
 
-                if(Time.time > pulseDurration)
+                if(Time.unscaledTime > pulseDurration)
                 {
                     isMotorActive = !isMotorActive;
-                    pulseDurration = Time.time + rumbleStep;
+                    pulseDurration = Time.unscaledTime + rumbleStep;
                     if (!isMotorActive)
                     {
                         gamepad.SetMotorSpeeds(0, 0);
@@ -108,8 +108,8 @@ public class Rumbler : MonoBehaviour
                 break;
             case RumblePattern.Linear:
                 gamepad.SetMotorSpeeds(lowA, highA);
-                lowA += (lowStep * Time.deltaTime);
-                highA += (highStep * Time.deltaTime);
+                lowA += (lowStep * Time.unscaledDeltaTime);
+                highA += (highStep * Time.unscaledDeltaTime);
                 break;
             default:
                 break;
