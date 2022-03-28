@@ -54,11 +54,19 @@ public class Boss_Director : StateManager
     {
         HealthUI.setFill(block.currentHealth);
     }
+    public bool dead;
+    public void DeathEvent()
+    {
+        stage1.CurrentTask.Stop();
+        dead = true;
+        //anim.applyRootMotion = true;
+        //anim.SetTrigger(m_Dead);
+        // EndTimeline.Play();
 
+    }
 
     public override void Update()
     {
-
         base.Update();
 
     }
@@ -223,6 +231,9 @@ public class Boss_Director : StateManager
         }
         public void chooseNextAttack()
         {
+            if (_brain.dead)
+                return;
+
             AttackMovesDone++;
             var nextAttack = -1;
             if (attackQueue.Count > 0)

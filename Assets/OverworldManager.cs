@@ -7,8 +7,8 @@ public class OverworldManager : MonoBehaviour
     public ClipBoardBooleans BlackBoard;
 
 
-    public GameObject boss1_Interactables;
-    public GameObject boss2_Interactables;
+    public GameObject[] boss1_Interactables;
+    public GameObject[] boss2_Interactables;
 
     public bool Debug_StartWithTicket;
     public void Start()
@@ -17,8 +17,15 @@ public class OverworldManager : MonoBehaviour
 
 
         var useFirstInteractables = BlackBoard.clueCollection2.haveTicket;
-        boss1_Interactables.SetActive(!useFirstInteractables);
-        boss2_Interactables.SetActive(useFirstInteractables);
+        goSetActive(boss1_Interactables,!useFirstInteractables);
+        goSetActive(boss2_Interactables,useFirstInteractables);
+    }
 
+    public void goSetActive(GameObject[] goList, bool bo)
+    {
+        foreach (var item in goList)
+        {
+            item.SetActive(bo);
+        }
     }
 }
