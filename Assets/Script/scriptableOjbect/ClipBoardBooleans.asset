@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   clueCollection2:
-    haveTicket: 1
+    haveTicket: 0
