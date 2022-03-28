@@ -13,6 +13,7 @@ public class OverworldManager : MonoBehaviour
     public bool Debug_StartWithTicket;
     public void Start()
     {
+        if(Debug_StartWithTicket)
         BlackBoard.clueCollection2.haveTicket= Debug_StartWithTicket;
 
 
