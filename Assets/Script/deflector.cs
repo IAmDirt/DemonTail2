@@ -163,7 +163,7 @@ public class deflector : MonoBehaviour
         StartCoroutine(Flash());
 
         //StartCoroutine(Flash());
-        if (Rumble)
+        //if (Rumble)
             rumbler.RumbleConstant(low, high, rumbleTime);
      gameManager.Instance.   DoSlowmotion(slowDownProsentage, slowDownRecoverTime, slowdownFactor, slowDownStayTime);
     }

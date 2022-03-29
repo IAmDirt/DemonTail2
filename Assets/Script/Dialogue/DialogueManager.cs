@@ -79,17 +79,20 @@ public class DialogueManager : Singleton<DialogueManager>
             AdvanceDialogue();
 
 
+            Debug.Log("1");
 
         }
         else if (currentStory.currentChoices.Count != 0) //Are there any choices?
         {
 
+            Debug.Log("a");
             StartCoroutine(ShowChoices());
         }
         else if (!_choice)
         {
             FinishDialogue();
             gameManager.Instance.returnToGameplay();
+            Debug.Log("b");
         }
     }
     private void FinishDialogue()
