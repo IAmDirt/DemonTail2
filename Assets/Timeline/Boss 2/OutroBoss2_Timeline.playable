@@ -587,7 +587,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 1
+  m_Muted: 0
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -733,7 +733,7 @@ MonoBehaviour:
     m_DisplayName: 1
   m_Markers:
     m_Objects: []
-  inkFile: {fileID: 4900000, guid: db45765c897327e4086628788d51d0fa, type: 3}
+  inkFile: {fileID: 4900000, guid: 19c575cb352c4a6469f3f42d1f64b174, type: 3}
   onlyPlayOnce: 0
 --- !u!114 &4136523374532799083
 MonoBehaviour:

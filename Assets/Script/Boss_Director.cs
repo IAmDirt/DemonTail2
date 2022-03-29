@@ -34,11 +34,16 @@ public class Boss_Director : StateManager
     void Start()
     {
         Init();
-        setNewState(stage1);
+        setNewState(stage2);
         rb = GetComponent<Rigidbody>();
         RotateTarget = player;
         HealthUI.setMaxFill(block.maxHealth);
     }
+    public void activateBoss()
+    {
+        setNewState(stage1);
+    }
+
     public void Init()
     {
         stage1.SetBrain(this);

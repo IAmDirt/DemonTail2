@@ -34,7 +34,7 @@ public class DialogueTrackMixer : PlayableBehaviour //putting logic over all cli
         if (newClip.canPause())
         {
             //timeline is paused
-            Debug.Log("paused track Mixer");
+            //Debug.Log("paused track Mixer");
             gameManager.Instance.PauseTimeline(director);
         }
 
