@@ -6,7 +6,7 @@ But the thing is, detective.
 
 I always win.
 
-HA HA ha.. I am going to enjoy crushing you.
-...  #Advance: Cutscene #Hide : Cutscene
+HA HA ha.. I am going to enjoy crushing you. #Advance: Cutscene
+
 
     -> END
